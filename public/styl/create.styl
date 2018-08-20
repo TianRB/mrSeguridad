@@ -1,0 +1,79 @@
+.contenedor-create, .form-create
+	width 90%
+	margin 20px auto
+	margin-bottom 0px
+.subir-foto
+	width 100%
+	height 200px
+	position relative
+.subir-foto-usuario 
+	padding 10px 0
+	border 2px dashed rgba(0,0,0,.2)
+	form, .cif-file-container, .cif-file-row, .cif-parent, .cif-img
+		height 100% !important
+	.cif-file-row
+		border-bottom 0px solid transparent !important
+	.cif-close
+		position absolute !important
+	.cif-parent, .cif-file-row
+		padding 0 !important
+	h3
+		margin-top 50px !important
+.btns-create
+	width 90%
+	margin 0 auto
+	text-align center
+	margin-bottom 30px
+	.btn-rectangle
+		width 30%
+		height 40px
+		line-height 40px
+		padding 0 !important
+		margin 0
+		margin-left 5%
+		font-size .8rem
+		&:first-child
+			margin-left 0% !important
+	.btn-flat
+		border 1px solid gris-clarito
+.form-create 
+	select, input
+		color #999
+	select
+		position relative
+		z-index 1
+		height 35px
+	.group
+		margin-bottom 35px
+		.triangulito
+			top 10px
+		&:nth-child(5)
+			overflow hidden
+			margin-bottom 30px
+		&:nth-child(6)
+			overflow hidden
+			margin-bottom 30px
+@media screen and (min-width:1000px)
+	.subir-foto
+		width 100%
+		height 230px
+		max-width 230px
+	.subir-foto-usuario 
+		padding 10px
+		.cif-file-picker h3
+			margin-top 70px !important
+	.btns-create
+		width 60%
+		margin-left 37.5%
+		font-size 0
+	.contenedor-create
+		width 30%
+		height 200px
+		display inline-block
+		vertical-align top
+	.form-create
+		width 60%
+		margin-left 5%
+		display inline-block
+		vertical-align top
+		

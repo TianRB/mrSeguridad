@@ -1,0 +1,171 @@
+.cabecera-articulos
+	width 100%
+	margin-top -100px
+	position relative
+	article
+		width 90%
+		position absolute
+		left 5%
+		text-align center
+		z-index 2
+		top 40%
+		h2 
+			color #fff 
+			font-size 1.8rem
+		p 
+			color #fff 
+			font-size .8rem
+			line-height 1.2rem
+		.btn-unete
+			width 140px
+			margin 0 auto
+			margin-top 20px
+			height 30px
+			line-height 30px
+			color #fff 
+			font-size .8rem
+			text-transform uppercase
+			background rojo-mr
+			a
+				color #fff 
+				text-decoration none
+	.diagonales 
+		margin-top -10px
+	.diagonal-uno
+		width 100%
+		height 10px
+		background #878787
+		transform skewY(-3deg)
+	.diagonal-dos
+		width 100%
+		height 10px
+		background #b2b2b2
+		transform skewY(-3deg)
+	.diagonal-tres
+		width 100%
+		height 10px
+		background #dadada
+		transform skewY(-3deg)
+	.contenedor-video
+		background rgba(30, 30, 30, 1)
+		width 100%
+		overflow hidden
+		transform skewY(-3deg)
+		video 
+			width 130%	
+			opacity .10
+			
+
+/********************** PRODUCTOS *******************/
+
+.contenedor-productos
+	width 90%
+	margin 0 auto
+	margin-top 40px
+	position relative
+	font-size 0
+	text-align center
+	padding-bottom 30px
+	.producto 
+		width 45%
+		max-width 155px
+		display inline-block
+		vertical-align top 
+		position relative
+		margin-bottom 20px
+		&:nth-child(odd)
+			margin-right 10%
+		.fondo-producto
+			width 100%
+			height 100%
+			position relative
+			z-index 0
+			img 
+				width 100%
+				height auto 
+		.img-producto
+			width 130%
+			left -15%
+			height 100%
+			z-index 1
+			position absolute
+			img 
+				width 100%
+				height auto 
+		h2
+			width 100%
+			margin 0 auto 
+			position relative 
+			z-index 3
+			margin-top 20px
+			font-size 1rem
+			color gris-mr
+			font-weight 400
+@media screen and (min-width: 700px)
+	.cabecera-articulos
+		article
+			width 500px
+			left 50%
+			margin-left -250px
+			h2 
+				font-size 2.5rem
+			p 
+				font-size 1.2rem
+				line-height 1.8rem
+				font-weight 300
+			.btn-unete
+				height 40px
+				line-height 40px
+		.diagonal-uno, .diagonal-dos, .diagonal-tres
+			transform skewY(-3deg)
+		.contenedor-video
+			transform skewY(-3deg)
+			video 
+				width 100%
+	.contenedor-productos
+		.producto
+			&:nth-child(odd)
+				margin-right initial
+		.producto 
+			margin 30px 30px !important
+@media screen and (min-width: 1000px)
+	.cabecera-articulos
+		margin-top -120px
+		.contenedor-video
+			height 400px
+	.contenedor-productos
+		max-width 1400px
+		padding-bottom 50px
+		.producto 
+			max-width 200px
+			margin 40px 50px !important
+			.fondo-producto
+				filter grayscale(100%)
+				transition all .5s
+			.img-producto
+				top -10px
+				transform scale(1)
+				transition all .5s
+			&:hover
+				cursor pointer
+				.fondo-producto
+					filter grayscale(0%)
+				.img-producto
+					transform scale(1.1)
+					animation 3s linear infinite
+					transform-origin 50% 50%
+					animation-name producto
+				@keyframes producto{
+					0% {
+						margin-top 0px;
+					}
+					50% {
+						margin-top -10px;
+					}
+					100% {
+						margin-top 0px;
+					}
+				}
+
+
+

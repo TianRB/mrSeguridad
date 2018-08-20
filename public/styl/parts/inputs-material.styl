@@ -1,0 +1,68 @@
+.group
+  position relative
+  input
+    font-size 1rem
+    padding 10px 0px
+    display block
+    width 100%
+    border none
+    border-bottom 1px solid #757575
+    border-radius 0px
+    &:focus
+      outline none
+      & ~ .highlight
+        animation inputHighlighter 0.3s ease
+  label
+    color #999
+    font-size 1rem
+    font-weight normal
+    position absolute
+    pointer-events none
+    left 0px
+    top 10px
+    transition 0.2s ease all
+  input:focus ~ label, input:valid ~ label
+    top -10px
+    font-size 14px
+    color #5264AE
+  .bar
+    position relative
+    display block
+    width 100%
+    &:before
+      left 50%
+    &:after
+      right 50%
+  .bar:before, .bar:after
+    content ''
+    height 2px
+    width 0
+    bottom 1px
+    position absolute
+    background #5264AE
+    transition 0.2s ease all
+  input:focus ~ .bar:before, input:focus ~ .bar:after
+    width 50%
+  .highlight
+    position absolute
+    height 60%
+    width 100px
+    top 25%
+    left 0
+    pointer-events none
+    opacity 0.5
+
+/* ANIMATIONS ================ */
+@keyframes inputHighlighter {
+  from  { background:#5264AE; }
+  to    { width:0; background:transparent; }
+}
+@media screen and (min-width:600px)
+  .group
+    width 47.5%
+    display inline-block
+    vertical-align top
+    &:nth-child(even)
+      margin-left 5%
+
+

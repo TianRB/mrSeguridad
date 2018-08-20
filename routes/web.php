@@ -25,9 +25,8 @@ Auth::routes();
 */
 Route::get('/'						, 'FrontController@index')->name('front.index');
 Route::get('/related/{category}'	, 'FrontController@showRelatedArticles');
-Route::get('/product/{article}'		, 'FrontController@showArticle');
-Route::get('/product/view/{slug}'	, 'FrontController@articleBySlug');
-Route::get('/category/{category}'	, 'FrontController@category');
+Route::get('/productos/{category}'		, 'FrontController@category');
+Route::get('/productos/ver/{slug}'	, 'FrontController@articleBySlug');
 Route::get('/sendmessage'			, 'FrontController@messagesend')->name('send.message');
 
 
@@ -39,13 +38,18 @@ Route::get('/sendmessage'			, 'FrontController@messagesend')->name('send.message
 
 Route::get('/dashboard'           , 'HomeController@index')->name('home');
 Route::resource('articles'		    , 'ArticleController');
+  Route::get('articles/add_image/{id}', 'ArticleController@storeImagesForm');
+  Route::post('articles/add_image/{id}', 'ArticleController@storeImages')->name('articles.add_images');
+  Route::get('articles/update_image/{id}', 'ArticleController@updateImagesForm');
+  Route::post('articles/update_image/{id}', 'ArticleController@updateImages')->name('articles.add_images');
 Route::resource('categories'	    , 'CategoryController');
 Route::resource('subcategories'	  , 'SubcategoryController');
 Route::resource('sliders'		      , 'SliderController');
+Route::resource('pictures'		      , 'PicController');
 
 Route::post('articles/search'	    , ['uses' => 'ArticleController@searchResults', 'as' => 'articles.search']);
 
 // Rutas auxiliares
-Route::get('/addSlugs'			, 'ArticleController@addSlugToAll');
+Route::get('/addSlugs'			, 'CategoryController@addSlugToAll');
 
 Route::get('/home', 'HomeController@index')->name('home');

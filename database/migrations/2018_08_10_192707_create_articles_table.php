@@ -18,6 +18,8 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->string('content', 2048);
             $table->string('slug');
+            $table->string('bg_img');
+            $table->string('pdf');
             $table->timestamps();
         });
     }

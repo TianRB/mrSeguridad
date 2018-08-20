@@ -44,47 +44,60 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-    	//dd($request->all());
-        $input = $request->all();
-        $rules = [
-         'titulo' => 'required|max:64',
-         'descripcion' => 'required|max:128',
-         'url' => 'required',
-         'imagen' => 'required|mimes:jpeg,png,jpg|max:400'
-        ];
-        $messages = [
-            'titulo.required' => 'El campo "título" es obligatorio',
-            'titulo.max' => 'El campo "título" debe ser de menos de 64 caracteres',
-            'descripcion.required' => 'El campo "descripción" es obligatorio',
-            'url.required' => 'El campo "URL" es obligatorio',
-            'imagen.required' => 'Debes subir una foto',
-            'imagen.mimes' => 'El archivo debe ser una imágen',
-            'imagen.max' => 'La imagen no debe pesar más de 400KB'
-        ];
+      //dd($request->all());
+      $input = $request->all();
+      $rules = [
+       'title' => 'required|max:64',
+       'description' => 'required|max:512',
+       'image' => 'required|mimes:jpeg,png,jpg|max:800',
+       'bg_img' => 'required|mimes:jpeg,png,jpg|max:800'
+      ];
+      $messages = [
+        'title.required' => 'El campo "título" es obligatorio',
+        'title.max' => 'El campo "título" debe ser de menos de 64 caracteres',
+        'description.required' => 'El campo "descripción" es obligatorio',
+        'description.max' => 'El campo "descripción" debe ser de menos de 512 caracteres',
+        'image.required' => 'Debes subir una foto de frente',
+        'image.mimes' => 'La foto de frente debe ser jpeg, png o jpg',
+        'image.max' => 'La imagen de frente no debe pesar más de 800KB',
+        'bg_img.required' => 'Debes subir una foto de frente',
+        'bg_img.mimes' => 'La foto de frente debe ser jpeg, png o jpg',
+        'bg_img.max' => 'La imagen de frente no debe pesar más de 800KB'
+      ];
 
        $validator = Validator::make($input, $rules, $messages);
        if ( $validator->fails() ) {
-       return redirect('sliders/create')
-                   ->withErrors( $validator )
-                   ->withInput();
-        } else {  
-            //  Crear Imagen
-            $file = Input::file('imagen');
-            $name = str_replace(' ', '', strtolower($input['titulo']));
-            $file_name = $name.str_random(6).'.'.$file->getClientOriginalExtension();
-            $img_path ='slider_pictures/'.$file_name;
-            $request->imagen->move('slider_pictures/', $file_name); 
+         return redirect('sliders/create')
+           ->withErrors( $validator )
+           ->withInput();
+        } else {
 
-            $s = new Slider;
-            $s->title = $request->input('titulo');
-            $s->description = $request->input('descripcion');
-            $s->url = $request->input('url');
-            $s->path = $img_path;
-            if ($request->input('activado')) {
-                $s->enabled = true;
-            }
-            $s->save();
-            return redirect('sliders/');
+          $s = new Slider;
+          $s->title = $request->input('title');
+          $s->description = $request->input('description');
+          $s->url = $request->input('url');
+
+          //  Crear Imagen
+          $file = Input::file('image');
+          $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
+          $img_path = Slider::$image_path.$file_name;
+          $request->imagen->move(Slider::$image_path, $file_name);
+          $s->image = $img_path;
+
+          //  Crear Imagen de fondo
+          $bgfile = Input::file('bg_img');
+          $file_name = str_random(16).'.'.$bgfile->getClientOriginalExtension();
+          $img_path = Slider::$image_path.'/bg/'.$file_name;
+          $request->imagen->move(Slider::$image_path.'/bg/', $file_name);
+          $s->bg_img = $img_path;
+
+
+          if ($request->input('enabled')) {
+              $s->enabled = true;
+          }
+
+          $s->save();
+          return redirect('sliders/');
         }
     }
 
@@ -123,40 +136,56 @@ class SliderController extends Controller
         //dd($request->all());
         $input = $request->all();
         $rules = [
-         'titulo' => 'required|max:64',
-         'descripcion' => 'required|max:128',
-         'url' => 'required',
-         'imagen' => 'mimes:jpeg,png,jpg|max:400'
+         'title' => 'required|max:64',
+         'description' => 'required|max:512',
+         'image' => 'mimes:jpeg,png,jpg|max:800',
+         'bg_img' => 'mimes:jpeg,png,jpg|max:800'
         ];
         $messages = [
-            'titulo.required' => 'El campo "título" es obligatorio',
-            'titulo.max' => 'El campo "título" debe ser de menos de 64 caracteres',
-            'descripcion.required' => 'El campo "descripción" es obligatorio',
-            'url.required' => 'El campo "URL" es obligatorio',
-            'imagen.mimes' => 'El archivo debe ser una imágen',
-            'imagen.max' => 'La imagen no debe pesar más de 400KB'
+          'title.required' => 'El campo "título" es obligatorio',
+          'title.max' => 'El campo "título" debe ser de menos de 64 caracteres',
+          'description.required' => 'El campo "descripción" es obligatorio',
+          'description.max' => 'El campo "descripción" debe ser de menos de 512 caracteres',
+          'image.mimes' => 'La foto de frente debe ser jpeg, png o jpg',
+          'image.max' => 'La imagen de frente no debe pesar más de 800KB',
+          'bg_img.mimes' => 'La foto de frente debe ser jpeg, png o jpg',
+          'bg_img.max' => 'La imagen de frente no debe pesar más de 800KB'
         ];
 
        $validator = Validator::make($input, $rules, $messages);
        if ( $validator->fails() ) {
-       return redirect('sliders/'.$id.'/edit')
-                   ->withErrors( $validator )
-                   ->withInput();
-        } else {  
+         return redirect('sliders/'.$id.'/edit')
+           ->withErrors( $validator )
+           ->withInput();
+        } else {
             $s = Slider::find($id);
-            if (Input::file('imagen')) { // Si hay imagen
-                $file = $s->path; // Eliminar vieja imagen
-                $filename = public_path($file);
-                File::delete($filename);
-                $file = Input::file('imagen'); //  Crear Imagen
-                $name = str_replace(' ', '', strtolower($input['titulo']));
-                $file_name = $name.str_random(6).'.'.$file->getClientOriginalExtension();
-                $img_path ='slider_pictures/'.$file_name;
-                $request->imagen->move('slider_pictures/', $file_name);
-                $s->path = $img_path; 
+
+            // Si hay image
+            if ($request->image) {
+              // Eliminar vieja Imagen de fondo
+              $oldfile = public_path($s->image);
+              File::delete($oldfile);
+              // Guardar nueva imagen de fondo
+              $file = Input::file('image');
+              $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
+              $s->image = Slider::$image_path.'/bg/'.$file_name;
+              $request->image->move(Slider::$image_path.'/bg/', $file_name);
             }
-            $s->title = $request->input('titulo');
-            $s->description = $request->input('descripcion');
+
+            // Si hay bg_img
+            if ($request->bg_img) {
+              // Eliminar vieja Imagen de fondo
+              $oldfile = public_path($s->bg_img);
+              File::delete($oldfile);
+              // Guardar nueva imagen de fondo
+              $file = Input::file('bg_img');
+              $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
+              $s->bg_img = Slider::$image_path.'/bg/'.$file_name;
+              $request->bg_img->move(Slider::$image_path.'/bg/', $file_name);
+            }
+
+            $s->title = $request->input('title');
+            $s->description = $request->input('description');
             $s->url = $request->input('url');
 
             if ($request->input('activado')) {
@@ -178,11 +207,13 @@ class SliderController extends Controller
     public function destroy($id)
     {
         $s = Slider::find($id);
-        if ($s->path != null) {
-         $file = $s->path;
-         $filename = public_path($file);
-         File::delete($filename);
-        }
+        // Eliminar vieja Imagen
+        $oldfile = public_path($s->image);
+        File::delete($oldfile);
+        // Eliminar vieja Imagen de fondo
+        $oldfile = public_path($s->bg_img);
+        File::delete($oldfile);
+
         $s->delete();
         return redirect('sliders/');
     }

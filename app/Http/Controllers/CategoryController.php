@@ -52,9 +52,10 @@ class CategoryController extends Controller
        return redirect('categories/create')
                    ->withErrors( $validator )
                    ->withInput();
-        } else {  
+        } else {
             $cat = new Category;
             $cat->name = $request->input('nombre');
+            $cat->name = $request->input('video');
             $cat->save();
         }
         return redirect('categories/');
@@ -105,5 +106,19 @@ class CategoryController extends Controller
     {
         $c = Category::find($id);
         //$c->delete();
+    }
+    /**
+    * Auxiliar function to give all Categories a slug, if they don´t have one.
+    **/
+    public function addSlugToAll()
+    {
+        $cat = Category::where('slug', '')->get();
+        //dd($cat);
+        foreach ($cat as $c) {
+          //dd($c);
+          $c->slug = str_slug($c->name);
+          $c->save();
+        }
+        return redirect('/');
     }
 }

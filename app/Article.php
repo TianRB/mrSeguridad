@@ -3,12 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class Article extends Model
 {
 
     public static $image_path = 'img/article_pictures/';
+    public static $pdf_path = 'img/article_fichas/';
 
     protected $fillable = ['title', 'content'];
     /**
@@ -33,14 +33,6 @@ class Article extends Model
     public function one_pic()
     {
         return $this->pics()->take(1)->pluck('path')->pop();
-    }
-
-    /**
-     * Get slug from title.
-     */
-    public function getSlugFromTitle()
-    {
-        return Str::slug($this->title);
     }
 
     public function scopeTitle($query, $title)

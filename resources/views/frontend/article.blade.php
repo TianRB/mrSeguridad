@@ -2,82 +2,69 @@
 
 @section('content')
 
-<!-- ****************  COMIENZA CONTENEDOR PRODUCTO  **************** -->
-<section class="producto-elegido">
-	<article>
-		<div class="imagenes-ficha-tecnica imagenes-ficha-tecnica-movil">
-			<figure class="imagen-principal">
-				<img src="../{{ $main->one_pic }}" alt="{{ $main->title }}">
-			</figure>
-			<div class="miniaturas">
-				<figure><img src="img/productos/min-uno.jpg" alt=""></figure>
-				<figure><img src="img/productos/min-dos.jpg" alt=""></figure>
-				<figure><img src="img/productos/min-tres.jpg" alt=""></figure>
-				<figure class="img-seleccionada"><img src="img/productos/min-cuatro.jpg" alt=""></figure>
-			</div>
-		</div>
-		<div class="texto-ficha-tecnica">
-			<div class="caja-descripcion-articulo">
-				<h1>{{ $main->title}}</h1>
-				<p>{!! $main->content !!}</p>
-				<div class="btn-ficha-tecnica btn-uno">Solicitar cotización</div>
-				<a href=""><div class="btn-ficha-tecnica btn-dos">Ver más</div></a>
-			</div>
-			<div class="contizacion">
-				<h3>Datos del cliente</h3>
-				<form action="" class="formulario-cotizacion">
-					<ul>
-						<li><input type="text" placeholder="Nombre"></li>
-						<li><input type="text" placeholder="Apellido"></li>
-						<li><input type="text" placeholder="Ciudad"></li>
-						<li><input type="text" placeholder="Correo Electrónico"></li>
-						<li><input type="text" placeholder="Teléfono"></li>
-						<li><textarea name="" id="" placeholder="¿Cómo podemos ayudarle?"></textarea></li>
-					</ul>
-					<div class="btn-enviar">enviar</div>
-					<div class="btn-regresar">regresar</div>
-				</form>
-			</div>
-		</div>
-		<div class="imagenes-ficha-tecnica imagenes-ficha-tecnica-desktop">
-			<figure class="imagen-principal">
-				<img src="../{{ $main->one_pic->pluck('path')->pop() }}" alt="{{ $main->title }}">
-			</figure>
-			<div class="miniaturas">
+
+
+
+	<!-- ****************  ABRE CABECERA ARTICULOS  **************** -->
+	<div class="ficha-tecnica">
+		<article>
+			<section class="miniaturas-producto">
 				@foreach($main->pics as $pic)
-					<figure><img src="../{{ $pic->path }}" alt="{{ $main->title }}"></figure>
+					<figure><img src="{{ asset($pic->path) }}" alt="" class="img-mini"></figure>
 				@endforeach
-			</div>
+			</section>
+			<section class="img-ficha-tecnica">
+				<figure class="img-producto-activo"><img src="{{ asset($main->one_pic()) }}" alt="" id="img-main"></figure>
+				<figure class="fondo-producto-activo" ><img src="{{ asset($main->bg_img) }}" alt=""></figure>
+			</section>
+			<section class="texto-ficha-tecnica">
+				<h1>{{ $main->title }}</h1>
+				{!! $main->content !!}
+				<div class="btn-ficha-tecnica"> <a href="{{ asset($main->pdf) }}">Descargar Ficha Técnica</a> </div>
+			</section>
+
+		</article>
+
+
+
+
+		<div class="diagonales">
+			<div class="diagonal-uno"></div>
+			<div class="diagonal-dos"></div>
+			<div class="diagonal-tres"></div>
 		</div>
-	</article>
-</section>
-<!-- ****************  TERMINA CONTENEDOR PRODUCTO  **************** -->
+	</div>
+	<!-- ****************  CIERRA CABECERA ARTICULOS  **************** -->
 
 
 
 
-
-<!-- ****************  COMIENZA OTROS PRODUCTOS  **************** -->
-
-	<section class="otros-productos">
-		<h2>Productos similares</h2>
-		@foreach($related as $a)
-		<a href="/product/{{ $a->id }}">
-			<article>
-				<div class="circulo-azul"></div>
-				<figure>
-					<img src="../{{ $a->one_pic->pluck('path')->pop() }}" alt="{{ $a->title }}">
-				</figure>
-				<div class="texto-articulo">
+	<!-- ****************  ABRE PRODUCTOS  **************** -->
+	<section class="contenedor-otros-productos">
+		<div class="pleca-negra"></div>
+		<strong>Otros Productos que podrían interesarte</strong>
+		@foreach ($related->take(4) as $a)
+			<a href="/productos/ver/{{ $a->slug }}">
+				<article class="producto">
+					<figure class="img-producto"><img src="{{ asset($a->one_pic()) }}" alt=""></figure>
+					<figure class="fondo-producto"><img src="{{ asset($a->bg_img) }}" alt=""></figure>
 					<h2>{{ $a->title }}</h2>
-					<p>{!! $a->content !!}</p>
-					<div class="btn-ficha-tecnica"><p>Ver más +</p></div>
-				</div>
-			</article>
-		</a>
+				</article>
+			</a>
 		@endforeach
+
+
 	</section>
 
-<!-- ****************  TERMINA OTROS PRODUCTOS  **************** -->
 
+	<!-- ****************  CIERRA PRODUCTOS  **************** -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+document.title = '{!! $a->page_title !!}';
+$('head').append( '<meta name="description" content="{!! $a->meta_descr !!}">' );
+$('.img-mini').on('click', function() {
+			 var newSource = $(this).attr('src');
+			 $("#img-main").attr("src",newSource);
+});
+</script>
 @endsection

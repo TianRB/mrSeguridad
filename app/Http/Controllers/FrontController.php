@@ -5,124 +5,42 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Slider;
-use App\Subcategory;
+use App\Category;
 use App\Message;
 use App\Mail\NewMessage;
 use App\Mail\RecievedMessage;
 use Mail;
 use Validator;
+use Illuminate\Support\Str;
 
 class FrontController extends Controller
 {
     public function index()
     {
         $slides = Slider::where('enabled', 1)->take(3)->get();
-        return view('frontend.index', ['slides' => $slides]);
+        $categories = Category::all();
+        return view('frontend.index', ['slides' => $slides, 'categories' => $categories]);
     }
-
 
     public function category($category)
     {
-        $sub = Subcategory::all();
-        switch ($category) {
-
-            case 'muebles':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'Muebles'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-            case 'silleria':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'Silleria'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-            case 'archivo':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'Archivo'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-            case 'cafeteria-y-hoteleria':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'Cafetería y Hotelería'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-            case 'sofas-y-espera':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'SofasEspera'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-            case 'recepciones':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'Recepciones'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-            case 'accesorios':
-                $articles = Article::whereHas('categories', function($query) {
-                    $query->where('categories.name', 'Accesorios'); })->get();
-                return view('frontend.category', ['articles' => $articles, 'subcategories' => $sub]);
-
-        }
-    }
-
-    public function showArticles()
-    {
-        $articles = Article::all();
-        return view('front', ['articles' => $articles]);
-    }
-    public function showRelatedArticles($category)
-    {
-        // Decode JSON to PHP array
-        $category = json_decode($category);
-
-        // If it's an array
-        if (is_array($category)){
-            //Obtener todos los id de categoria
-            $category_ids = collect($category)->pluck('id');
-            $articles = Article::whereHas('categories', function($query) use ($category_ids) {
-                // Assuming your category table has a column id
-                $query->whereIn('categories.id', $category_ids);
-            })->get();
-        } else {
-            dd('Not an array (bad url parameter)');
-        }
-        return view('front', ['articles' => $articles]);
-    }
-
-    public function showArticle($article_id)
-    {
-      // Decode JSON to PHP array
-      $a = Article::find($article_id);
-    	$category = json_decode($a->categories()->get());
-      // If it's an array
-      if (is_array($category)){
-        //Obtener todos los id de categoria
-        $category_ids = collect($category)->pluck('id');
-
-        $articles = Article::whereHas('categories', function($query) use ($category_ids) {
-          // Assuming your category table has a column id
-          $query->whereIn('categories.id', $category_ids);
-        })->get();
-
-        // Excluye el artículo que estás viendo
-        $filtered_articles = $articles->filter(function ($current, $key) use ($a)
-        {
-           return ($current->id != $a->id);
-        });
-        
-        //dd($filtered_articles);
-      } else {
-        dd('Not an array (bad url parameter)');
-      }
-        //dd($articles);
-        return view('frontend.article', ['main' => $a, 'related' => $filtered_articles]);
+      $cat = Category::where('slug', $category)->get()->pop();
+      //dd($cat);
+      $articles = Article::whereHas('categories', function($query) use ($category) {
+        $query->where('categories.slug', $category); })->orderBy('title')->get();
+      //dd($articles);
+      //Obtener todos los id de artículos
+      //$article_ids = collect($articles)->pluck('id');
+      $categories = Category::all();
+      return view('frontend.category', ['articles' => $articles, 'categories' => $categories]);
     }
 
     public function articleBySlug($article_slug)
     {
       // Decode JSON to PHP array
-      $a = Article::where('slug', $article_slug)->get()->pop();
+      $main = Article::where('slug', $article_slug)->get()->pop();
       //dd($a);
-      $category = json_decode($a->categories()->get());
+      $category = json_decode($main->categories()->get());
       // If it's an array
       if (is_array($category)){
         //Obtener todos los id de categoria
@@ -131,20 +49,21 @@ class FrontController extends Controller
         $articles = Article::whereHas('categories', function($query) use ($category_ids) {
           // Assuming your category table has a column id
           $query->whereIn('categories.id', $category_ids);
-        })->get();
+        })->orderBy('title')->get();
 
         // Excluye el artículo que estás viendo
-        $filtered_articles = $articles->filter(function ($current, $key) use ($a)
+        $filtered_articles = $articles->filter(function ($current, $key) use ($main)
         {
-           return ($current->slug != $a->slug);
+          return ($current->slug != $main->slug);
         });
-        
+
         //dd($filtered_articles);
       } else {
         dd('Not an array (bad url parameter)');
       }
         //dd($articles);
-        return view('frontend.articleBySlug', ['main' => $a, 'related' => $filtered_articles]);
+        $categories = Category::all();
+        return view('frontend.article', ['main' => $main, 'related' => $filtered_articles, 'categories' => $categories]);
     }
 
 

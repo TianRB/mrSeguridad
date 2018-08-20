@@ -1,0 +1,55 @@
+.filtro-notas
+	width 95%
+	margin 0px auto
+	margin-top 20px
+	div
+		width 45%
+		display inline-block
+		vertical-align top
+		margin-left 5%
+		position relative
+		&:nth-child(odd)
+			margin-left 0%
+		.buscador
+			width 100%
+			border 1px solid gris-clarito
+			border-radius 5px
+			height 30px
+			line-heigh 30px
+			input
+				width 90%
+				margin 0 auto
+				border 0px
+				height 100%
+				font-size 1rem
+			.icon-buscar
+				font-size 1rem
+				position absolute
+				right 10px
+				top 7px
+				color gris-clarito
+.triangulito{
+     width: 0;
+     height: 0;
+     border-right: 10px solid transparent;
+     border-bottom: 10px solid transparent;
+     border-left: 10px solid transparent;
+     border-top: 10px solid gris-clarito;
+     position:absolute;
+     right:10px;
+     top:13px;
+ }
+ 
+@media screen and (min-width:600px)
+	.filtro-notas
+		width 95%
+		margin 0px auto
+		margin-top 20px
+		div
+			width 43%
+			display inline-block
+			vertical-align top
+			margin-left 4% !important
+			position relative
+			&:first-child
+				margin-left 0% !important
