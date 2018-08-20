@@ -20,7 +20,7 @@
     					<label>Usuario</label>
   					</div>
   					<div class="group input-sesion">
-    					<input type="password" type="password" required>
+    					<input type="password" type="password" name="password" required>
     					<span class="highlight"></span>
     					<span class="bar"></span>
     					<label>Contraseña</label>
@@ -75,7 +75,13 @@ function removeAnimation() {
   } else {
     this.className = this.className.replace(new RegExp('(^|\\b)' + 'ripple-effect-animation'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
   }
-}</script>
+}
+@if ($errors->any())
+  @foreach ($errors->all() as $error)
+      console.log('{!! $error !!}');
+  @endforeach
+@endif
+</script>
 
 </body>
 </html>
