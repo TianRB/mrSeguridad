@@ -59,7 +59,7 @@ class ArticleController extends Controller
           'image' => 'required',
           'image.*' => 'mimes:jpeg,png,jpg|max:400',
           'bg_img' => 'required|mimes:jpeg,png,jpg|max:400',
-          'pdf' => 'required|mimes:pdf',
+          'pdf' => 'required|mimes:pdf,jpeg,png,jpg',
         ];
         $messages = [
           'title.unique' => 'Ya existe un Atrículo con este nombre',
@@ -73,7 +73,7 @@ class ArticleController extends Controller
           'bg_img.required' => 'Debes subir una foto de fondo',
           'bg_img.mimes' => 'La foto de fondo debe ser una imagen en jpeg, png o jpg',
           'bg_img.max' => 'La imagen no debe pesar más de 400KB',
-          'pdf.required' => 'Debes subir una ficha técnica en formato pdf',
+          'pdf.required' => 'Debes subir una ficha técnica en formato pdf, jpeg, png o jpg',
           'pdf.mimes' => 'La ficha técnica debe estar en formato pdf',
           'pdf.max' => 'La ficha técnica debe pesar menos de 2 Mb',
         ];
@@ -268,7 +268,7 @@ class ArticleController extends Controller
           'page_title' => 'required',
           'imagen.*' => 'mimes:jpeg,png,jpg|max:400',
           'bg_img' => 'mimes:jpeg,png,jpg|max:400',
-          'pdf' => 'mimes:pdf',
+          'pdf' => 'mimes:pdf,jpeg,png,jpg',
         ];
         $messages = [
           'title.unique' => 'Ya existe un Atrículo con este nombre',
@@ -280,7 +280,7 @@ class ArticleController extends Controller
           'imagen.max' => 'La imagen no debe pesar más de 400KB',
           'bg_img.mimes' => 'La foto de fondo debe ser una imagen en jpeg, png o jpg',
           'bg_img.max' => 'La imagen no debe pesar más de 400KB',
-          'pdf.mimes' => 'La ficha técnica debe estar en formato pdf',
+          'pdf.mimes' => 'La ficha técnica debe estar en formato pdf, jpeg, png o jpg',
           'pdf.max' => 'La ficha técnica debe pesar menos de 2 Mb',
         ];
 

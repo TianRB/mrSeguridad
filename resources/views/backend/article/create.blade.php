@@ -105,7 +105,7 @@
 
 <!-- ******************************** CHECKBOX ******************************** -->
         <label for="pdf">Ficha Técnica (PDF)</label>
-        <input type="file" name="pdf" placeholder="Subir Ficha técnica (PDF)">
+        <input type="file" name="pdf" placeholder="Subir Ficha técnica (PDF recomendado)">
 
 				<label for="bg_img">Imagen de fondo</label>
         <input type="file" name="bg_img" placeholder="Subir fondo">
