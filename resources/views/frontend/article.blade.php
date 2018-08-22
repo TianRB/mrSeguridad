@@ -43,16 +43,21 @@
 	<section class="contenedor-otros-productos">
 		<div class="pleca-negra"></div>
 		<strong>Otros Productos que podrían interesarte</strong>
-		@foreach ($related->take(4) as $a)
-			<a href="{{ action('FrontController@articleBySlug', ['id' => $a->slug]) }}">
+		@if ($related->count() < 1)
+			<div class="">
+				No hay productos relacionados
+			</div>
+		@else
+			@foreach ($related->take(4) as $a)
+				<a href="{{ action('FrontController@articleBySlug', ['id' => $a->slug]) }}">
 					<article class="producto">
-					<figure class="img-producto"><img src="{{ asset($a->one_pic()) }}" alt=""></figure>
-					<figure class="fondo-producto"><img src="{{ asset($a->bg_img) }}" alt=""></figure>
-					<h2>{{ $a->title }}</h2>
-				</article>
-			</a>
-		@endforeach
-
+						<figure class="img-producto"><img src="{{ asset($a->one_pic()) }}" alt=""></figure>
+						<figure class="fondo-producto"><img src="{{ asset($a->bg_img) }}" alt=""></figure>
+						<h2>{{ $a->title }}</h2>
+					</article>
+				</a>
+			@endforeach
+		@endif
 
 	</section>
 
