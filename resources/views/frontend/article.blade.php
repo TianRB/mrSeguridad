@@ -44,8 +44,8 @@
 		<div class="pleca-negra"></div>
 		<strong>Otros Productos que podrían interesarte</strong>
 		@foreach ($related->take(4) as $a)
-			<a href="/productos/ver/{{ $a->slug }}">
-				<article class="producto">
+			<a href="{{ action('FrontController@articleBySlug', ['id' => $a->slug]) }}">
+					<article class="producto">
 					<figure class="img-producto"><img src="{{ asset($a->one_pic()) }}" alt=""></figure>
 					<figure class="fondo-producto"><img src="{{ asset($a->bg_img) }}" alt=""></figure>
 					<h2>{{ $a->title }}</h2>

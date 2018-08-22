@@ -296,7 +296,6 @@ class ArticleController extends Controller
             $a->meta_descr = $request->input('meta_descr');
             $a->page_title = $request->input('page_title');
 
-
             // Si hay bg_img
             if ($request->bg_img) {
               // Eliminar vieja Imagen de fondo
@@ -341,7 +340,7 @@ class ArticleController extends Controller
             }
 
             $a->save();
-            $a->categories()->sync($request->input('categoria'));
+            $a->categories()->sync($request->input('category'));
 
             return redirect('articles/');
         }

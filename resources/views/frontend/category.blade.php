@@ -27,7 +27,7 @@
 	<!-- ****************  ABRE PRODUCTOS  **************** -->
 	<section class="contenedor-productos">
 	@foreach ($articles->take(4) as $a)
-	<a href="/productos/ver/{{ $a->slug }}">
+		<a href="{{ action('FrontController@articleBySlug', ['id' => $a->slug]) }}">
 		<article class="producto">
 			<figure class="img-producto"><img src="{{ asset($a->one_pic()) }}" alt=""></figure>
 			<figure class="fondo-producto"><img src="{{ asset($a->bg_img) }}" alt=""></figure>
