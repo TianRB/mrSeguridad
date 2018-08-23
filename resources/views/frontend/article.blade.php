@@ -43,10 +43,10 @@
 	<section class="contenedor-otros-productos">
 		<div class="pleca-negra"></div>
 		<strong>Otros Productos que podrían interesarte</strong>
-		@if ($related->count() < 1)
-			<div class="">
-				No hay productos relacionados
-			</div>
+		@if ($related->isEmpty())
+			<article class="producto">
+				<h2>No hay productos relacionados</h2>
+			</article>
 		@else
 			@foreach ($related->take(4) as $a)
 				<a href="{{ action('FrontController@articleBySlug', ['id' => $a->slug]) }}">
@@ -65,8 +65,8 @@
 	<!-- ****************  CIERRA PRODUCTOS  **************** -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script type="text/javascript">
-document.title = '{!! $a->page_title !!}';
-$('head').append( '<meta name="description" content="{!! $a->meta_descr !!}">' );
+document.title = '{!! $main->page_title !!}';
+$('head').append( '<meta name="description" content="{!! $main->meta_descr !!}">' );
 $('.img-mini').on('click', function() {
 			 var newSource = $(this).attr('src');
 			 $("#img-main").attr("src",newSource);

@@ -26,12 +26,12 @@
 
 	<!-- ****************  ABRE PRODUCTOS  **************** -->
 	<section class="contenedor-productos">
-		@if ($articles->count() < 1)
-			<div class="">
-				No hay productos en esta categoría
-			</div>
+		@if ($articles->isEmpty())
+			<article class="producto">
+				<h2>No hay productos en esta categoria</h2>
+			</article>
 		@else
-			@foreach ($articles->take(4) as $a)
+			@foreach ($articles as $a)
 				<a href="{{ action('FrontController@articleBySlug', ['id' => $a->slug]) }}">
 					<article class="producto">
 						<figure class="img-producto"><img src="{{ asset($a->one_pic()) }}" alt=""></figure>

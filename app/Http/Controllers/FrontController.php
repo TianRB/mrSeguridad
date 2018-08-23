@@ -45,7 +45,6 @@ class FrontController extends Controller
       if (is_array($category)){
         //Obtener todos los id de categoria
         $category_ids = collect($category)->pluck('id');
-
         $articles = Article::whereHas('categories', function($query) use ($category_ids) {
           // Assuming your category table has a column id
           $query->whereIn('categories.id', $category_ids);
@@ -54,7 +53,7 @@ class FrontController extends Controller
         // Excluye el artículo que estás viendo
         $filtered_articles = $articles->filter(function ($current, $key) use ($main)
         {
-          return ($current->slug != $main->slug);
+          return ($current->id != $main->id);
         });
 
         //dd($filtered_articles);
