@@ -82,7 +82,8 @@
   								</button>
                   </a> --}}
                   <!-- borrar -->
-                  <form action="/articles/{{ $a->id }}" method="POST" class="no-margin">
+
+                  <form action="{{ action('ArticleController@destroy', ['id' => $a->id]) }}" method="POST" class="no-margin">
                     {{ csrf_field() }}
                     <input type="hidden" name="_method" value="DELETE" />
                       <button class="btn btn-rectangle btn-raised btn-basura" type="submit">
