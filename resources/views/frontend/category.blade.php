@@ -26,7 +26,7 @@
 
 	<!-- ****************  ABRE PRODUCTOS  **************** -->
 	<section class="contenedor-productos">
-		@if ($related->count() < 1)
+		@if ($articles->count() < 1)
 			<div class="">
 				No hay productos en esta categoría
 			</div>
