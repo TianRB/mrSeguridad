@@ -32,10 +32,10 @@ class FrontController extends Controller
       //Obtener todos los id de artículos
       //$article_ids = collect($articles)->pluck('id');
       $categories = Category::all();
-      return view('frontend.category', ['articles' => $articles, 'categories' => $categories]);
+      return view('frontend.category', ['articles' => $articles, 'categories' => $categories, 'currentcat' => $category]);
     }
 
-    public function articleBySlug($article_slug)
+    public function articleBySlug($article_slug, $currentcat = null)
     {
       // Decode JSON to PHP array
       $main = Article::where('slug', $article_slug)->get()->pop();
@@ -61,8 +61,9 @@ class FrontController extends Controller
         dd('Not an array (bad url parameter)');
       }
         //dd($articles);
+
         $categories = Category::all();
-        return view('frontend.article', ['main' => $main, 'related' => $filtered_articles, 'categories' => $categories]);
+        return view('frontend.article', ['main' => $main, 'related' => $filtered_articles, 'categories' => $categories, 'currentcat' => $currentcat]);
     }
 
 

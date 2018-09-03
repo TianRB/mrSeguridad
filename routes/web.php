@@ -26,7 +26,7 @@ Auth::routes();
 Route::get('/'						, 'FrontController@index')->name('front.index');
 Route::get('/related/{category}'	, 'FrontController@showRelatedArticles');
 Route::get('/productos/{category}'		, 'FrontController@category');
-Route::get('/productos/ver/{slug}'	, 'FrontController@articleBySlug');
+Route::get('/productos/ver/{slug}/{category?}'	, 'FrontController@articleBySlug');
 Route::get('/sendmessage'			, 'FrontController@messagesend')->name('send.message');
 
 

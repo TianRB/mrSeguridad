@@ -32,7 +32,7 @@
 			</article>
 		@else
 			@foreach ($articles as $a)
-				<a href="{{ action('FrontController@articleBySlug', ['id' => $a->slug]) }}">
+				<a href="{{ action('FrontController@articleBySlug', ['id' => $a->slug, 'currentcat' => $currentcat]) }}">
 					<article class="producto">
 						<figure class="img-producto"><img src="{{ asset($a->one_pic()) }}" alt=""></figure>
 						<figure class="fondo-producto"><img src="{{ asset($a->bg_img) }}" alt=""></figure>

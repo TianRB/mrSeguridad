@@ -103,7 +103,7 @@ class ArticleController extends Controller
 
             // Ficha técnica PDF
             $file = Input::file('pdf');
-            $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
+            $file_name = $a->slug.'.'.$file->getClientOriginalExtension();
             $a->pdf = Article::$pdf_path.$file_name;
             $request->pdf->move(Article::$pdf_path, $file_name);
             $a->save();
@@ -334,7 +334,7 @@ class ArticleController extends Controller
               File::delete($oldfile);
               // Ficha técnica PDF
               $file = Input::file('pdf');
-              $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
+              $file_name = $a->slug.'.'.$file->getClientOriginalExtension();
               $a->pdf = Article::$pdf_path.$file_name;
               $request->pdf->move(Article::$pdf_path, $file_name);
             }

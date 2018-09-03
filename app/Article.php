@@ -18,6 +18,13 @@ class Article extends Model
     {
         return $this->belongsToMany('App\Category');
     }
+    /**
+     * The categories that belong to the article.
+     */
+    public function one_cat()
+    {
+      return $this->categories()->take(1)->get()->pop();
+    }
 
     /**
      * Get the pics for the article.

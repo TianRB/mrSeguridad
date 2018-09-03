@@ -3,6 +3,10 @@
 @section('content')
 
 
+	@if(!isset($currentcat))
+		<?php $currentcat = $main->one_cat()->slug ?>
+	@endif
+
 
 
 	<!-- ****************  ABRE CABECERA ARTICULOS  **************** -->
@@ -15,10 +19,10 @@
 			</section>
 			<section class="img-ficha-tecnica">
 				<figure class="img-producto-activo"><img src="{{ asset($main->one_pic()) }}" alt="" id="img-main"></figure>
-				<figure class="fondo-producto-activo" ><img src="{{ asset($main->bg_img) }}" alt=""></figure>
+				<figure class="fondo-producto-activo"><img src="{{ asset($main->bg_img) }}" alt=""></figure>
 			</section>
 			<section class="texto-ficha-tecnica">
-				<h1>{{ $main->title }}</h1>
+				<h1 class="{{ $currentcat }}">{{ $main->title }}</h1>
 				{!! $main->content !!}
 				<div class="btn-ficha-tecnica"> <a href="{{ asset($main->pdf) }}">Descargar Ficha Técnica</a> </div>
 			</section>
