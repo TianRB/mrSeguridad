@@ -22,12 +22,13 @@
 	<div class="inicio-sesion">
 		<a href="">Regístrate</a>
 		<a href="">Inicio de Sesión</a>
+		<a href="http://18.221.15.19/mrSeguridad/public/img/catalogo-mr.pdf" target="_blank" class="descargar-catalogo">Descargar Catálogo</a>
 	</div>
 	<nav>
 	<div class="circulo-rojo"></div>
 		<ul>
 			@foreach ($categories as $c)
-				<li><a href="productos/{{ $c->slug }}">{{ $c->name }}</a></li>
+				<li><a href="{{ $c->slug }}">{{ $c->name }}</a></li>
 			@endforeach
 		</ul>
 	</nav>
@@ -40,6 +41,10 @@
 <!-- ****************  ABRE FOOTER  **************** -->
 <div class="contacto" id="contacto">
 	<div class="fondo-contacto"></div>
+	<article>
+		<h2>Ubica tu distribuidor más cercano</h2>
+		<p>Cada una de nuestras categorías está diseñada para cubrir una necesidad básica en nuestro día laboral: <strong>un trabajo seguro</strong></p>
+	</article>
 		<div class="mapa">
 	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15007976.465466967!2d-111.65082483132548!3d23.313699520377405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2zTcOpeGljbw!5e0!3m2!1ses-419!2smx!4v1533860657728" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>

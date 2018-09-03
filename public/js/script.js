@@ -1,4 +1,18 @@
 $(document).ready(btnMenu);
+$(document).ready(firstWord);
+
+
+
+function firstWord(){
+$(".texto-categorias h2").html(function(){
+  var text= $(this).text().trim().split(" ");
+  var first = text.shift();
+  return (text.length > 0 ? "<span class='first-word'>"+ first + "</span> " : first) + text.join(" ");
+});
+}
+
+
+
 
 function btnMenu(){
 	$(".rayitas").click(function(){
@@ -7,11 +21,13 @@ function btnMenu(){
 			$(".rayitas").removeClass("rayitas-desactivas")
 			$(".rayitas").addClass("rayitas-activas")
 				$("nav").addClass("nav-activo")
+				$(".inicio-sesion").fadeOut()
 			
 		}else{
 			setTimeout(function() {
 				$(".rayitas").addClass("rayitas-desactivas")
 				$(".rayitas").removeClass("rayitas-activas")
+				$(".inicio-sesion").fadeIn()
 			}, 500);
 			$("nav").removeClass("nav-activo")
 		}
@@ -92,13 +108,19 @@ function avanzar()
 					
 					if(index+1<size)
 					{
-						$($('.slider').find('.s_element').get(index+1)).addClass('s_visible');
-						return false;
+						setTimeout(function() {
+							$($('.slider').find('.s_element').get(index+1)).addClass('s_visible');
+							return false;
+						}, 1000);
+						
 					}
 					else
 					{
-						$($('.slider').find('.s_element').get(0)).addClass('s_visible');	
-						return false;
+						setTimeout(function() {
+							$($('.slider').find('.s_element').get(0)).addClass('s_visible');	
+							return false;
+						}, 1000);
+						
 					}
 				}
 		});
