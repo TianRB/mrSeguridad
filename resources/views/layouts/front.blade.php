@@ -10,7 +10,7 @@
 <body>
 <header>
 	<figure class="logo">
-		<img src="{{ asset('img/logo.png') }}" alt="">
+		<img src="{{ asset('img/logo.png') }}" alt="mr Seguridad">
 	</figure>
 	<div class="menu-principal">
 		<div class="rayitas rayitas-desactivas">
@@ -22,13 +22,13 @@
 	<div class="inicio-sesion">
 		<a href="">Regístrate</a>
 		<a href="">Inicio de Sesión</a>
-		<a href="http://18.221.15.19/mrSeguridad/public/img/catalogo-mr.pdf" target="_blank" class="descargar-catalogo">Descargar Catálogo</a>
+		<a href="{{ asset('img/catalogo-mr.pdf') }}" target="_blank" class="descargar-catalogo">Descargar Catálogo</a>
 	</div>
 	<nav>
 	<div class="circulo-rojo"></div>
 		<ul>
 			@foreach ($categories as $c)
-				<li><a href="{{ $c->slug }}">{{ $c->name }}</a></li>
+				<li><a href="{{ url('productos/'.$c->slug) }}">{{ $c->name }}</a></li>
 			@endforeach
 		</ul>
 	</nav>
