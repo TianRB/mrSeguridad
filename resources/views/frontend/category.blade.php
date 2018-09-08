@@ -4,12 +4,15 @@
 
 	<!-- ****************  ABRE CABECERA ARTICULOS  **************** -->
 	<div class="cabecera-articulos">
-		<article>
+		{{-- <article>
 			<h2>Sé distribuidor autorizado</h2>
 			<p>Al ser parte de nuestro equipo podrás tener acceso a información exclusiva y beneficios</p>
 			<div class="btn-unete"> <a href="">¡Quiero Unirme!</a> </div>
-		</article>
+		</article> --}}
 
+		<article>
+			<h2>{{ $currentcat->name }}</h2>
+		</article>
 
 		<div class="contenedor-video">
 			<video src="{{ asset('video/fondo-articulos.mp4') }}" autoplay loop></video>
@@ -32,7 +35,7 @@
 			</article>
 		@else
 			@foreach ($articles as $a)
-				<a href="{{ action('FrontController@articleBySlug', ['id' => $a->slug, 'currentcat' => $currentcat]) }}">
+				<a href="{{ action('FrontController@articleBySlug', ['id' => $a->slug, 'currentcat' => $currentcat->slug]) }}">
 					<article class="producto">
 						<figure class="img-producto"><img src="{{ asset($a->one_pic()) }}" alt=""></figure>
 						<figure class="fondo-producto"><img src="{{ asset($a->bg_img) }}" alt=""></figure>

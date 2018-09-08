@@ -32,7 +32,7 @@ class FrontController extends Controller
       //Obtener todos los id de artículos
       //$article_ids = collect($articles)->pluck('id');
       $categories = Category::all();
-      return view('frontend.category', ['articles' => $articles, 'categories' => $categories, 'currentcat' => $category]);
+      return view('frontend.category', ['articles' => $articles, 'categories' => $categories, 'currentcat' => $cat]);
     }
 
     public function articleBySlug($article_slug, $currentcat = null)

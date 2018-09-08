@@ -90,7 +90,7 @@
 		<article>
 			<a href="productos/{{ $c->slug }}">
 				<div class="contenedor-video-categorias">
-					<video src="video/fondo-unete-dos.mp4" autoplay loop></video>
+					<video src="{{ $c->video }}" autoplay loop></video>
 				</div>
 				<div class="texto-categorias">
 					<h2>{{ $c->name }}</h2>
