@@ -15,7 +15,7 @@
 		</article>
 
 		<div class="contenedor-video">
-			<video src="{{ asset('video/fondo-articulos.mp4') }}" autoplay loop></video>
+			<video src="{{ asset($currentcat->video) }}" autoplay loop></video>
 		</div>
 
 		<div class="diagonales">
