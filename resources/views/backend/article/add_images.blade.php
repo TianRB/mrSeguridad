@@ -51,7 +51,7 @@
 								</div>
 							</section>
 
-							@if ($article->pics()->count() > 0)
+							@if ($article->pics()->count() < 4)
 							<h5>Productos:</h5>
 							<section class="contenedor-create foto-articulo contenedor-crear-foto-dos">
 								<div class="subir-foto-articulo">
@@ -67,13 +67,34 @@
 										<div class="fallback">
 										 	<input type="file" name="image" multiple>
 										</div>
+										<div class="">
+											<button type="submit" id="dz-submit" class="btn btn-primary">Submit</button>
+										</div>
 									</form>
 								</div>
 							</section>
 							@else
 							Has subido el máximo de fotos
 						  @endif
+							@if ($article->pics()->count() > 0)
+						  <div class="col-md-5 mt-5">
+						   <div class="row">
+						    @foreach ($article->pics as $ap)
+						    <div class="col-md-6">
+						     <div style="background-image:url('{{url($ap->path)}}');background-size:cover;background-position:center;min-height:200px;">
+						     </div>
+						     <!-- borrar -->
+						     <form action="{{route('pictures.destroy', $ap->id)}}" method="POST" class="m-0">
+						     {{ csrf_field() }}
+						     <input type="hidden" name="_method" value="DELETE" />
+						     <button class="btn btn-danger" type="submit"><i class="fa fa-trash" /></i></button>
+						     </form>
+						    </div>
 
+						    @endforeach
+						   </div>
+						  </div>
+						  @endif
 
 
 
@@ -121,6 +142,14 @@
 
 		<script src="{{ asset('js/dropzone.js') }}"></script>
 		<script src="{{ asset('js/dropzone-config.js') }}"></script>
+		<script type="text/javascript">
+
+		$("#dz-submit").click(function (e) {
+	    e.preventDefault();
+	    myDropzone.processQueue();
+		});
+
+		</script>
 
 @endsection
 {{-- @extends('layouts.back')
