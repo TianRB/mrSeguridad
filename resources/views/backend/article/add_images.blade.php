@@ -44,26 +44,26 @@
 							<h5>Fondo:</h5>
 							<section class="contenedor-create foto-articulo contenedor-crear-foto-uno">
 								<div class="subir-foto-articulo">
-									<form action="{{-- route('pictures.store') --}}" method="POST" class="formulario-articulo" enctype="multipart/form-data">
+									<form action="{{-- route('pictures.store') --}}" method="POST" class="formulario-articulo" enctype="multipart/form-data" id="">
 					          {{ csrf_field() }}
 										<input name="bg_img" id="input-file-1">
 									</form>
 								</div>
 							</section>
 
-							@if ($article->pics()->count() < 4)
+							@if ($article->pics()->count() > 0)
 							<h5>Productos:</h5>
 							<section class="contenedor-create foto-articulo contenedor-crear-foto-dos">
 								<div class="subir-foto-articulo">
-									<form method="POST" action="{{ route('pictures.store') }}" enctype="multipart/form-data" class="dropzone" id="myDropzone">
+									<form method="POST" action="{{ route('articles.add_images', $article->id) }}" enctype="multipart/form-data" class="dropzone" id="myDropzone">
 						       {{ csrf_field() }}
-									 <input type="hidden" class="d-none" name="article_id" value="{{$article->id}}">
 									 <div class="dz-message">
 										 <div class="message">
 						          <p>Arrastra aquí los archivos <br> o click para seleccionar <br>
 						           (máximo {{ 4-$article->pics()->count() }} imágenes)
 						          </p>
 						         </div>
+									 </div>
 										<div class="fallback">
 										 	<input type="file" name="image" multiple>
 										</div>

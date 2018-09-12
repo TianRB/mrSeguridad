@@ -56,9 +56,9 @@ class ArticleController extends Controller
           'content' => 'required',
           'meta_descr' => 'required',
           'page_title' => 'required',
-          'image' => 'required',
-          'image.*' => 'mimes:jpeg,png,jpg|max:400',
-          'bg_img' => 'required|mimes:jpeg,png,jpg|max:400',
+          // 'image' => 'required',
+          // 'image.*' => 'mimes:jpeg,png,jpg|max:400',
+          // 'bg_img' => 'required|mimes:jpeg,png,jpg|max:400',
           'pdf' => 'required|mimes:pdf,jpeg,png,jpg',
         ];
         $messages = [
@@ -92,13 +92,13 @@ class ArticleController extends Controller
             $a->page_title = $request->input('page_title');
             $a->slug = Str::slug($request->input('title'));
 
-
+/*
             // Guardar imagen de fondo
             $file = Input::file('bg_img');
             $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
             $a->bg_img = Article::$image_path.'/bg/'.$file_name;
             $request->bg_img->move(Article::$image_path.'/bg/', $file_name);
-
+*/
 
 
             // Ficha técnica PDF
@@ -108,6 +108,7 @@ class ArticleController extends Controller
             $request->pdf->move(Article::$pdf_path, $file_name);
             $a->save();
 
+/*
             //  Guardar una o varias imagenes de frente
             foreach ($request->image as $image) {
                 $file_name = str_random(16).'.'.$image->getClientOriginalExtension();
@@ -116,11 +117,11 @@ class ArticleController extends Controller
                 $image->move(Article::$image_path, $file_name);
                 $a->pics()->save($pic);
             }
-
+*/
             // Sincronizar Categorias
             $a->categories()->sync($request->input('category'));
-            //return redirect()->action('ArticleController@storeImagesForm', ['id' => $a->id]);
-            return redirect('articles/');
+            return redirect()->action('ArticleController@storeImagesForm', ['id' => $a->id]);
+            //return redirect('articles/');
           }
     }
 
@@ -152,7 +153,7 @@ class ArticleController extends Controller
 
      $validator = Validator::make($input, $rules, $messages);
      if ( $validator->fails() ) {
-       return redirect('articles/create')
+       return redirect()->action('ArticleController@storeImagesForm', ['id' => $a->id])
          ->withErrors( $validator )
          ->withInput();
       } else {
@@ -171,6 +172,7 @@ class ArticleController extends Controller
             $image->move(Article::$image_path, $file_name);
             $a->pics()->save($pic);
         }
+        dd('End of storeImage()');
         return redirect('articles/');
       }
     }
