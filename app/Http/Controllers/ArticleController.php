@@ -37,7 +37,7 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('backend.article.create',['categories' => $categories]);
+        return view('backend.article.create', ['categories' => $categories]);
     }
 
     /**
@@ -78,13 +78,12 @@ class ArticleController extends Controller
           'pdf.max' => 'La ficha técnica debe pesar menos de 2 Mb',
         ];
 
-       $validator = Validator::make($input, $rules, $messages);
-       if ( $validator->fails() ) {
-         return redirect('articles/create')
-           ->withErrors( $validator )
+        $validator = Validator::make($input, $rules, $messages);
+        if ($validator->fails()) {
+            return redirect('articles/create')
+           ->withErrors($validator)
            ->withInput();
         } else {
-
             $a = new Article;
             $a->title = $request->input('title');
             $a->content = $request->input('content');
@@ -92,13 +91,13 @@ class ArticleController extends Controller
             $a->page_title = $request->input('page_title');
             $a->slug = Str::slug($request->input('title'));
 
-/*
-            // Guardar imagen de fondo
-            $file = Input::file('bg_img');
-            $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
-            $a->bg_img = Article::$image_path.'/bg/'.$file_name;
-            $request->bg_img->move(Article::$image_path.'/bg/', $file_name);
-*/
+            /*
+                        // Guardar imagen de fondo
+                        $file = Input::file('bg_img');
+                        $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
+                        $a->bg_img = Article::$image_path.'/bg/'.$file_name;
+                        $request->bg_img->move(Article::$image_path.'/bg/', $file_name);
+            */
 
 
             // Ficha técnica PDF
@@ -108,123 +107,107 @@ class ArticleController extends Controller
             $request->pdf->move(Article::$pdf_path, $file_name);
             $a->save();
 
-/*
+            /*
+                        //  Guardar una o varias imagenes de frente
+                        foreach ($request->image as $image) {
+                            $file_name = str_random(16).'.'.$image->getClientOriginalExtension();
+                            $pic = new Pic;
+                            $pic->path = Article::$image_path.$file_name;
+                            $image->move(Article::$image_path, $file_name);
+                            $a->pics()->save($pic);
+                        }
+            */
+            // Sincronizar Categorias
+            $a->categories()->sync($request->input('category'));
+            return redirect()->action('ArticleController@storeImagesForm', ['id' => $a->id]);
+            //return redirect('articles/');
+        }
+    }
+
+    // Regresa la forma para subir imágenes
+    public function storeImagesForm(Request $request, $id)
+    {
+        $article = Article::find($id);
+        return view('backend.article.add_images', ['article' => $article]);
+    }
+
+    // Sube imágenes
+    public function storeArticleImages(Request $request, $id)
+    {
+        $input = $request->all();
+
+        // Guardar imagen de fondo
+        //$file = Input::file('bg_img');
+        //$file_name = str_random(16).'.'.$file->getClientOriginalExtension();
+        //$a->bg_img = Article::$image_path.'/bg/'.$file_name;
+        //$request->bg_img->move(Article::$image_path.'/bg/', $file_name);
+
+        //  Guardar una o varias imagenes de frente
+        //  Crear Imagen
+        $file = Input::file('file');
+        //dd($image);
+        $a= Article::find($id);
+        for ($i=0; $i < count($file); $i++) {
+            $file_name =str_random(16).'.'.$file[$i]->getClientOriginalExtension();
+            $pic = new Pic;
+            $pic->path = Article::$image_path.$file_name;
+            $file[$i]->move(Article::$image_path, $file_name);
+            $a->pics()->save($pic);
+        }
+        return response()->json([
+     'message' => 'Image saved Successfully'
+ ], 200);
+    }
+
+    // Regresa la forma para subir imágenes
+    public function updateImagesForm(Request $request, $id)
+    {
+        return view('backend.article.add_images', ['id' => $id]);
+    }
+
+    // Sube imágenes
+    public function updateImages(Request $request, $id)
+    {
+        $input = $request->all();
+
+
+        $rules = [
+        'imagen' => 'required',
+        'imagen.*' => 'mimes:jpeg,png,jpg|max:400',
+        'bg_img' => 'required|mimes:jpeg,png,jpg|max:400',
+      ];
+        $messages = [
+        'imagen.required' => 'Debes subir una foto',
+        'imagen.mimes' => 'El archivo debe ser una imagen en jpeg, png o jpg',
+        'imagen.max' => 'La imagen no debe pesar más de 400KB',
+        'bg_img.required' => 'Debes subir una foto de fondo',
+        'bg_img.mimes' => 'La foto de fondo debe ser una imagen en jpeg, png o jpg',
+        'bg_img.max' => 'La imagen no debe pesar más de 400KB',
+      ];
+
+        $validator = Validator::make($input, $rules, $messages);
+        if ($validator->fails()) {
+            return redirect('articles/create')
+         ->withErrors($validator)
+         ->withInput();
+        } else {
+
+        // Guardar imagen de fondo
+            $file = Input::file('bg_img');
+            $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
+            $a->bg_img = Article::$image_path.'/bg/'.$file_name;
+            $request->bg_img->move(Article::$image_path.'/bg/', $file_name);
+
             //  Guardar una o varias imagenes de frente
-            foreach ($request->image as $image) {
+            foreach ($request->imagen as $image) {
                 $file_name = str_random(16).'.'.$image->getClientOriginalExtension();
                 $pic = new Pic;
                 $pic->path = Article::$image_path.$file_name;
                 $image->move(Article::$image_path, $file_name);
                 $a->pics()->save($pic);
             }
-*/
-            // Sincronizar Categorias
-            $a->categories()->sync($request->input('category'));
-            return redirect()->action('ArticleController@storeImagesForm', ['id' => $a->id]);
-            //return redirect('articles/');
-          }
-    }
-
-    // Regresa la forma para subir imágenes
-    public function storeImagesForm(Request $request, $id)
-    {
-      $article = Article::find($id);
-      return view('backend.article.add_images', ['article' => $article]);
-    }
-
-    // Sube imágenes
-    public function storeImages(Request $request, $id)
-    {
-      $input = $request->all();
-
-      $rules = [
-        'imagen' => 'required',
-        'imagen.*' => 'mimes:jpeg,png,jpg|max:400',
-        'bg_img' => 'required|mimes:jpeg,png,jpg|max:400',
-      ];
-      $messages = [
-        'imagen.required' => 'Debes subir una foto',
-        'imagen.mimes' => 'El archivo debe ser una imagen en jpeg, png o jpg',
-        'imagen.max' => 'La imagen no debe pesar más de 400KB',
-        'bg_img.required' => 'Debes subir una foto de fondo',
-        'bg_img.mimes' => 'La foto de fondo debe ser una imagen en jpeg, png o jpg',
-        'bg_img.max' => 'La imagen no debe pesar más de 400KB',
-      ];
-
-     $validator = Validator::make($input, $rules, $messages);
-     if ( $validator->fails() ) {
-       return redirect()->action('ArticleController@storeImagesForm', ['id' => $a->id])
-         ->withErrors( $validator )
-         ->withInput();
-      } else {
-
-        // Guardar imagen de fondo
-        $file = Input::file('bg_img');
-        $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
-        $a->bg_img = Article::$image_path.'/bg/'.$file_name;
-        $request->bg_img->move(Article::$image_path.'/bg/', $file_name);
-
-        //  Guardar una o varias imagenes de frente
-        foreach ($request->imagen as $image) {
-            $file_name = str_random(16).'.'.$image->getClientOriginalExtension();
-            $pic = new Pic;
-            $pic->path = Article::$image_path.$file_name;
-            $image->move(Article::$image_path, $file_name);
-            $a->pics()->save($pic);
+            return redirect('articles/');
         }
-        dd('End of storeImage()');
-        return redirect('articles/');
-      }
-    }
-
-    // Regresa la forma para subir imágenes
-    public function updateImagesForm(Request $request, $id)
-    {
-      return view('backend.article.add_images', ['id' => $id]);
-    }
-
-    // Sube imágenes
-    public function updateImages(Request $request, $id)
-    {
-      $input = $request->all();
-
-      $rules = [
-        'imagen' => 'required',
-        'imagen.*' => 'mimes:jpeg,png,jpg|max:400',
-        'bg_img' => 'required|mimes:jpeg,png,jpg|max:400',
-      ];
-      $messages = [
-        'imagen.required' => 'Debes subir una foto',
-        'imagen.mimes' => 'El archivo debe ser una imagen en jpeg, png o jpg',
-        'imagen.max' => 'La imagen no debe pesar más de 400KB',
-        'bg_img.required' => 'Debes subir una foto de fondo',
-        'bg_img.mimes' => 'La foto de fondo debe ser una imagen en jpeg, png o jpg',
-        'bg_img.max' => 'La imagen no debe pesar más de 400KB',
-      ];
-
-     $validator = Validator::make($input, $rules, $messages);
-     if ( $validator->fails() ) {
-       return redirect('articles/create')
-         ->withErrors( $validator )
-         ->withInput();
-      } else {
-
-        // Guardar imagen de fondo
-        $file = Input::file('bg_img');
-        $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
-        $a->bg_img = Article::$image_path.'/bg/'.$file_name;
-        $request->bg_img->move(Article::$image_path.'/bg/', $file_name);
-
-        //  Guardar una o varias imagenes de frente
-        foreach ($request->imagen as $image) {
-            $file_name = str_random(16).'.'.$image->getClientOriginalExtension();
-            $pic = new Pic;
-            $pic->path = Article::$image_path.$file_name;
-            $image->move(Article::$image_path, $file_name);
-            $a->pics()->save($pic);
-        }
-        return redirect('articles/');
-      }
     }
     /**
      * Display the specified resource.
@@ -234,7 +217,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('backend.article.show',['article' => $article]);
+        return view('backend.article.show', ['article' => $article]);
     }
 
     /**
@@ -286,10 +269,10 @@ class ArticleController extends Controller
           'pdf.max' => 'La ficha técnica debe pesar menos de 2 Mb',
         ];
 
-       $validator = Validator::make($input, $rules, $messages);
-       if ( $validator->fails() ) {
-         return redirect('articles/'.$id.'/edit')
-           ->withErrors( $validator )
+        $validator = Validator::make($input, $rules, $messages);
+        if ($validator->fails()) {
+            return redirect('articles/'.$id.'/edit')
+           ->withErrors($validator)
            ->withInput();
         } else {
             //dd($request->imagen);
@@ -300,45 +283,45 @@ class ArticleController extends Controller
 
             // Si hay bg_img
             if ($request->bg_img) {
-              // Eliminar vieja Imagen de fondo
-              $oldfile = public_path($a->bg_img);
-              File::delete($oldfile);
-              // Guardar nueva imagen de fondo
-              $file = Input::file('bg_img');
-              $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
-              $a->bg_img = Article::$image_path.'bg/'.$file_name;
-              $request->bg_img->move(Article::$image_path.'/bg/', $file_name);
+                // Eliminar vieja Imagen de fondo
+                $oldfile = public_path($a->bg_img);
+                File::delete($oldfile);
+                // Guardar nueva imagen de fondo
+                $file = Input::file('bg_img');
+                $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
+                $a->bg_img = Article::$image_path.'bg/'.$file_name;
+                $request->bg_img->move(Article::$image_path.'/bg/', $file_name);
             }
 
             if ($request->image) {
-              // Obtener todas las imagenes viejas
-              $pics = Pic::where('article_id', $a->id)->get();
-              // Eliminar todas las imagenes viejas
-              foreach ($pics as $p) {
-                $file = $p->path;
-                $filename = public_path($file);
-                File::delete($filename);
-                $p->delete();
-              }
-              //  Guardar una o varias imagenes de frente
-              foreach ($request->image as $image) {
-                  $file_name = str_random(16).'.'.$image->getClientOriginalExtension();
-                  $pic = new Pic;
-                  $pic->path = Article::$image_path.$file_name;
-                  $image->move(Article::$image_path, $file_name);
-                  $a->pics()->save($pic);
-              }
+                // Obtener todas las imagenes viejas
+                $pics = Pic::where('article_id', $a->id)->get();
+                // Eliminar todas las imagenes viejas
+                foreach ($pics as $p) {
+                    $file = $p->path;
+                    $filename = public_path($file);
+                    File::delete($filename);
+                    $p->delete();
+                }
+                //  Guardar una o varias imagenes de frente
+                foreach ($request->image as $image) {
+                    $file_name = str_random(16).'.'.$image->getClientOriginalExtension();
+                    $pic = new Pic;
+                    $pic->path = Article::$image_path.$file_name;
+                    $image->move(Article::$image_path, $file_name);
+                    $a->pics()->save($pic);
+                }
             }
             //Guardar pdf
             if ($request->pdf) {
-              // Eliminar viejo pdf
-              $oldfile = public_path($a->pdf);
-              File::delete($oldfile);
-              // Ficha técnica PDF
-              $file = Input::file('pdf');
-              $file_name = $a->slug.'.'.$file->getClientOriginalExtension();
-              $a->pdf = Article::$pdf_path.$file_name;
-              $request->pdf->move(Article::$pdf_path, $file_name);
+                // Eliminar viejo pdf
+                $oldfile = public_path($a->pdf);
+                File::delete($oldfile);
+                // Ficha técnica PDF
+                $file = Input::file('pdf');
+                $file_name = $a->slug.'.'.$file->getClientOriginalExtension();
+                $a->pdf = Article::$pdf_path.$file_name;
+                $request->pdf->move(Article::$pdf_path, $file_name);
             }
 
             $a->save();
@@ -365,10 +348,10 @@ class ArticleController extends Controller
         // Eliminar todas las imagenes viejas
         $pics = Pic::where('article_id', $a->id)->get();
         foreach ($pics as $p) {
-          $file = $p->path;
-          $filename = public_path($file);
-          File::delete($filename);
-          $p->delete();
+            $file = $p->path;
+            $filename = public_path($file);
+            File::delete($filename);
+            $p->delete();
         }
 
         // Eliminar viejo pdf
@@ -395,14 +378,13 @@ class ArticleController extends Controller
 
     public function searchResults(Request $request)
     {
-     $title = $request->title;
-     //dd($title);
-     $articles = Article::Title($title)->get();
-     //dd($articles);
-     return view('backend.article.search', [
+        $title = $request->title;
+        //dd($title);
+        $articles = Article::Title($title)->get();
+        //dd($articles);
+        return view('backend.article.search', [
       'articles' => $articles,
       'title' => $title
      ]);
     }
-
 }

@@ -1,50 +1,62 @@
 var total_photos_counter = 0;
+
 Dropzone.options.myDropzone = {
-    autoProcessQueue: false,
-    uploadMultiple: true,
-    parallelUploads: 2,
-    maxFiles:4,
-    maxFilesize: 4,
-    addRemoveLinks: true,
-    dictRemoveFile: 'Remover Imagen',
-    dictFileTooBig: 'Image is larger than 4MB',
-    timeout: 10000,
+ //autoProcessQueue: false,
+ thumbnailWidth: 80,
+ thumbnailHeight: 80,
+ parallelUploads: 20,
+ previewsContainer: "#previews", // Define the container to display the previews
+ acceptedFiles:'image/*',
+ uploadMultiple: true,
+ parallelUploads: 4,
+ maxFiles: 4,
+ maxFilesize: 4,
+ dictRemoveFile: 'Remover Imagen',
+ dictFileTooBig: 'Image is larger than 4MB',
+ timeout: 10000,
 
-    init: function () {
-      this.on("removedfile", function (file) {
-          $.post({
-              url: '/images-delete',
-              data: {id: file.name, _token: $('[name="_token"]').val()},
-              dataType: 'json',
-              success: function (data) {
-                  total_photos_counter--;
-                  $("#counter").text("# " + total_photos_counter);
-              }
-          });
-      });
-      // Update selector to match your button
-      $("#dz-submit").click(function (e) {
-          e.preventDefault();
-          myDropzone.processQueue();
-      });
-      this.on('sending', function(file, xhr, formData) {
-        // Append all form inputs to the formData Dropzone will POST
-        var data = $('#frmTarget').serializeArray();
-        $.each(data, function(key, el) {
-            formData.append(el.name, el.value);
-        });
-      });
+ init: function() {
+  // this.on("removedfile", function (file) {
+  //     $.post({
+  //         url: '/images-delete',
+  //         data: {id: file.name, _token: $('[name="_token"]').val()},
+  //         dataType: 'json',
+  //         success: function (data) {
+  //             total_photos_counter--;
+  //             $("#counter").text("# " + total_photos_counter);
+  //         }
+  //     });
+  // });
+  var myDropzone = this;
 
-    },
-    success: function (file, done) {
-        total_photos_counter++;
-        $("#counter").text("# " + total_photos_counter);
-         console.log(done);
-         location.reload();
-    },
-    maxfilesexceeded: function(){
-       alert('El cantidad máxima de archivos es 4');
-    }
+  // First change the button to actually tell Dropzone to process the queue.
+  this.element.querySelector("#dz-submit").addEventListener("click", function(e) {
+   // Make sure that the form isn't actually being sent.
+   e.preventDefault();
+   e.stopPropagation();
+   myDropzone.processQueue();
+  });
 
-
+  // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
+  // of the sending event because uploadMultiple is set to true.
+  // this.on("sendingmultiple", function() {
+  //  swal('se envian muchas');
+  // });
+  // this.on("successmultiple", function(files, response) {
+  //  swal('hubo exito haciendo obo');
+  // });
+  // this.on("errormultiple", function(files, response) {
+  //  swal('tienes un problema');
+  // });
+ },
+ complete: function() {
+  total_photos_counter++;
+  //$("#counter").text("# " + total_photos_counter);
+  swal("Se subieron " + total_photos_counter + " fotos");
+  console.log(total_photos_counter);
+  //location.reload();
+ },
+ maxfilesexceeded: function() {
+  swal('El cantidad máxima de archivos es 4');
+ }
 };

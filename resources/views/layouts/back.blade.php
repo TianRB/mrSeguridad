@@ -6,6 +6,7 @@
 	<title>Artículos</title>
 	<link rel="stylesheet" href="{{ asset('css/back.css') }}">
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="{{ asset('css/dropzone.css') }}">
 </head>
 <body>
 <!-- ******************************** CABECERA ******************************** -->
@@ -86,6 +87,8 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="{{ asset('js/material.js') }}"></script>
+<!-- sweetalert2 -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 </body>
