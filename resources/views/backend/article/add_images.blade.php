@@ -42,78 +42,51 @@
 
 				<!-- ******************************** SUBIR FOTO ******************************** -->
 							<h5>Fondo:</h5>
-										<form action="{{ route('pictures.store') }}" method="POST" enctype="multipart/form-data" class="dropzone formulario-articulo" id="myDropzone2">
+
 							<section class="contenedor-create foto-articulo contenedor-crear-foto-uno">
+
 								<div class="subir-foto-articulo">
+									@if ($article->bg_img != null)
+										<div style="position:relative;">
+											<a href="#" style="background-color:#000;padding:1em;position:absolute;z-index: 2;">borrar</a>
+											<img src="{{url($article->bg_img)}}" style="width:100%;height:auto;z-index:1;top:0;" alt="">
+										</div>
+									@else
+										<form action="{{ route('articles.add_background_image', $article->id) }}" method="POST" enctype="multipart/form-data" class="dropzone formulario-articulo" id="myDropzone2">
+											{{ csrf_field() }}
 
-					     {{ csrf_field() }}
-
-										<div class="table table-striped" class="files" id="">
-
-											<div id="" class="file-row">
-													<!-- This is used as the file preview template -->
-													<div>
-																	<span class="preview"><img data-dz-thumbnail /></span>
-													</div>
-													<div>
-																	<p class="name" data-dz-name></p>
-																	<strong class="error text-danger" data-dz-errormessage></strong>
-													</div>
-													<div>
-																	<p class="size" data-dz-size></p>
-																	<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-																			<div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-																	</div>
-													</div>
+												<div class="fallback">
+														<input name="bg_img" id="input-file-1">
 												</div>
-											</div>
-											<div class="fallback">
-													<input name="bg_img" id="input-file-1">
-											</div>
+											</form>
+									@endif
 								</div>
 							</section>
 
 
-											<!-- ******************************** BOTONES ******************************** -->
-
-														<div class="btns-create-article">
-															<button type="submit" id="dz-submit"  class="btn btn-rectangle btn-raised">
-															    <div class="ripple-container">
-																	<span class="ripple-effect"></span>
-															    </div>
-															    Crear
-															</button>
-															<button class="btn btn-rectangle btn-flat">
-															    <div class="ripple-container">
-																	<span class="ripple-effect"></span>
-															    </div>
-															    Eliminar
-															</button>
-
-														</div>
-									</form>
-
 							<h5>Productos:</h5>
-							<form method="POST" action="{{ route('articles.add_article_images', $article->id) }}" enctype="multipart/form-data" class="dropzone formulario-articulo" id="myDropzone">
+
 							<section class="contenedor-create foto-articulo contenedor-crear-foto-dos">
-								<div class="subir-foto-articulo">
-						    {{ csrf_field() }}
-										<div class="table table-striped" class="dropzone-previews" id="previews">
 
-											</div>
-									 <div class="dz-message">
-										 <div class="message">
-						          <p>Arrastra aquí los archivos <br> o click para seleccionar <br>
-						           (máximo {{ 4-$article->pics()->count() }} imágenes)
-						          </p>
-						         </div>
-									 </div>
-										<div class="fallback">
-										 	<input type="file" name="imagen" multiple>
-										</div>
+									<div class="subir-foto-articulo">
 
-
+														<form method="POST" action="{{ route('articles.add_article_images', $article->id) }}" enctype="multipart/form-data" class="dropzone formulario-articulo" id="myDropzone">
+											{{ csrf_field() }}
+											@if (count($article->pics()) > 0)
+								<div style="display:flex;flex-flow:row wrap;">
+									@foreach ($article->pics as $ap)
+										<img src="{{url($ap->path)}}" alt="" style="height:auto;max-height:130px;width:50%;">
+									@endforeach
 								</div>
+											@else
+											<div class="fallback">
+													<input type="file" name="imagen" multiple>
+											</div>
+											@endif
+															</form>
+
+									</div>
+
 							</section>
 				<!-- ******************************** BOTONES ******************************** -->
 							<div class="btns-create-article">
@@ -131,7 +104,7 @@
 								</button>
 
 							</div>
-						</form>
+
 						</div>
 
 				<!-- ******************************** INFORMACIÓN DE LA PUBLICACIÓN ******************************** -->

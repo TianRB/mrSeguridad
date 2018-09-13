@@ -131,18 +131,10 @@ class ArticleController extends Controller
         return view('backend.article.add_images', ['article' => $article]);
     }
 
-    // Sube imágenes
+    // Sube imágenes de producto
     public function storeArticleImages(Request $request, $id)
     {
-        $input = $request->all();
 
-        // Guardar imagen de fondo
-        //$file = Input::file('bg_img');
-        //$file_name = str_random(16).'.'.$file->getClientOriginalExtension();
-        //$a->bg_img = Article::$image_path.'/bg/'.$file_name;
-        //$request->bg_img->move(Article::$image_path.'/bg/', $file_name);
-
-        //  Guardar una o varias imagenes de frente
         //  Crear Imagen
         $file = Input::file('file');
         //dd($image);
@@ -155,8 +147,26 @@ class ArticleController extends Controller
             $a->pics()->save($pic);
         }
         return response()->json([
-     'message' => 'Image saved Successfully'
- ], 200);
+         'message' => 'Image saved Successfully'
+        ], 200);
+    }
+    // Sube imágenes de fondo de producto
+    public function storeBackgroundImages(Request $request, $id)
+    {
+
+        //  Crear Imagen
+        $file = Input::file('file');
+        //dd($image);
+        $a= Article::find($id);
+
+            $file_name =str_random(16).'.'.$file->getClientOriginalExtension();
+            $a->bg_img = Article::$image_path.'/bg/'.$file_name;
+            $file->move(Article::$image_path.'/bg/', $file_name);
+            $a->save();
+
+        return response()->json([
+         'message' => 'Image saved Successfully'
+        ], 200);
     }
 
     // Regresa la forma para subir imágenes
