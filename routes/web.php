@@ -41,6 +41,8 @@ Route::resource('articles', 'ArticleController');
   Route::get('articles/add_image/{id}', 'ArticleController@storeImagesForm');
   Route::post('articles/add_image/{id}', 'ArticleController@storeArticleImages')->name('articles.add_article_images');
   Route::post('articles/add_background_image/{id}', 'ArticleController@storeBackgroundImages')->name('articles.add_background_image');
+  Route::get('erase-article-pic/{id}',['uses' => 'ArticleController@eraseArticleImage', 'as' => 'articles.erase_image']);
+  Route::get('erase-background-image/{id}',['uses' => 'ArticleController@erraseBackgroundImage' , 'as' => 'articles.erase_background_image']);
   Route::get('articles/update_image/{id}', 'ArticleController@updateImagesForm');
   //Route::post('articles/update_image/{id}', 'ArticleController@updateImages')->name('articles.add_images');
 Route::resource('categories', 'CategoryController');

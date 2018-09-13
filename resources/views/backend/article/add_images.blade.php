@@ -48,7 +48,7 @@
 								<div class="subir-foto-articulo">
 									@if ($article->bg_img != null)
 										<div style="position:relative;">
-											<a href="#" style="background-color:#000;padding:1em;position:absolute;z-index: 2;">borrar</a>
+											<a href="{{route('articles.erase_background_image',$article->id)}}" style="background-color:#000;padding:1em;position:absolute;z-index: 2;">borrar</a>
 											<img src="{{url($article->bg_img)}}" style="width:100%;height:auto;z-index:1;top:0;" alt="">
 										</div>
 									@else
@@ -75,7 +75,10 @@
 											@if (count($article->pics()) > 0)
 								<div style="display:flex;flex-flow:row wrap;">
 									@foreach ($article->pics as $ap)
-										<img src="{{url($ap->path)}}" alt="" style="height:auto;max-height:130px;width:50%;">
+										<div style="height:auto;max-height:130px;width:50%;">
+											<a href="{{route('articles.erase_image',$ap->id)}}">borrar</a>
+											<img src="{{url($ap->path)}}" alt="" style="height:auto;max-height:130px;width:100%;">
+										</div>
 									@endforeach
 								</div>
 											@else

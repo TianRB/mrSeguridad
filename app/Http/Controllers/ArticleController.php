@@ -397,4 +397,25 @@ class ArticleController extends Controller
       'title' => $title
      ]);
     }
+
+    public function erraseBackgroundImage($id)
+    {
+    $a = Article::find($id);
+    $file = $a->bg_img;
+    $filename = public_path($file);
+    File::delete($filename);
+    $a->bg_name = null;
+    $a->save();
+    return redirect()->back();
+
+    }
+    public function eraseArticleImage($id)
+    {
+     $pic = Pic::find($id);
+     $file = $pic->path;
+     $filename = public_path($file);
+     File::delete($filename);
+     $pic->delete();
+     return redirect()->back();
+    }
 }
