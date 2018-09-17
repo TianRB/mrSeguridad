@@ -82,22 +82,90 @@
  --}}
 <div class="seccion-categorias">
 	<article>
-		<h2>Sé distribuidor autorizado</h2>
-		<p>Al ser parte de nuestro equipo podrás tener acceso a información exclusiva y beneficios</p>
+		<h2>Conoce nuestras categorías</h2>
+		<p>Nuestras categorías están diseñadas para satisfacer cada una de las necesidades del sector industrial en equipo de seguridad.</p>
 	</article>
 	<section class="categorias-index">
-		@foreach ($categories as $c)
 		<article>
-			<a href="productos/{{ $c->slug }}">
+			<a href="productos/nuevos-productos">
 				<div class="contenedor-video-categorias">
-					<video src="{{ $c->video }}" autoplay loop></video>
+					<video src="{{ asset('video/nuevos-productos-min.mp4') }}" autoplay loop></video>
 				</div>
 				<div class="texto-categorias">
-					<h2>{{ $c->name }}</h2>
+					<h2>Nuevos Productos</h2>
 				</div>
 			</a>
 		</article>
-		@endforeach
+		<article>
+			<a href="productos/seguridad-vial">
+				<div class="contenedor-video-categorias">
+					<video src="{{ asset('video/seguridad-vial-min.mp4') }}" autoplay loop></video>
+				</div>
+				<div class="texto-categorias">
+					<h2>Seguridad Vial</h2>
+				</div>
+			</a>
+		</article>
+		<article>
+			<a href="productos/proteccion-general">
+				<div class="contenedor-video-categorias">
+					<video src="{{ asset('video/proteccion-general-min.mp4') }}" autoplay loop></video>
+				</div>
+				<div class="texto-categorias">
+					<h2>Protección General</h2>
+				</div>
+			</a>
+		</article>
+		<article>
+			<a href="productos/proteccion-visual">
+				<div class="contenedor-video-categorias">
+					<video src="{{ asset('video/proteccion-visual-min.mp4') }}" autoplay loop></video>
+				</div>
+				<div class="texto-categorias">
+					<h2>Protección Visual</h2>
+				</div>
+			</a>
+		</article>
+		<article>
+			<a href="productos/proteccion-para-manos">
+				<div class="contenedor-video-categorias">
+					<video src="{{ asset('video/proteccion-para-manos-min.mp4') }}" autoplay loop></video>
+				</div>
+				<div class="texto-categorias">
+					<h2>Protección para Manos</h2>
+				</div>
+			</a>
+		</article>
+		<article>
+			<a href="productos/proteccion-auditiva">
+				<div class="contenedor-video-categorias">
+					<video src="{{ asset('video/proteccion-auditiva-min.mp4') }}" autoplay loop></video>
+				</div>
+				<div class="texto-categorias">
+					<h2>Protección Auditiva</h2>
+				</div>
+			</a>
+		</article>
+		<article>
+			<a href="productos/proteccion-para-la-lluvia">
+				<div class="contenedor-video-categorias">
+					<video src="{{ asset('video/proteccion-para-la-lluvia-min.mp4') }}" autoplay loop></video>
+				</div>
+				<div class="texto-categorias">
+					<h2>Protección Para la Lluvia</h2>
+				</div>
+			</a>
+		</article>
+		<article>
+			<a href="productos/proteccion-respiratoria">
+				<div class="contenedor-video-categorias">
+					<video src="{{ asset('video/proteccion-respiratoria-min.mp4') }}" autoplay loop></video>
+				</div>
+				<div class="texto-categorias">
+					<h2>Protección Respiratoria</h2>
+				</div>
+			</a>
+		</article>
 	</section>
 
 </div>
