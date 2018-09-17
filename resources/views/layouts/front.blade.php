@@ -10,7 +10,9 @@
 <body>
 <header>
 	<figure class="logo">
+		<a href="http://18.221.15.19/mrSeguridad/public/">
 		<img src="{{ asset('img/logo.png') }}" alt="mr Seguridad">
+		</a>
 	</figure>
 	<div class="menu-principal">
 		<div class="rayitas rayitas-desactivas">
@@ -21,7 +23,7 @@
 	</div>
 	<div class="inicio-sesion">
 		<a href="">Regístrate</a>
-		<a href="">Inicio de Sesión</a>
+		<a href="http://18.221.15.19/mrSeguridad/public/login">Inicio de Sesión</a>
 		<a href="{{ asset('img/catalogo-mr.pdf') }}" target="_blank" class="descargar-catalogo">Descargar Catálogo</a>
 	</div>
 	<nav>

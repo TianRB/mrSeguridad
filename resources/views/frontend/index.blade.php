@@ -68,11 +68,22 @@
 
 
 <!-- ****************  ABRE CATEGORÍAS  **************** -->
-
+{{--  USAR ESTO PARA JALAR CATEGORIAS DE DB
+@foreach ($categories as $c)
+<article>
+	<div class="contenedor-video-categorias">
+		<video src="video/fondo-unete-dos.mp4" autoplay loop></video>
+	</div>
+	<div class="texto-categorias">
+		<h2>{{ $c->name }}</h2>
+	</div>
+</article>
+@endforeach
+ --}}
 <div class="seccion-categorias">
 	<article>
-		<h2>Sé distribuidor autorizado</h2>
-		<p>Al ser parte de nuestro equipo podrás tener acceso a información exclusiva y beneficios</p>
+		<h2>Conoce nuestras categorías</h2>
+		<p>Nuestras categorías están diseñadas para satisfacer cada una de las necesidades del sector industrial en equipo de seguridad.</p>
 	</article>
 	<section class="categorias-index">
 		<article>
