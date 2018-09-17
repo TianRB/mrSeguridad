@@ -9,6 +9,12 @@ $(".texto-categorias h2").html(function(){
   var first = text.shift();
   return (text.length > 0 ? "<span class='first-word'>"+ first + "</span> " : first) + text.join(" ");
 });
+
+$(".texto-ficha-tecnica h1").html(function(){
+  var text= $(this).text().trim().split(" ");
+  var last = text.pop();
+  return text.join(" ") + (text.length > 0 ? " <span class='codigo-producto'>" + last + "</span>" : last);
+});
 }
 
 
