@@ -53,7 +53,7 @@
 			</article>
 		@else
 			<div class="container">
-				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
 					<div class="carousel-inner">
 						@foreach ($related->chunk(4) as $relatedGroup)
 							<div class=" carousel-item @if ($loop->first) active @endif">
