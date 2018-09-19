@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta charset="UTF-8">
@@ -10,7 +11,7 @@
 <body>
 <header>
 	<figure class="logo">
-		<a href="http://18.221.15.19/mrSeguridad/public/">
+		<a href="{{ url('/') }}">
 		<img src="{{ asset('img/logo.png') }}" alt="mr Seguridad">
 		</a>
 	</figure>
@@ -23,7 +24,7 @@
 	</div>
 	<div class="inicio-sesion">
 		<a href="">Regístrate</a>
-		<a href="http://18.221.15.19/mrSeguridad/public/login">Inicio de Sesión</a>
+		<a href="{{ url('/login') }}">Inicio de Sesión</a>
 		<a href="{{ asset('img/catalogo-mr.pdf') }}" target="_blank" class="descargar-catalogo">Descargar Catálogo</a>
 	</div>
 	<nav>
