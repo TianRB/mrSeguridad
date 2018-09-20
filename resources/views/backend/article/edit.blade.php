@@ -2,155 +2,116 @@
 
 @section('content')
 
+	<!-- ******************************** AREA PRINCIPAL: Se refiera al área que se encuentra debajo del header y a la derecha del menú izquierdo ******************************** -->
+	<div class="area-principal">
+		<!-- ******************************** Botones que definen si la públicación será escrita o video ( Esto sirve para definir una subcategoría en la base de datos ) ******************************** -->
 
-  <!-- ******************************** AREA PRINCIPAL: Se refiera al área que se encuentra debajo del header y a la derecha del menú izquierdo ******************************** -->
-
-
-<div class="area-principal">
-
-<!-- ******************************** Botones que definen si la públicación será escrita o video ( Esto sirve para definir una subcategoría en la base de datos ) ******************************** -->
-
-	<!-- <div class="sombra-1 modulo-largo">
-		<div class="header-gris">
-			<h3>Tipo de Publicación</h3>
-		</div>
-		<div class="btns-create-article">
-			<button class="btn btn-rectangle btn-raised">
-						<div class="ripple-container">
-					<span class="ripple-effect"></span>
+		<!-- ******************************** ÁREA PARA CREAR LA NOTA ******************************** -->
+		<div class="contenedor-secundario"> <!-- Este contenedor tiene tanto el aside derecho como el área para crear la nota -->
+			<div class="div-izquierdo">
+				<div class="modulo-medio sombra-1">
+					<div class="header-gris">
+						<h3>Artículo</h3>
 					</div>
-					Video-nota
-			</button>
-			<button class="btn btn-rectangle btn-flat">
-						<div class="ripple-container">
-					<span class="ripple-effect"></span>
-					</div>
-					Nota Escrita
-			</button>
+					<form action="{{ url('articles/'.$article->id) }}" method="POST" class="formulario-articulo" enctype="multipart/form-data">
+						{{ csrf_field() }}
+						<input type="hidden" name="_method" value="PUT" />
 
-		</div>
-	</div> -->
-
-
-	<!-- ******************************** ÁREA PARA CREAR LA NOTA ******************************** -->
-	<div class="contenedor-secundario"> <!-- Este contenedor tiene tanto el aside derecho como el área para crear la nota -->
-		<div class="div-izquierdo">
-			<div class="modulo-medio sombra-1">
-				<div class="header-gris">
-					<h3>Artículo</h3>
-				</div>
-				<form action="{{ url('articles/'.$article->id) }}" method="POST" class="formulario-articulo" enctype="multipart/form-data">
-          {{ csrf_field() }}
-          <input type="hidden" name="_method" value="PUT" />
-					<!--<div class="group">
-  						<input type="text" required>
-  						<span class="highlight"></span>
-  						<span class="bar"></span>
-  						<label>URL del Video</label>
-						</div>-->
-					<div class="group">
-						<input type="text" name = "title" value="{{ $article->title }}" required>
-						<span class="highlight"></span>
-						<span class="bar"></span>
-						<label>Título de la nota</label>
-					</div>
-
-					 <textarea class="ckeditor" id="ckeditor" name="content" required>{!! $article->content !!}</textarea>
-
-					 <div class="etiquetas-seo">
-					 	<h5>Etiquetas SEO</h5>
-						 <div class="group">
-  						<input type="text" name="page_title" value="{{ $article->page_title }}" required>
-  						<span class="highlight"></span>
-  						<span class="bar"></span>
-  						<label>Etiqueta Title</label>
-						</div>
 						<div class="group">
-  						<input type="text" name="meta_descr" value="{{ $article->meta_descr }}" required>
-  						<span class="highlight"></span>
-  						<span class="bar"></span>
-  						<label>Etiqueta Meta Description</label>
+							<input type="text" name = "title" value="{{ $article->title }}" required>
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label>Título de la nota</label>
+						</div>
+
+						<textarea class="ckeditor" id="ckeditor" name="content" required>{!! $article->content !!}</textarea>
+
+						<div class="etiquetas-seo">
+							<h5>Etiquetas SEO</h5>
+							<div class="group">
+								<input type="text" name="page_title" value="{{ $article->page_title }}" required>
+								<span class="highlight"></span>
+								<span class="bar"></span>
+								<label>Etiqueta Title</label>
+							</div>
+							<div class="group">
+								<input type="text" name="meta_descr" value="{{ $article->meta_descr }}" required>
+								<span class="highlight"></span>
+								<span class="bar"></span>
+								<label>Etiqueta Meta Description</label>
+							</div>
 						</div>
 					</div>
-			</div>
-		</div> <!-- Esta etiqueta cierra toda la columna izquierda, la cual contiene el área para crear la nota -->
+				</div> <!-- Esta etiqueta cierra toda la columna izquierda, la cual contiene el área para crear la nota -->
 
-<!-- ******************************** ASIDE ******************************** -->
-		<div class="div-derecho">  <!-- Esta etiqueta abre toda la columna derecha -->
-			<div class="modulo-aside sombra-1">
-				<div class="header-gris">
-					<h3>Extras</h3>
-				</div>
-	<!-- ******************************** CHECKBOX ******************************** -->
+				<!-- ******************************** ASIDE ******************************** -->
 
-				<div class="checkbox-container">
-          @foreach($categories as $c)
-            @if ($loop->first)
-              <div class="check-awesome" class="form-group">
-                  <input type="checkbox" name="category[]" class="checkbox" value="{{ $c->id }}" checked>
-                  <label for="check-me">
-                      {{ $c->name }}
-                  </label>
-              </div>
-            @else
-              <div class="check-awesome" class="form-group">
-                  <input type="checkbox" name="category[]" class="checkbox" value="{{ $c->id }}">
-                  <label for="check-me">
-                      {{ $c->name }}
-                  </label>
-              </div>
-            @endif
-        @endforeach
+				<div class="div-derecho">  <!-- Esta etiqueta abre toda la columna derecha -->
+					<div class="modulo-aside sombra-1">
+						<div class="header-gris">
+							<h3>Extras</h3>
+						</div>
 
-				</div>
+						<!-- ******************************** CHECKBOX ******************************** -->
 
-<!-- ******************************** CHECKBOX ******************************** -->
-<label for="pdf">Ficha Técnica (PDF)</label>
-<input type="file" name="pdf" placeholder="Subir Ficha técnica (PDF recomendado)">
+						<div class="checkbox-container">
+							@foreach($categories as $c)
+								<div class="check-awesome" class="form-group">
+									<input type="checkbox" name="category[]" class="checkbox" value="{{ $c->id }}" @if ($article->categories->contains($c)) checked @endif></input>
+									<label for="check-me">
+										{{ $c->name }}
+									</label>
+									</div>
+								@endforeach
+							</div>
 
-<label for="bg_img">Imagen de fondo</label>
-<input type="file" name="bg_img" placeholder="Subir fondo">
+							<!-- ******************************** CHECKBOX ******************************** -->
+							<label for="pdf">Ficha Técnica (PDF)</label>
+							<input type="file" name="pdf" placeholder="Subir Ficha técnica (PDF recomendado)">
 
-<label for="image">Imagenes de Producto</label>
-<input id="image" name="image[]" type="file" class="file" multiple="" placeholder="Subir imagenes"/>
+							<label for="bg_img">Imagen de fondo</label>
+							<input type="file" name="bg_img" placeholder="Subir fondo">
+
+							<label for="image">Imagenes de Producto</label>
+							<input id="image" name="image[]" type="file" class="file" multiple="" placeholder="Subir imagenes"/>
 
 
-	<!-- ******************************** BOTONES ******************************** -->
+							<!-- ******************************** BOTONES ******************************** -->
 
-				<div class="btns-create-article">
-					<button class="btn btn-rectangle btn-raised" type="submit">
-					    <div class="ripple-container">
-							<span class="ripple-effect"></span>
-					    </div>
-					    Editar
-					</button>
-					<a href="{{ url('articles/')}}"><button class="btn btn-rectangle btn-flat">
-					    <div class="ripple-container">
-							<span class="ripple-effect"></span>
-					    </div>
-					    Regresar
-					</button></a>
+							<div class="btns-create-article">
+								<button class="btn btn-rectangle btn-raised" type="submit">
+									<div class="ripple-container">
+										<span class="ripple-effect"></span>
+									</div>
+									Editar
+								</button>
+								<a href="{{ url('articles/')}}"><button class="btn btn-rectangle btn-flat">
+									<div class="ripple-container">
+										<span class="ripple-effect"></span>
+									</div>
+									Regresar
+								</button></a>
 
-				</div>
-      </form>
+							</div>
+						</form>
 
-			</div>
+					</div>
 
-	<!-- ******************************** INFORMACIÓN DE LA PUBLICACIÓN ******************************** -->
+					<!-- ******************************** INFORMACIÓN DE LA PUBLICACIÓN ******************************** -->
 
-			<!-- <div class="modulo-aside sombra-1">
-				<div class="header-gris">
+					<!-- <div class="modulo-aside sombra-1">
+					<div class="header-gris">
 					<h3>Información General</h3>
 				</div>
 				<div class="informacion-general">
-					<p><strong>Estado: </strong>Publicado</p>
-					<p><strong>Fecha: </strong>20/marzo/2016</p>
-					<p><strong>Autor: </strong>Ana Karen García</p>
-				</div>
+				<p><strong>Estado: </strong>Publicado</p>
+				<p><strong>Fecha: </strong>20/marzo/2016</p>
+				<p><strong>Autor: </strong>Ana Karen García</p>
+			</div>
 
-			</div> -->
-		</div><!-- Esta etiqueta cierra toda la columna derecha -->
-	</div>
+		</div> -->
+	</div><!-- Esta etiqueta cierra toda la columna derecha -->
+</div>
 </div>
 
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
@@ -158,9 +119,9 @@
 CKEDITOR.replace('ckeditor');
 
 @if ($errors->any())
-  @foreach ($errors->all() as $error)
-      console.log('{!! $error !!}');
-  @endforeach
+@foreach ($errors->all() as $error)
+console.log('{!! $error !!}');
+@endforeach
 @endif
 </script>
 

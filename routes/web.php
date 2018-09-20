@@ -50,7 +50,7 @@ Route::resource('subcategories', 'SubcategoryController');
 Route::resource('sliders', 'SliderController');
 Route::resource('pictures', 'PicController');
 
-Route::post('articles/search', ['uses' => 'ArticleController@searchResults', 'as' => 'articles.search']);
+Route::post('articles/search', ['uses' => 'ArticleController@index', 'as' => 'articles.search']);
 
 // Rutas auxiliares
 Route::get('/addSlugs', 'CategoryController@addSlugToAll');

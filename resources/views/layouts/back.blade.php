@@ -41,10 +41,10 @@
 					<h4><span class="icon-user"></span> Usuarios <span class="icon-flecha-abajo"></span> </h4>
 					<ul class="bloque">
 						<li>
-							<a href="http://demo.topotv.com/back/create-user.html">Crear usuario</a>
+							<a href="{{ url('users/create') }}">Crear usuario</a>
 						</li>
 						<li>
-							<a href="http://demo.topotv.com/back/view-users.html">Ver usuarios</a>
+							<a href="h{{ url('users/') }}">Ver usuarios</a>
 						</li>
 					</ul>
 				</section>
@@ -67,7 +67,7 @@
 							<a href="">Crear categoría</a>
 						</li> --}}
 						<li>
-							<a href="http://demo.topotv.com/back/view-categories.html">Ver categorías existentes</a>
+							<a href="{{ url('categories/index') }}">Ver categorías existentes</a>
 						</li>
 					</ul>
 				</section>
