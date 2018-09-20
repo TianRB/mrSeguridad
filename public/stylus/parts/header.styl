@@ -5,7 +5,7 @@ header
 	position relative
 	z-index 100
 	.logo
-		width 200px
+		width 50%
 		height 80px
 		background gris-logo
 		img
@@ -14,18 +14,19 @@ header
 			margin-left 60px
 			margin-top 10px
 	.menu-principal
-		width 100%
+		width 50%
 		height 80px
 		margin-top -80px
-		position relative
+		position absolute 
+		right 0
 		z-index 3
 	.rayitas
 		position absolute
 		width 40px
 		height 40px
 		cursor pointer
-		top 30px
-		left 50%
+		top 40px
+		left 75%
 		transition all .5s cubic-bezier(.45,.22,.63,.93)
 		margin-left -20px
 		transform rotate(0deg) !important
@@ -69,12 +70,11 @@ header
 		.rayita-dos
 			opacity 0
 	nav 
-		height 80px
-		padding-left 50px
-		line-height 75px
+		height 400px
+		padding-left 10px
+		line-height 35px
 		overflow hidden
-		margin-left 200px
-		margin-top -80px
+		margin-left 50%
 		transition all .5s .5s
 		opacity 1
 		transform-origin 50%
@@ -90,11 +90,13 @@ header
 			margin-left -1100px 
 			top 50%
 			margin-top -1000px
-			transform scale(0)
+			transform scale(1)
+			opacity 0
 			transition all 1s cubic-bezier(.45,.22,.63,.93)
 		ul 
 			position relative 
 			z-index 4
+			margin-top 10px
 			opacity 0
 			transition all 1s cubic-bezier(.45,.22,.63,.93)
 			li 
@@ -112,10 +114,11 @@ header
 			opacity 1
 		.circulo-rojo
 			transform scale(1)
+			opacity 1
 	.inicio-sesion
 		position absolute
 		top 10px
-		right 40px
+		right 0%
 		a 
 			text-decoration none
 			color #fff
@@ -125,9 +128,148 @@ header
 			&:nth-child(1)
 				border-right 1px solid #fff
 				padding-right 11px
+		.descargar-catalogo
+			display none
 
+@media screen and (min-width: 1000px)
+	header
+		width 100%
+		height 80px
+		background rgba(30, 30, 30, .75)
+		position relative
+		z-index 100
+		.logo
+			width 200px
+			height 80px
+			background gris-logo
+			img
+				width auto
+				height 60px
+				margin-left 60px
+				margin-top 10px
+		.menu-principal
+			width 0%
+			right inherit
+			height 80px
+			margin-top -80px
+			position relative
+			z-index 3
+			left 50%
+		.rayitas
+			position absolute
+			width 40px
+			height 40px
+			cursor pointer
+			top 30px
+			left 50%
+			transition all .5s cubic-bezier(.45,.22,.63,.93)
+			margin-left -20px
+			transform rotate(0deg) !important
+			.rayita 
+				height 3px 
+				background #fff 
+				position absolute
+				transition all .5s cubic-bezier(.45,.22,.63,.93)
+				transform-origin 50%
+			.rayita-uno
+				width 20px 
+				margin-left 20px
+			.rayita-dos
+				width 40px
+				margin-top 9px
+				opacity 1
+			.rayita-tres
+				width 20px
+				margin-top 18px
+		.rayitas-desactivas
+			&:hover
+				.rayita-uno
+					width 40px
+					margin-left 0
+				.rayita-tres 
+					width 40px
+		.rayitas-activas
+			top 70px
+			.rayita 
+				background rgba(255, 255, 255, .75)
+			.rayita-uno
+				width 40px
+				margin-left 0px
+				margin-top 9px
+				transform rotate(45deg) !important
+			.rayita-tres
+				width 40px
+				transform rotate(-45deg) !important
+				margin-left 0px
+				margin-top 9px
+			.rayita-dos
+				opacity 0
+		nav 
+			height 80px
+			padding-left 0px
+			line-height 75px
+			overflow hidden
+			margin-left 200px
+			margin-top -80px
+			transition all .5s .5s
+			opacity 1
+			transform-origin 50%
+			z-index 2
+			position relative
+			.circulo-rojo
+				width 2000px
+				height 2000px
+				border-radius 50%
+				background rojo-mr
+				position absolute
+				left 50%
+				margin-left -1100px 
+				top 50%
+				margin-top -1000px
+				transform scale(0)
+				transition all 1s cubic-bezier(.45,.22,.63,.93)
+			ul 
+				position relative 
+				z-index 4
+				opacity 0
+				transition all 1s cubic-bezier(.45,.22,.63,.93)
+				li 
+					list-style none 
+					display inline-block
+					vertical-align top 
+					margin 5px 10px
+					a 
+						font-size .8rem
+						text-decoration none
+						text-transform uppercase
+						color #fff
+		.nav-activo
+			ul
+				opacity 1
+			.circulo-rojo
+				transform scale(1)
+		.inicio-sesion
+			position absolute
+			top 10px
+			right 40px
+			z-index 3
+			a 
+				text-decoration none
+				color #fff
+				padding 3px 10px 
+				font-weight 400
+				font-size .7rem
+				&:nth-child(1)
+					border-right 1px solid #fff
+					padding-right 11px
+			.descargar-catalogo
+				display block
+				text-align right 
+				text-decoration underline
+				margin-top 10px
+
+					
 				
-			
 
 
 
