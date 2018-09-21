@@ -5,7 +5,6 @@
 	z-index 0
 	position relative
 	overflow hidden
-	background #000 
 	.s_element
 		opacity 0
 		transition all 1s 
@@ -21,6 +20,22 @@
 				width 120%
 				height 100%
 				margin-left -30px
+				animation 20s rotate linear infinite
+				transform-origin 50% 50%
+				animation-name slideFondo
+			@keyframes slideFondo{
+					0% {
+						 margin-left -30px;
+					}
+
+					50% {
+						 margin-left 0px;
+					}
+					100% {
+						 margin-left -30px;
+					}
+
+			}
 		.producto-slide
 			width 100%
 			height 100%
@@ -32,6 +47,22 @@
 				width 100%
 				margin-left 50px
 				height 100%
+				animation 20s rotate linear infinite
+				transform-origin 50% 50%
+				animation-name slide
+			@keyframes slide{
+					0% {
+						 margin-left 50px;
+					}
+
+					50% {
+						 margin-left 0px;
+					}
+					100% {
+						 margin-left 50px;
+					}
+
+			}
 		.texto-slide
 			width 90%
 			left -1000px
@@ -76,39 +107,6 @@
 		opacity 1
 		.producto-slide
 			opacity 1
-			animation 20s rotate linear infinite
-			transform-origin 50% 50%
-			animation-name slide
-		@keyframes slide{
-				0% {
-					 margin-left 50px;
-				}
-
-				50% {
-					 margin-left 0px;
-				}
-				100% {
-					 margin-left 50px;
-				}
-
-		}
-		.fondo-slide
-			animation 20s rotate linear infinite
-			transform-origin 50% 50%
-			animation-name slideFondo
-		@keyframes slideFondo{
-				0% {
-					 margin-left -30px;
-				}
-
-				50% {
-					 margin-left 0px;
-				}
-				100% {
-					 margin-left -30px;
-				}
-
-		}
 		.texto-slide
 			left 5%
 			
@@ -147,16 +145,14 @@
 	.diagonal-uno
 		width 100%
 		height 10px
-		background rojo-mr
+		background #9a9a99
 		//transform skewY(-3deg)
 	.diagonal-dos
-		display none
 		width 100%
 		height 10px
 		background #636463
 		//transform skewY(-3deg)
 	.diagonal-tres
-		display none
 		width 100%
 		height 10px
 		background #4a4a49
@@ -228,7 +224,7 @@
 				video
 					width auto 
 					height 100%
-					opacity 1
+					opacity .10
 			.texto-categorias
 				width 80%
 				left 10%
@@ -236,23 +232,9 @@
 				position absolute
 				top 60px
 				h2 
-					font-size 1.3rem
+					font-size 1.2rem
 					color #fff
-					text-transform uppercase
-					font-weight 700
-					font-style italic
-					text-shadow 2px 1px 4px rgba(100, 100, 100, 1)
-					&::before
-						content ''
-						width 40px 
-						height 2px
-						margin-bottom 5px
-						display block
-						background #fff 
-				.first-word
-					font-size 1rem
-					display block
-					font-weight 400
+					font-weight 300
 @media screen and (min-width: 700px)
 	.contenedor-slide
 		height 500px
@@ -354,13 +336,10 @@
 				transition all 0.3s cubic-bezier(.25,.8,.25,1)
 				&:hover 
 					box-shadow 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
-				.texto-categorias
-					top 30px
-					h2
-						font-size 1.6rem
-						font-weight 700 !important
-						margin-top 90px
-						
+				h2
+					font-size 1.5rem
+					font-weight 700 !important
+					margin-top 90px
 
 
 
