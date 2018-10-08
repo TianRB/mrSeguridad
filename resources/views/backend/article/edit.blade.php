@@ -1,5 +1,9 @@
 @extends('layouts.back')
 
+@section('page_styles')
+	<link rel="stylesheet" href="{{ asset('css/dropzone.css') }}">
+@endsection
+
 @section('content')
 
 	<!-- ******************************** AREA PRINCIPAL: Se refiera al área que se encuentra debajo del header y a la derecha del menú izquierdo ******************************** -->
@@ -41,59 +45,133 @@
 								<label>Etiqueta Meta Description</label>
 							</div>
 						</div>
-					</div>
-				</div> <!-- Esta etiqueta cierra toda la columna izquierda, la cual contiene el área para crear la nota -->
-
-				<!-- ******************************** ASIDE ******************************** -->
-
-				<div class="div-derecho">  <!-- Esta etiqueta abre toda la columna derecha -->
-					<div class="modulo-aside sombra-1">
-						<div class="header-gris">
-							<h3>Extras</h3>
+						<div class="btns-create-article">
+							<button class="btn btn-rectangle btn-raised" type="submit">
+								<div class="ripple-container">
+									<span class="ripple-effect"></span>
+								</div>
+								Guardar
+							</button>
+							<a href="{{ url('articles/')}}"><button class="btn btn-rectangle btn-flat">
+								<div class="ripple-container">
+									<span class="ripple-effect"></span>
+								</div>
+								Regresar
+							</button></a>
 						</div>
+					</form>
+				</div>
+			</div> <!-- Esta etiqueta cierra toda la columna izquierda, la cual contiene el área para crear la nota -->
 
-						<!-- ******************************** CHECKBOX ******************************** -->
+			<!-- ******************************** ASIDE ******************************** -->
 
-						<div class="checkbox-container">
-							@foreach($categories as $c)
-								<div class="check-awesome" class="form-group">
-									<input type="checkbox" name="category[]" class="checkbox" value="{{ $c->id }}" @if ($article->categories->contains($c)) checked @endif></input>
+			<div class="div-derecho">  <!-- Esta etiqueta abre toda la columna derecha -->
+				<div class="modulo-aside sombra-1">
+					<div class="header-gris">
+						<h3>Extras</h3>
+					</div>
+
+					<!-- ******************************** CHECKBOX ******************************** -->
+					<h5>Categorías:</h5>
+
+					<div class="checkbox-container">
+						@foreach($categories as $c)
+							<div class="check-awesome" class="form-group">
+								<input type="checkbox" name="category[]" class="checkbox" value="{{ $c->id }}" @if ($article->categories->contains($c)) checked @endif></input>
 									<label for="check-me">
 										{{ $c->name }}
 									</label>
-									</div>
-								@endforeach
-							</div>
+								</div>
+							@endforeach
+						</div>
 
-							<!-- ******************************** CHECKBOX ******************************** -->
+						<!-- ******************************** ARCHIVOS ******************************** -->
+						<div class="modulo-aside">
+							<h5>Ficha Técnica:</h5>
 							<label for="pdf">Ficha Técnica (PDF)</label>
-							<input type="file" name="pdf" placeholder="Subir Ficha técnica (PDF recomendado)">
 
-							<label for="bg_img">Imagen de fondo</label>
-							<input type="file" name="bg_img" placeholder="Subir fondo">
+							<div>
+								<button style="display:block;width:120px; height:30px;" onclick="event.preventDefault();document.getElementById('getFile').click();">Da click aqui para cambiar la ficha técnica</button>
+								<input type='file' name="pdf" id="getFile" style="display:none">
+							</div>
+						</div>
+						<div class="modulo-aside sombra-1" style="padding-top:5px;">
 
-							<label for="image">Imagenes de Producto</label>
-							<input id="image" name="image[]" type="file" class="file" multiple="" placeholder="Subir imagenes"/>
+							<!-- ******************************** SUBIR FOTO ******************************** -->
 
+							<h5>Fondo:</h5>
+
+							<section class="contenedor-create foto-articulo contenedor-crear-foto-uno">
+
+								<div class="subir-fondo-articulo">
+									<form action="{{ route('articles.add_background_image', $article->id) }}" method="POST" enctype="multipart/form-data" maxfiles="1" class=" formulario-articulo img-bg" id="img-bg">
+										{{ csrf_field() }}
+										@if ($article->bg_img != null)
+											<div style="position:relative;">
+												<div style=""><a href="{{route('articles.erase_background_image',$article->id)}}" style="background-color:#000;padding:1em;position:absolute;z-index: 2;">borrar</a></div>
+												<img src="{{url($article->bg_img)}}" style="width:100%;height:auto;z-index:1;top:0;" alt="">
+											</div>
+										@else
+											<div class="fallback">
+												<input type="file" name="bg_img">
+											</div>
+										@endif
+									</form>
+								</div>
+							</section>
+
+							<h5>Productos:</h5>
+							<section class="contenedor-create foto-articulo contenedor-crear-foto-dos">
+								<div class="subir-foto-articulo">
+									<form method="POST" action="{{ route('articles.add_article_images', $article->id) }}" enctype="multipart/form-data" maxfiles="4" class=" formulario-articulo img-article" id="img-article">
+										{{ csrf_field() }}
+										@if (count($article->pics()) > 0)
+											<div style="display:flex;flex-flow:row wrap;">
+												@foreach ($article->pics as $ap)
+													<div style="height:auto;max-height:130px;width:50%;">
+														<a href="{{route('articles.erase_image',$ap->id)}}" style="z-index:10">borrar</a>
+														<img src="{{url($ap->path)}}" alt="" style="height:auto;max-height:130px;width:100%;">
+													</div>
+												@endforeach
+											</div>
+										@else
+											<div class="fallback">
+												<input type="file" name="imagen" multiple>
+											</div>
+										@endif
+									</form>
+								</div>
+							</section>
 
 							<!-- ******************************** BOTONES ******************************** -->
 
-							<div class="btns-create-article">
-								<button class="btn btn-rectangle btn-raised" type="submit">
+							<div class="btns-create-article" style="display:none">
+								<button type="submit" id="dz-submit"  class="btn btn-rectangle btn-raised">
 									<div class="ripple-container">
 										<span class="ripple-effect"></span>
 									</div>
-									Editar
+									Crear
 								</button>
-								<a href="{{ url('articles/')}}"><button class="btn btn-rectangle btn-flat">
+								<button class="btn btn-rectangle btn-flat">
 									<div class="ripple-container">
 										<span class="ripple-effect"></span>
 									</div>
-									Regresar
-								</button></a>
+									Eliminar
+								</button>
 
 							</div>
-						</form>
+
+						</div>
+						{{-- <label for="bg_img">Imagen de fondo</label>
+						<input type="file" name="bg_img" placeholder="Subir fondo">
+
+						<label for="image">Imagenes de Producto</label>
+						<input id="image" name="image[]" type="file" class="file" multiple="" placeholder="Subir imagenes"/> --}}
+
+
+						<!-- ******************************** BOTONES ******************************** -->
+
+
 
 					</div>
 
@@ -113,16 +191,43 @@
 	</div><!-- Esta etiqueta cierra toda la columna derecha -->
 </div>
 </div>
+@endsection
 
-<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-<script type="text/javascript">
-CKEDITOR.replace('ckeditor');
+@section('page_scripts')
+	<script src="{{ asset('js/dropzone.js') }}"></script>
+	<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+	<script src="{{ asset('js/dropzone-config.js') }}"></script>
 
-@if ($errors->any())
-@foreach ($errors->all() as $error)
-console.log('{!! $error !!}');
-@endforeach
-@endif
+	<script type="text/javascript">
+	CKEDITOR.replace('ckeditor');
+
+	@if ($errors->any()) @foreach ($errors->all() as $error)
+		console.log('{!! $error !!}');
+	@endforeach @endif
+
+	// $(document).ready(function () {
+	// 	Dropzone.autoDiscover = false;
+	// 	$(".dropzone").each(function () {
+	// 		new Dropzone($(this).get(0), {
+	// 			url: $(this).attr.action,
+	// 			thumbnailWidth: 80,
+	// 			thumbnailHeight: 80,
+	// 			parallelUploads: 20,
+	// 			//previewsContainer: "#previews", // Define the container to display the previews
+	// 			acceptedFiles:'image/*',
+	// 			uploadMultiple: true,
+	// 			parallelUploads: 4,
+	// 			maxFiles: $(this).data("maxfiles"),
+	// 			maxFilesize: 4,
+	// 			dictRemoveFile: 'Remover Imagen',
+	// 			dictFileTooBig: 'Image is larger than 4MB',
+	// 			timeout: 10000,
+	// 		});
+	// 		console.log($(this));
+	// 		console.log($(this).data("maxfiles"));
+	// 		console.log($(this).attr.action);
+	// 	});
+	// });
 </script>
 
 @endsection

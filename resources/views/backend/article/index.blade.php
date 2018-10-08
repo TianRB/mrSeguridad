@@ -75,14 +75,14 @@
                     Editar
                   </button>
                 </a>
-                <a href="{{ url('articles/add_image/'.$a->id) }}">
+                {{-- <a href="{{ url('articles/add_image/'.$a->id) }}">
                   <button class="btn btn-rectangle btn-raised">
                     <div class="ripple-container">
                       <span class="ripple-effect"></span>
                     </div>
                     Editar Imagenes
                   </button>
-                </a>
+                </a> --}}
                 <!-- borrar -->
 
                 <form action="{{ action('ArticleController@destroy', ['id' => $a->id]) }}" method="POST" class="no-margin">

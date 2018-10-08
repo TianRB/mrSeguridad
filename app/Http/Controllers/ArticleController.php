@@ -47,7 +47,7 @@ class ArticleController extends Controller
             $filter = false; // No filtrar
           }
         }
-        return $filter; 
+        return $filter;
       });
 
       $articles = $filtered;
@@ -147,7 +147,11 @@ class ArticleController extends Controller
     */
     // Sincronizar Categorias
     $a->categories()->sync($request->input('category'));
-    return redirect()->action('ArticleController@storeImagesForm', ['id' => $a->id]);
+    //return redirect()->action('ArticleController@storeImagesForm', ['id' => $a->id]);
+
+		$categories = Category::all();
+		$article = Article::find($a->id); // Refrescar Articulo
+		return view('backend.article.edit', ['article' => $article, 'categories' => $categories]);
     //return redirect('articles/');
   }
 }
@@ -164,7 +168,8 @@ public function storeArticleImages(Request $request, $id)
 {
 
   //  Crear Imagen
-  $file = Input::file('file');
+  $rawfile = Input::file('file');
+	$file = array_slice($rawfile, 0, 3);// Tomar solo los primeros 4
   //dd($image);
   $a= Article::find($id);
   for ($i=0; $i < count($file); $i++) {
@@ -179,17 +184,23 @@ public function storeArticleImages(Request $request, $id)
   ], 200);
 }
 // Sube imágenes de fondo de producto
-public function storeBackgroundImages(Request $request, $id)
+public function storeBackgroundImage(Request $request, $id)
 {
-
   //  Crear Imagen
   $file = Input::file('file');
-  //dd($image);
-  $a= Article::find($id);
+  //dd($file);
 
-  $file_name =str_random(16).'.'.$file->getClientOriginalExtension();
-  $a->bg_img = Article::$image_path.'/bg/'.$file_name;
-  $file->move(Article::$image_path.'/bg/', $file_name);
+	$a= Article::find($id);
+
+	// Borrar la vieja imagen
+	$oldfile = $a->bg_img;
+  $filename = public_path($oldfile);
+  File::delete($filename);
+
+  // Guardar nueva imagen
+  $file_name =str_random(16).'.'.$file[0]->getClientOriginalExtension();
+  $a->bg_img = Article::$image_path.'bg/'.$file_name;
+  $file[0]->move(Article::$image_path.'bg/', $file_name);
   $a->save();
 
   return response()->json([
@@ -204,49 +215,49 @@ public function updateImagesForm(Request $request, $id)
 }
 
 // Sube imágenes
-public function updateImages(Request $request, $id)
-{
-  $input = $request->all();
-
-
-  $rules = [
-    'imagen' => 'required',
-    'imagen.*' => 'mimes:jpeg,png,jpg|max:400',
-    'bg_img' => 'required|mimes:jpeg,png,jpg|max:400',
-  ];
-  $messages = [
-    'imagen.required' => 'Debes subir una foto',
-    'imagen.mimes' => 'El archivo debe ser una imagen en jpeg, png o jpg',
-    'imagen.max' => 'La imagen no debe pesar más de 400KB',
-    'bg_img.required' => 'Debes subir una foto de fondo',
-    'bg_img.mimes' => 'La foto de fondo debe ser una imagen en jpeg, png o jpg',
-    'bg_img.max' => 'La imagen no debe pesar más de 400KB',
-  ];
-
-  $validator = Validator::make($input, $rules, $messages);
-  if ($validator->fails()) {
-    return redirect('articles/create')
-    ->withErrors($validator)
-    ->withInput();
-  } else {
-
-    // Guardar imagen de fondo
-    $file = Input::file('bg_img');
-    $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
-    $a->bg_img = Article::$image_path.'/bg/'.$file_name;
-    $request->bg_img->move(Article::$image_path.'/bg/', $file_name);
-
-    //  Guardar una o varias imagenes de frente
-    foreach ($request->imagen as $image) {
-      $file_name = str_random(16).'.'.$image->getClientOriginalExtension();
-      $pic = new Pic;
-      $pic->path = Article::$image_path.$file_name;
-      $image->move(Article::$image_path, $file_name);
-      $a->pics()->save($pic);
-    }
-    return redirect('articles/');
-  }
-}
+// public function updateImages(Request $request, $id)
+// {
+//   $input = $request->all();
+//
+//
+//   $rules = [
+//     'imagen' => 'required',
+//     'imagen.*' => 'mimes:jpeg,png,jpg|max:400',
+//     'bg_img' => 'required|mimes:jpeg,png,jpg|max:400',
+//   ];
+//   $messages = [
+//     'imagen.required' => 'Debes subir una foto',
+//     'imagen.mimes' => 'El archivo debe ser una imagen en jpeg, png o jpg',
+//     'imagen.max' => 'La imagen no debe pesar más de 400KB',
+//     'bg_img.required' => 'Debes subir una foto de fondo',
+//     'bg_img.mimes' => 'La foto de fondo debe ser una imagen en jpeg, png o jpg',
+//     'bg_img.max' => 'La imagen no debe pesar más de 400KB',
+//   ];
+//
+//   $validator = Validator::make($input, $rules, $messages);
+//   if ($validator->fails()) {
+//     return redirect('articles/create')
+//     ->withErrors($validator)
+//     ->withInput();
+//   } else {
+//
+//     // Guardar imagen de fondo
+//     $file = Input::file('bg_img');
+//     $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
+//     $a->bg_img = Article::$image_path.'/bg/'.$file_name;
+//     $request->bg_img->move(Article::$image_path.'/bg/', $file_name);
+//
+//     //  Guardar una o varias imagenes de frente
+//     foreach ($request->imagen as $image) {
+//       $file_name = str_random(16).'.'.$image->getClientOriginalExtension();
+//       $pic = new Pic;
+//       $pic->path = Article::$image_path.$file_name;
+//       $image->move(Article::$image_path, $file_name);
+//       $a->pics()->save($pic);
+//     }
+//     return redirect('articles/');
+//   }
+// }
 /**
 * Display the specified resource.
 *
@@ -379,11 +390,11 @@ public function destroy($id)
 {
   $a = Article::find($id);
 
-  // Eliminar foto vieja de fondo
+  // Eliminar imagen de fondo
   $oldfile = public_path($a->bg_img);
   File::delete($oldfile);
 
-  // Eliminar todas las imagenes viejas
+  // Eliminar todas las imagenes
   $pics = Pic::where('article_id', $a->id)->get();
   foreach ($pics as $p) {
     $file = $p->path;
@@ -392,7 +403,7 @@ public function destroy($id)
     $p->delete();
   }
 
-  // Eliminar viejo pdf
+  // Eliminar pdf
   $oldfile = public_path($a->pdf);
   File::delete($oldfile);
 
@@ -435,18 +446,18 @@ public function addCategory(Article $a, Category $c)
 //   dd($art);
 //   return view('backend.article.index', ['articles' => $art, 'title' => $title, 'categories' => $categories]);
 // }
-
-public function erraseBackgroundImage($id)
+public function eraseBackgroundImage($id)
 {
   $a = Article::find($id);
   $file = $a->bg_img;
   $filename = public_path($file);
   File::delete($filename);
-  $a->bg_name = null;
+  $a->bg_img = null;
   $a->save();
   return redirect()->back();
 
 }
+
 public function eraseArticleImage($id)
 {
   $pic = Pic::find($id);
