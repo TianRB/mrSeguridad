@@ -34,9 +34,9 @@ $(function() {
 
 	// Now that the DOM is fully loaded, create the dropzone, and setup the
 	// event listeners
-	dz.on("addedfile", function(file) {
+	dzfg.on("addedfile", function(file) {
 		/* Maybe display some more file information on your page */
-		
+		console.log('Img uploaded');
 	});
 })
 

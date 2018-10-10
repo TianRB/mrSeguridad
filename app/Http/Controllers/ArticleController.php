@@ -149,9 +149,10 @@ class ArticleController extends Controller
     $a->categories()->sync($request->input('category'));
     //return redirect()->action('ArticleController@storeImagesForm', ['id' => $a->id]);
 
-		$categories = Category::all();
-		$article = Article::find($a->id); // Refrescar Articulo
-		return view('backend.article.edit', ['article' => $article, 'categories' => $categories]);
+		// $categories = Category::all();
+		// $article = Article::find($a->id); // Refrescar Articulo
+		return redirect()->route('articles.edit', ['id' => $a->id]);
+		// return view('backend.article.edit', ['article' => $article, 'categories' => $categories]);
     //return redirect('articles/');
   }
 }

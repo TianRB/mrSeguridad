@@ -103,12 +103,12 @@
 
 							<section class="contenedor-create foto-articulo contenedor-crear-foto-uno">
 
-								<div class="subir-fondo-articulo">
+								<div class="subir-fondo-articulo" style="outline:2px dashed #CCC">
 									<form action="{{ route('articles.add_background_image', $article->id) }}" method="POST" enctype="multipart/form-data" maxfiles="1" class=" formulario-articulo img-bg" id="img-bg">
 										{{ csrf_field() }}
 										@if ($article->bg_img != null)
 											<div style="position:relative;">
-												<div style=""><a href="{{route('articles.erase_background_image',$article->id)}}" style="background-color:#000;padding:1em;position:absolute;z-index: 2;">borrar</a></div>
+												{{--<div style=""><a href="{{route('articles.erase_background_image',$article->id)}}" style="background-color:#000;padding:1em;position:absolute;z-index: 2;">borrar</a></div>--}}
 												<img src="{{url($article->bg_img)}}" style="width:100%;height:auto;z-index:1;top:0;" alt="">
 											</div>
 										@else
