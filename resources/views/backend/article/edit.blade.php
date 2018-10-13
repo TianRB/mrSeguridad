@@ -59,7 +59,7 @@
 								Regresar
 							</button></a>
 						</div>
-					</form>
+					{{-- </form> --}}
 				</div>
 			</div> <!-- Esta etiqueta cierra toda la columna izquierda, la cual contiene el área para crear la nota -->
 
@@ -96,6 +96,7 @@
 							</div>
 						</div>
 						<div class="modulo-aside sombra-1" style="padding-top:5px;">
+						</form>
 
 							<!-- ******************************** SUBIR FOTO ******************************** -->
 
@@ -194,40 +195,36 @@
 @endsection
 
 @section('page_scripts')
-	<script src="{{ asset('js/dropzone.js') }}"></script>
-	<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-	<script src="{{ asset('js/dropzone-config.js') }}"></script>
+<script src="{{ asset('js/dropzone.js') }}"></script>
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('js/dropzone-config.js') }}"></script>
 
-	<script type="text/javascript">
-	CKEDITOR.replace('ckeditor');
+<script type="text/javascript">
+CKEDITOR.replace('ckeditor');
 
-	@if ($errors->any()) @foreach ($errors->all() as $error)
-		console.log('{!! $error !!}');
-	@endforeach @endif
+// Si hay errores, mostrarlos en consola
+@if ($errors->any()) @foreach ($errors->all() as $error)
+	console.log('{!! $error !!}');
+@endforeach @endif
 
-	// $(document).ready(function () {
-	// 	Dropzone.autoDiscover = false;
-	// 	$(".dropzone").each(function () {
-	// 		new Dropzone($(this).get(0), {
-	// 			url: $(this).attr.action,
-	// 			thumbnailWidth: 80,
-	// 			thumbnailHeight: 80,
-	// 			parallelUploads: 20,
-	// 			//previewsContainer: "#previews", // Define the container to display the previews
-	// 			acceptedFiles:'image/*',
-	// 			uploadMultiple: true,
-	// 			parallelUploads: 4,
-	// 			maxFiles: $(this).data("maxfiles"),
-	// 			maxFilesize: 4,
-	// 			dictRemoveFile: 'Remover Imagen',
-	// 			dictFileTooBig: 'Image is larger than 4MB',
-	// 			timeout: 10000,
-	// 		});
-	// 		console.log($(this));
-	// 		console.log($(this).data("maxfiles"));
-	// 		console.log($(this).attr.action);
-	// 	});
-	// });
+//Configuración adicional para dropzone
+//Add existing files into dropzone
+@if (count($article->pics()) > 0)
+var existingFiles = [
+	@foreach ($article->pics as $ap)
+		{ name: "{{$ap->path}}", size: {{filesize($ap->path)}} },
+	@endforeach
+];
+for (i = 0; i < existingFiles.length; i++) {
+	console.log(existingFiles[i]);
+	dzfg.emit("addedfile", existingFiles[i]);
+	dzfg.emit("thumbnail", existingFiles[i], "{{ asset('img/article_pictures/') }}");
+	dzfg.emit("complete", existingFiles[i]);
+	console.log('added file from server');
+}
+@endif
+
 </script>
-
 @endsection
+
+{{-- dd(filesize($article->pics()->get()->pop()->path)) --}}
