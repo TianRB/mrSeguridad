@@ -1,6 +1,20 @@
 $(document).ready(btnMenu);
 $(document).ready(firstWord);
+$(document).ready(videoHover);
 
+
+
+function videoHover(){
+	var figure = $(".categorias-index article").hover( hoverVideo, hideVideo );
+
+	function hoverVideo(e) {  
+	    $('video', this).get(0).play(); 
+	}
+
+	function hideVideo(e) {
+	    $('video', this).get(0).pause(); 
+	}
+}
 
 
 function firstWord(){
@@ -28,12 +42,17 @@ function btnMenu(){
 			$(".rayitas").addClass("rayitas-activas")
 				$("nav").addClass("nav-activo")
 				$(".inicio-sesion").fadeOut()
+				$(".ficha-tecnica .miniaturas-producto").addClass("miniaturas-producto-back")
 			
 		}else{
+			setTimeout(function() {
+				$(".ficha-tecnica .miniaturas-producto").removeClass("miniaturas-producto-back")
+			}, 800);
 			setTimeout(function() {
 				$(".rayitas").addClass("rayitas-desactivas")
 				$(".rayitas").removeClass("rayitas-activas")
 				$(".inicio-sesion").fadeIn()
+				
 			}, 500);
 			$("nav").removeClass("nav-activo")
 		}

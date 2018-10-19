@@ -7,12 +7,12 @@
 
 	<article id="ele2" class="s_element s_visible">
 		<figure class="fondo-slide"><img src="img/fondo-slide-2.png" alt=""></figure>
-		<figure class="producto-slide"><img src="img/producto-slide-2.png" alt=""></figure>
-		<div class="texto-slide">
+		<figure class="producto-slide"><a href="http://18.221.15.19/mrSeguridad/public/productos/ver/tenis-industrial-con-casquillo-sp1042/nuevos-productos"><img src="img/producto-slide-2.png" alt=""></a></figure>
+		<!-- <div class="texto-slide">
 			<h2>Casco</h2>
 			<p>dipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
 			<a href=""><div class="btn-slide">ver más</div><div class="btn-linea"></div></a>
-		</div>
+		</div> -->
 	</article>
 	<article id="ele1" class="s_element">
 		<figure class="fondo-slide"><img src="img/fondo-slide-3.png" alt=""></figure>
@@ -48,9 +48,9 @@
 <!-- ****************  ABRE UNETE AL EQUIPO  **************** -->
 <div class="unete">
 	<article>
-		<h2>Sé distribuidor autorizado</h2>
-		<p>Al ser parte de nuestro equipo podrás tener acceso a información exclusiva y beneficios</p>
-		<div class="btn-unete"> <a href="">¡Quiero Unirme!</a> </div>
+		<h2>INTÉGRATE A NUESTRA RED DE DISTRIBUIDORES</h2>
+		<p>Obtén acceso a una marca única en el mercado, que ofrece más beneficios y valor agregado que harán crecer tu negocio.</p>
+		<div class="btn-unete"> <a href="http://18.221.15.19/mrSeguridad/public/img/unete-guia-distribuidor.png">¡Quiero Unirme!</a> </div>
 	</article>
 	<div class="diagonales">
 		<div class="diagonal-uno"></div>
@@ -83,13 +83,13 @@
 <div class="seccion-categorias">
 	<article>
 		<h2>Conoce nuestras categorías</h2>
-		<p>Nuestras categorías están diseñadas para satisfacer cada una de las necesidades del sector industrial en equipo de seguridad.</p>
+		<p>Contamos con categorías para identificar más rápido lo que buscas. Están organizadas de acuerdo al uso y protección que ofrecen y para satisfacer las necesidades del sector industrial en equipo protección personal y vial.</p>
 	</article>
 	<section class="categorias-index">
 		<article>
 			<a href="productos/nuevos-productos">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/nuevos-productos-min.mp4') }}" autoplay loop></video>
+					<video src="{{ asset('video/nuevos-productos-min.mp4') }}" loop></video>
 				</div>
 				<div class="texto-categorias">
 					<h2>Nuevos Productos</h2>
@@ -99,7 +99,7 @@
 		<article>
 			<a href="productos/seguridad-vial">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/seguridad-vial-min.mp4') }}" autoplay loop></video>
+					<video src="{{ asset('video/seguridad-vial-min.mp4') }}" loop></video>
 				</div>
 				<div class="texto-categorias">
 					<h2>Seguridad Vial</h2>
@@ -109,7 +109,7 @@
 		<article>
 			<a href="productos/proteccion-general">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-general-min.mp4') }}" autoplay loop></video>
+					<video src="{{ asset('video/proteccion-general-min.mp4') }}" loop></video>
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección General</h2>
@@ -119,7 +119,7 @@
 		<article>
 			<a href="productos/proteccion-visual">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-visual-min.mp4') }}" autoplay loop></video>
+					<video src="{{ asset('video/proteccion-visual-min.mp4') }}" loop></video>
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección Visual</h2>
@@ -129,7 +129,7 @@
 		<article>
 			<a href="productos/proteccion-para-manos">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-para-manos-min.mp4') }}" autoplay loop></video>
+					<video src="{{ asset('video/proteccion-para-manos-min.mp4') }}" loop></video>
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección para Manos</h2>
@@ -139,7 +139,7 @@
 		<article>
 			<a href="productos/proteccion-auditiva">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-auditiva-min.mp4') }}" autoplay loop></video>
+					<video src="{{ asset('video/proteccion-auditiva-min.mp4') }}" loop></video>
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección Auditiva</h2>
@@ -149,7 +149,7 @@
 		<article>
 			<a href="productos/proteccion-para-la-lluvia">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-para-la-lluvia-min.mp4') }}" autoplay loop></video>
+					<video src="{{ asset('video/proteccion-para-la-lluvia-min.mp4') }}" loop></video>
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección Para la Lluvia</h2>
@@ -159,7 +159,7 @@
 		<article>
 			<a href="productos/proteccion-respiratoria">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-respiratoria-min.mp4') }}" autoplay loop></video>
+					<video src="{{ asset('video/proteccion-respiratoria-min.mp4') }}" loop></video>
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección Respiratoria</h2>

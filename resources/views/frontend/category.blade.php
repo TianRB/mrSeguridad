@@ -50,7 +50,7 @@
 		<article>
 			<h2>Sé distribuidor autorizado</h2>
 			<p>Al ser parte de nuestro equipo podrás tener acceso a información exclusiva y beneficios</p>
-			<div class="btn-unete"> <a href="">¡Quiero Unirme!</a> </div>
+			<div class="btn-unete"> <a href="http://18.221.15.19/mrSeguridad/public/img/unete-guia-distribuidor.png">¡Quiero Unirme!</a> </div>
 		</article>
 	</div>
 	<!-- ****************  CIERRA PRODUCTOS  **************** -->
