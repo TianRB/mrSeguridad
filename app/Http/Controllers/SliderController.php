@@ -22,7 +22,7 @@ class SliderController extends Controller
     public function index()
     {
         $sliders = Slider::all();
-        return view('backend.slider.index', ['slider_pics' => $sliders]);
+        return view('backend.slider.index', ['sliders' => $sliders]);
 
     }
 

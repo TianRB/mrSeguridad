@@ -52,6 +52,14 @@ Route::resource('pictures', 'PicController');
 
 Route::post('articles/search', ['uses' => 'ArticleController@index', 'as' => 'articles.search']);
 
+// Distribuidores
+Route::get('/users/create', 'DistribuidorController@crudUsuarios');
+Route::get('/users/perfil', 'DistribuidorController@perfilUsuarios');
+Route::get('/users/index', 'DistribuidorController@indexUsuarios');
+Route::get('/users/productos', 'DistribuidorController@ventasListaProductos');
+Route::get('/users/vendedores', 'DistribuidorController@ventasListaVendedores');
+Route::get('/users/perfil/vendedores', 'DistribuidorController@ventasVendedorPerfil');
+
 // Rutas auxiliares
 Route::get('/addSlugs', 'CategoryController@addSlugToAll');
 

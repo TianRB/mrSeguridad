@@ -38,25 +38,84 @@
 		<div class="menu">
 			<nav class="nav">
 				<section class="seccion">
-					<h4><span class="icon-user"></span> Usuarios <span class="icon-flecha-abajo"></span> </h4>
+					<h4><span class="icon-user"></span> Mi perfíl <span class="icon-flecha-abajo"></span> </h4>
 					<ul class="bloque">
 						<li>
-							<a href="{{ url('users/create') }}">Crear usuario</a>
+							<a href="{{ url('/users/perfil') }}">Ver perfil</a>
 						</li>
 						<li>
-							<a href="h{{ url('users/') }}">Ver usuarios</a>
+							<a href="{{ url('/users/perfil/vendedores') }}">Ver perfil (vendedor)</a>
+						</li>
+						<li>
+							<a href="">Editar Perfil</a>
+						</li>
+					</ul>
+				</section>
+				<section class="seccion">
+					<h4><span class="icon-categorias"></span> Vendedores <span class="icon-flecha-abajo"></span></h4>
+					<ul class="bloque">
+						<li>
+							<a href="">Lista de vendedores</a>
+						</li>
+						<li>
+							<a href="{{ url('/users/create') }}">Crear Vendedor</a>
+						</li>
+					</ul>
+				</section>
+				<section class="seccion">
+					<h4><span class="icon-categorias"></span> Distribuidores <span class="icon-flecha-abajo"></span></h4>
+					<ul class="bloque">
+						<li>
+							<a href="{{ url('/users/index')}}">Autorizados</a>
+						</li>
+						<li>
+							<a href="http://demo.topotv.com/back/view-categories.html">Solicitantes</a>
+						</li>
+
+					</ul>
+				</section>
+
+				<section class="seccion">
+					<h4><span class="icon-articulos"></span> Productos <span class="icon-flecha-abajo"></span></h4>
+					<ul class="bloque">
+						<li>
+							<a href="{{ url('users/productos/') }}">Productos (distribuidores)</a>
+						</li>
+						<li>
+							<a href="{{ url('users/vendedores/') }}">Productos (vendedores)</a>
+						</li>
+						<li>
+							<a href="{{ url('articles/create') }}">Crear Producto</a>
+						</li>
+						<li>
+							<a href="{{ url('articles/') }}">Todos los productos</a>
+						</li>
+						<li>
+							<a href="">Productos existentes</a>
+						</li>
+						<li>
+							<a href="">Productos disponibles</a>
+						</li>
+						<li>
+							<a href="">Productos agotados</a>
 						</li>
 					</ul>
 				</section>
 
 				<section class="seccion">
-					<h4><span class="icon-articulos"></span> Artículos <span class="icon-flecha-abajo"></span></h4>
+					<h4><span class="icon-articulos"></span> Pedidos <span class="icon-flecha-abajo"></span></h4>
 					<ul class="bloque">
 						<li>
-							<a href="{{ url('articles/create') }}">Crear artículo</a>
+							<a href="">Todos los pedidos</a>
 						</li>
 						<li>
-							<a href="{{ url('articles/') }}">Ver artículos existentes</a>
+							<a href="">Aprovados</a>
+						</li>
+						<li>
+							<a href="">En espera</a>
+						</li>
+						<li>
+							<a href="">cancelados</a>
 						</li>
 					</ul>
 				</section>
@@ -67,7 +126,21 @@
 							<a href="">Crear categoría</a>
 						</li> --}}
 						<li>
-							<a href="{{ url('categories/index') }}">Ver categorías existentes</a>
+							<a href="{{ url('categories/') }}">Ver categorías existentes</a>
+						</li>
+					</ul>
+				</section>
+				<section class="seccion">
+					<h4><span class="icon-categorias"></span> Slides <span class="icon-flecha-abajo"></span></h4>
+					<ul class="bloque">
+						{{-- <li>
+							<a href="">Crear categoría</a>
+						</li> --}}
+						<li>
+							<a href="{{ url('sliders/create') }}">Crear Slide</a>
+						</li>
+						<li>
+							<a href="{{ url('sliders/') }}">Ver slides existentes</a>
 						</li>
 					</ul>
 				</section>

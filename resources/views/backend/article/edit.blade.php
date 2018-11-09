@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-
 	<!-- ******************************** AREA PRINCIPAL: Se refiera al área que se encuentra debajo del header y a la derecha del menú izquierdo ******************************** -->
 	<div class="area-principal">
 		<!-- ******************************** Botones que definen si la públicación será escrita o video ( Esto sirve para definir una subcategoría en la base de datos ) ******************************** -->

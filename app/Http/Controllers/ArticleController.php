@@ -280,6 +280,7 @@ public function edit($id)
 {
   $categories = Category::all();
   $article = Article::find($id);
+	//dd($article->pics());
   return view('backend.article.edit', ['article' => $article, 'categories' => $categories]);
 }
 

@@ -18,7 +18,7 @@
 				@endforeach
 			</section>
 			<section class="img-ficha-tecnica">
-				<figure class="img-producto-activo"><img src="{{ asset($main->one_pic()) }}" alt="" id="img-main"></figure>
+				<figure class="img-producto-activo img-magnifier-container"><img src="{{ asset($main->one_pic()) }}" alt=""  class="magniflier" id="img-main"></figure>
 				<figure class="fondo-producto-activo"><img src="{{ asset($main->bg_img) }}" alt=""></figure>
 			</section>
 			<section class="texto-ficha-tecnica">
@@ -88,37 +88,14 @@
 		@endif
 
 	</section>
-	{{--
-	<!-- ****************  ABRE PRODUCTOS RELACIONADOS RESPALDO **************** -->
-	<section class="contenedor-otros-productos">
-	<div class="pleca-negra"></div>
-	<strong>Otros Productos que podrían interesarte</strong>
-	@if ($related->isEmpty())
-	<article class="producto">
-	<h2>No hay productos relacionados</h2>
-</article>
-@else
-<button type="button" name="button" id="pagination-back"><</button>
-@foreach ($related as $a)
-<a href="{{ action('FrontController@articleBySlug', ['id' => $a->slug]) }}">
-<article class="producto">
-<figure class="img-producto"><img src="{{ asset($a->one_pic()) }}" alt=""></figure>
-<figure class="fondo-producto"><img src="{{ asset($a->bg_img) }}" alt=""></figure>
-<h2>{{ $a->title }}</h2>
-</article>
-</a>
-@endforeach
-<button  class="btn" type="button" name="button" id="pagination-forward">></button>
-@endif
-
-</section> --}}
-
 
 <!-- ****************  CIERRA PRODUCTOS RELACIONADOS **************** -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="{{ asset('js/magnify.js') }}"></script>
+<style src="{{ asset('css/magnify.css') }}"></style>
 <style media="screen">
 .carousel-item {
 	display: none;
@@ -137,5 +114,6 @@ $('.img-mini').on('click', function() {
 	var newSource = $(this).attr('src');
 	$("#img-main").attr("src",newSource);
 });
+magnify("img-main", 3);
 </script>
 @endsection
