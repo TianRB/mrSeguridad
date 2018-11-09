@@ -125,7 +125,7 @@
 								<div class="subir-foto-articulo">
 									<form method="POST" action="{{ route('articles.add_article_images', $article->id) }}" enctype="multipart/form-data" maxfiles="4" class=" formulario-articulo img-article" id="img-article">
 										{{ csrf_field() }}
-										@if ($article->pics())
+										@if (is_countable($article->pics()))
 										@if (count($article->pics()) > 0)
 											<div style="display:flex;flex-flow:row wrap;">
 												@foreach ($article->pics as $ap)
