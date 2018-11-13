@@ -50,7 +50,7 @@
 	<article>
 		<h2>INTÉGRATE A NUESTRA RED DE DISTRIBUIDORES</h2>
 		<p>Obtén acceso a una marca única en el mercado, que ofrece más beneficios y valor agregado que harán crecer tu negocio.</p>
-		<div class="btn-unete"> <a href="http://18.221.15.19/mrSeguridad/public/img/unete-guia-distribuidor.png">¡Quiero Unirme!</a> </div>
+		<div class="btn-unete"> <a href="http://18.221.15.19/mrSeguridad/public/img/unete-guia-distribuidor.png" target="_blank">¡Quiero unirme!</a> </div>
 	</article>
 	<div class="diagonales">
 		<div class="diagonal-uno"></div>

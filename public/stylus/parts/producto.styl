@@ -3,7 +3,7 @@
 	.miniaturas-producto
 		position absolute
 		right 20px
-		z-index 3
+		z-index 1000
 		figure 
 			width 40px 
 			height 40px
@@ -19,6 +19,8 @@
 				margin-left -10px
 			&:hover 
 				transform scale(1.1)
+	.miniaturas-producto-back
+		z-index 2
 	.texto-ficha-tecnica
 		width 90%
 		margin 0px auto
@@ -27,9 +29,37 @@
 		
 		h1
 			font-size 2rem
-			color rojo-mr-clarito
+			color gris-mr-oscuro
 			font-weight 700
-			margin-bottom 15px
+			margin-bottom 30px
+			.codigo-producto
+				font-size 1.5rem !important
+				display block
+				margin-top 10px
+		.proteccion-auditiva
+			.codigo-producto
+				color #bbf000 !important
+		.proteccion-visual
+			.codigo-producto
+				color #5c2080 !important
+		.seguridad-vial
+			.codigo-producto
+				color #ec8d00 !important
+		.proteccion-general
+			.codigo-producto
+				color #cb3100 !important
+		.nuevos-productos
+			.codigo-producto
+				color #e50002 !important
+		.proteccion-para-manos
+			.codigo-producto
+				color #0063ac !important
+		.proteccion-para-lluvia
+			.codigo-producto
+				color #009bd4 !important
+		.proteccion-respiratoria
+			.codigo-producto
+				color #808284 !important
 		p, ul
 			font-size 1rem
 			color gris-mr
@@ -73,7 +103,7 @@
 	.diagonal-uno
 		width 100%
 		height 10px
-		background #878787
+		background #dadada
 		//transform skewY(-3deg)
 	.diagonal-dos
 		width 100%
@@ -83,7 +113,7 @@
 	.diagonal-tres
 		width 100%
 		height 10px
-		background #dadada
+		background #878787
 		//transform skewY(-3deg)
 
 
@@ -156,7 +186,7 @@
 				height 50px
 		article
 			width 90%
-			height 250px
+			min-height 250px
 			margin 0 auto
 			max-width 1400px
 			.texto-ficha-tecnica
@@ -173,6 +203,10 @@
 					animation 4s rotate linear infinite
 					transform-origin 50% 50%
 					animation-name triangulotres
+					&:hover
+						animation 0s rotate linear infinite
+						transform-origin 50% 50%
+						animation-name triangulotres
 				@keyframes triangulotres{
 						0% {
 							 margin-top -50px;
@@ -189,7 +223,7 @@
 				.fondo-producto-activo
 					width 50%
 					height 210%
-					margin-top -140px
+					margin-top -470px
 					margin-left 100px
 					overflow hidden
 					transform skewX(-20deg)
@@ -219,40 +253,57 @@
 				&:hover 
 					box-shadow 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
 		article
-			height 400px
+			min-height 400px
 			width 80%
 			.texto-ficha-tecnica
 				h1
 					font-size 3rem
 				p, ul 
-					font-size 1.2rem
+					font-size 1.1rem
 					line-height 2rem
 			.img-ficha-tecnica
 				right -20px
 				.fondo-producto-activo
-					height 300%
+					height 400%
 					width 40%
 					margin-left 100px
 				.img-producto-activo
 					width 500px
 					margin-left -300px
+				.img-magnifier-container 
+					position relative
+					&:hover
+						div.img-magnifier-glass 
+							opacity 1
+					div.img-magnifier-glass 
+						//opacity 0
+						position absolute
+						border 3px solid #e52528
+						border-radius 50%
+						cursor pointer
+						width 150px
+						height 150px			
 	.contenedor-otros-productos
-		padding-bottom 100px
-		margin-top 20px
+		padding-bottom 0px
+		margin-top 0px
+		.carousel-control-next, .carousel-control-prev
+			width inherit !important
 		strong
 			position relative
 			z-index 2
 		.pleca-negra
 			width 100%
 			height 300px
+			display none
 			margin-top -100px
 			position absolute
 			background negro-mr 
 			//transform skewY(-3deg)
 			z-index 1
 		.producto 
+			width 100%
 			max-width 200px
-			margin 40px 50px !important
+			//margin 40px 50px !important
 			.fondo-producto
 				filter grayscale(100%)
 				transition all .5s

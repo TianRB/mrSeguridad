@@ -24,7 +24,7 @@
 			<section class="texto-ficha-tecnica">
 				<h1 class="{{ $currentcat }}">{{ $main->title }}</h1>
 				{!! $main->content !!}
-				<div class="btn-ficha-tecnica"> <a href="{{ asset($main->pdf) }}">Descargar Ficha Técnica</a> </div>
+				<div class="btn-ficha-tecnica"> <a href="{{ asset($main->pdf) }}" target="_blank">Descargar Ficha Técnica</a> </div>
 			</section>
 
 		</article>
@@ -95,7 +95,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="{{ asset('js/magnify.js') }}"></script>
-<style src="{{ asset('css/magnify.css') }}"></style>
 <style media="screen">
 .carousel-item {
 	display: none;

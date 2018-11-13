@@ -1,0 +1,102 @@
+.lista-productos
+  width 100%
+  height auto
+  margin 0 auto
+  font-size 0
+  margin-top 15px !important
+  padding-bottom 0 !important
+  padding-top 0
+  position relative
+  article
+    width 100%
+    margin 0 auto
+    padding-top 0px
+    font-size 0
+    figure 
+      width 100%
+      display inline-block
+      vertical-align top
+      padding 20px 0px
+      margin 0px 0
+      img 
+        width 150px
+        height auto
+    .caracteristicas-producto
+      width 100%
+      display inline-block
+      vertical-align top
+      table
+        width 100%
+        tr
+          width 100%
+          &:first-child
+             width 40%
+          &:last-child
+             width 60%
+          td,th
+            font-size .7rem
+            font-weight 300
+            width 25%
+            padding 10px 5px
+            line-height 1rem
+            text-transform uppercase
+          th 
+            background gris-oscuro
+            color #fff
+          td 
+            background gris-fondo
+      /*table
+        width 100%
+        tr
+          display inline-block 
+          vertical-align top
+          &:first-child
+            width 30% 
+          &:last-child
+            width 70%
+          td,th
+            font-size .7rem
+            font-weight 300
+            width 100%
+            padding 0px 0px
+            line-height 1rem
+            display block
+            text-transform uppercase
+          th 
+            background gris-oscuro
+            color #fff
+          td 
+            background gris-fondo*/
+@media screen and (min-width:700px)
+  .lista-productos
+    article
+      font-size 0
+      figure 
+        width 20%
+        overflow hidden
+        height auto 
+        display inline-block
+        vertical-align top 
+        img 
+          width 90px
+      .caracteristicas-producto
+        width 80%
+        display inline-block
+        vertical-align top 
+        table 
+          width 100%
+          margin-left 1px
+@media screen and (min-width:837px)
+  .lista-productos
+    article
+      figure 
+        width 15%
+        height 48px
+        img 
+          width 90px
+          margin-top -8px
+      .caracteristicas-producto
+        width 85%
+
+
+

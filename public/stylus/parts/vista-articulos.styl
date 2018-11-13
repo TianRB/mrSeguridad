@@ -1,6 +1,6 @@
 .cabecera-articulos
 	width 100%
-	margin-top -100px
+	margin-top 0px
 	position relative
 	article
 		width 90%
@@ -8,10 +8,12 @@
 		left 5%
 		text-align center
 		z-index 2
-		top 40%
+		top 55%
 		h2 
 			color #fff 
 			font-size 1.8rem
+			text-transform uppercase
+			text-shadow 2px 0px 2px rgba(40, 40, 40, 1)
 		p 
 			color #fff 
 			font-size .8rem
@@ -35,25 +37,25 @@
 		width 100%
 		height 10px
 		background #878787
-		transform skewY(-3deg)
+		//transform skewY(-3deg)
 	.diagonal-dos
 		width 100%
 		height 10px
 		background #b2b2b2
-		transform skewY(-3deg)
+		//transform skewY(-3deg)
 	.diagonal-tres
 		width 100%
 		height 10px
 		background #dadada
-		transform skewY(-3deg)
+		//transform skewY(-3deg)
 	.contenedor-video
 		background rgba(30, 30, 30, 1)
 		width 100%
 		overflow hidden
-		transform skewY(-3deg)
+		//transform skewY(-3deg)
 		video 
 			width 130%	
-			opacity .10
+			opacity 1
 			
 
 /********************** PRODUCTOS *******************/
@@ -66,6 +68,9 @@
 	font-size 0
 	text-align center
 	padding-bottom 30px
+	a
+		&:nth-child(odd)
+			margin-right 10%
 	.producto 
 		width 45%
 		max-width 155px
@@ -73,8 +78,6 @@
 		vertical-align top 
 		position relative
 		margin-bottom 20px
-		&:nth-child(odd)
-			margin-right 10%
 		.fondo-producto
 			width 100%
 			height 100%
@@ -101,7 +104,61 @@
 			font-size 1rem
 			color gris-mr
 			font-weight 400
+			text-transform uppercase
+			
+.quiero-unirme
+	width 90%
+	padding-bottom 60px
+	margin 0 auto 
+	border-top 1px solid gris-mr
+	padding-top 50px
+	article
+		width 100%
+		margin 0 auto 
+		text-align center
+		h2 
+			color gris-mr
+			font-size 1.8rem
+			text-transform uppercase
+			text-shadow 2px 0px 2px rgba(180, 180, 180, 1)
+		p 
+			color gris-mr
+			font-size .9rem
+			line-height 1.4rem
+		.btn-unete
+			width 140px
+			margin 0 auto
+			margin-top 20px
+			height 30px
+			line-height 30px
+			color #fff 
+			font-size .8rem
+			text-transform uppercase
+			background rojo-mr
+			a
+				color #fff 
+				text-decoration none
 @media screen and (min-width: 700px)
+	.quiero-unirme
+		width 50%
+		padding-bottom 60px
+		article
+			width 90%
+			margin 0 auto 
+			text-align center
+			h2 
+				color gris-mr
+				font-size 2rem
+			p 
+				font-size 1.2rem
+				line-height 1.8rem
+				font-weight 300
+			.btn-unete
+				height 40px
+				line-height 40px
+				a
+					color #fff 
+					text-decoration none
 	.cabecera-articulos
 		article
 			width 500px
@@ -109,6 +166,7 @@
 			margin-left -250px
 			h2 
 				font-size 2.5rem
+				font-weight 900
 			p 
 				font-size 1.2rem
 				line-height 1.8rem
@@ -117,12 +175,15 @@
 				height 40px
 				line-height 40px
 		.diagonal-uno, .diagonal-dos, .diagonal-tres
-			transform skewY(-3deg)
+			//transform skewY(-3deg)
 		.contenedor-video
-			transform skewY(-3deg)
+			//transform skewY(-3deg)
 			video 
 				width 100%
 	.contenedor-productos
+		a
+			&:nth-child(odd)
+				margin-right initial
 		.producto
 			&:nth-child(odd)
 				margin-right initial
@@ -132,7 +193,7 @@
 	.cabecera-articulos
 		margin-top -120px
 		.contenedor-video
-			height 400px
+			height 400px !important
 	.contenedor-productos
 		max-width 1400px
 		padding-bottom 50px

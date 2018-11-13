@@ -1,10 +1,20 @@
 .contenedor-slide
 	width 100%
-	height 550px
-	margin-top -80px
+	height 0px
+	padding-bottom 40%
+	margin-top 0px
 	z-index 0
 	position relative
 	overflow hidden
+	background #000
+	article 
+		&:nth-child(1)
+		&:nth-child(2)
+			.texto-slide
+				display none
+		&:nth-child(3)
+			.texto-slide
+				display none
 	.s_element
 		opacity 0
 		transition all 1s 
@@ -18,24 +28,8 @@
 			z-index 0
 			img
 				width 120%
-				height 100%
-				margin-left -30px
-				animation 20s rotate linear infinite
-				transform-origin 50% 50%
-				animation-name slideFondo
-			@keyframes slideFondo{
-					0% {
-						 margin-left -30px;
-					}
-
-					50% {
-						 margin-left 0px;
-					}
-					100% {
-						 margin-left -30px;
-					}
-
-			}
+				height auto
+				margin-left -70px
 		.producto-slide
 			width 100%
 			height 100%
@@ -44,25 +38,9 @@
 			transition 1.5s all cubic-bezier(.45,.22,.63,.93)
 			opacity 0
 			img 
-				width 100%
+				width 120%
 				margin-left 50px
-				height 100%
-				animation 20s rotate linear infinite
-				transform-origin 50% 50%
-				animation-name slide
-			@keyframes slide{
-					0% {
-						 margin-left 50px;
-					}
-
-					50% {
-						 margin-left 0px;
-					}
-					100% {
-						 margin-left 50px;
-					}
-
-			}
+				height auto
 		.texto-slide
 			width 90%
 			left -1000px
@@ -107,12 +85,58 @@
 		opacity 1
 		.producto-slide
 			opacity 1
+	.s_element
+		&:nth-child(3)
+			.producto-slide
+				img
+					animation 19s rotate linear infinite !important
+					transform-origin 50% 50% !important
+					animation-name slide !important
+			.fondo-slide
+				img
+					animation 19s rotate linear infinite !important
+					transform-origin 50% 50% !important
+					animation-name slideFondo !important
+		.producto-slide
+			img
+				animation 18s rotate linear infinite
+				transform-origin 50% 50%
+				animation-name slide
+			@keyframes slide{
+					0% {
+						 margin-left 50px;
+					}
+
+					50% {
+						 margin-left 25px;
+					}
+					100% {
+						 margin-left -25px;
+					}
+
+			}
+		.fondo-slide
+			img
+				animation 18s rotate linear infinite
+				transform-origin 50% 50%
+				animation-name slideFondo
+			@keyframes slideFondo{
+					0% {
+						 margin-left -70px;
+					}
+					
+					100% {
+						 margin-left 0px;
+					}
+
+			}
 		.texto-slide
 			left 5%
 			
 .unete
 	width 100%
 	position relative
+	margin-top 80px
 	article
 		width 90%
 		position absolute
@@ -128,14 +152,14 @@
 			font-size 1rem
 			line-height 1.6rem
 		.btn-unete
-			width 140px
+			width 160px
 			margin 0 auto
 			margin-top 20px
 			height 40px
 			line-height 40px
+			border-radius 20px
 			color #fff 
 			font-size 1rem
-			text-transform uppercase
 			border 2px solid #fff
 			a
 				color #fff 
@@ -145,14 +169,16 @@
 	.diagonal-uno
 		width 100%
 		height 10px
-		background #9a9a99
+		background rojo-mr
 		//transform skewY(-3deg)
 	.diagonal-dos
+		display none
 		width 100%
 		height 10px
 		background #636463
 		//transform skewY(-3deg)
 	.diagonal-tres
+		display none
 		width 100%
 		height 10px
 		background #4a4a49
@@ -224,7 +250,7 @@
 				video
 					width auto 
 					height 100%
-					opacity .10
+					opacity 1
 			.texto-categorias
 				width 80%
 				left 10%
@@ -232,17 +258,26 @@
 				position absolute
 				top 60px
 				h2 
-					font-size 1.2rem
+					font-size 1.3rem
 					color #fff
-					font-weight 300
+					text-transform uppercase
+					font-weight 700
+					font-style italic
+					text-shadow 2px 1px 4px rgba(100, 100, 100, 1)
+					&::before
+						content ''
+						width 40px 
+						height 2px
+						margin-bottom 5px
+						display block
+						background #fff 
+				.first-word
+					font-size 1rem
+					display block
+					font-weight 400
 @media screen and (min-width: 700px)
 	.contenedor-slide
-		height 500px
 		.s_element
-			.fondo-slide
-				img 
-					width 110%
-					height 100%
 			.texto-slide
 				width 300px
 				top 150px
@@ -289,8 +324,31 @@
 				line-height 1.8rem
 @media screen and (min-width: 1000px)
 	.contenedor-slide
-		height 700px
+		padding-bottom 38%
 		.s_element
+			.fondo-slide
+				img
+					width 110%
+					height auto
+			.producto-slide
+				img 
+					width 110%
+					height auto
+					margin-left 50px
+					animation-name slideDos
+				@keyframes slideDos{
+					0% {
+						 margin-left 50px;
+					}
+
+					50% {
+						 margin-left -25px;
+					}
+					100% {
+						 margin-left -100px;
+					}
+
+				}
 			.texto-slide
 				width 500px
 				h2
@@ -314,6 +372,7 @@
 			width 100% !important
 	.seccion-categorias
 		padding 60px 0
+		padding-bottom 250px
 		article
 			max-width 500px
 			margin-bottom 50px
@@ -327,19 +386,55 @@
 		.categorias-index
 			max-width 1200px
 			margin 0 auto 
+			position relative
 			article
 				width 220px
 				height 220px
 				margin 20px
+				border-radius 10px 
+				overflow hidden
 				cursor pointer
 				box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
 				transition all 0.3s cubic-bezier(.25,.8,.25,1)
+				&:first-child
+					position absolute
+					top 520px
+					width 320px
+					height 100px
+					left 50%
+					margin-left -160px
+					video 
+						width 100%
+						height auto
+					.texto-categorias
+						top -40px
+						h2
+							font-size 1.6rem
+							font-weight 700 !important
+							margin-top 90px
+							text-align center
+							&::before
+								content ''
+								width 40px 
+								height 2px
+								margin-bottom 5px
+								margin-left 120px
+								display block
+								background #fff 
+						.first-word
+							font-size 1.6rem
+							font-weight 700 !important
+							display inline-block
+							
 				&:hover 
 					box-shadow 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
-				h2
-					font-size 1.5rem
-					font-weight 700 !important
-					margin-top 90px
+				.texto-categorias
+					top 30px
+					h2
+						font-size 1.6rem
+						font-weight 700 !important
+						margin-top 90px
+						
 
 
 

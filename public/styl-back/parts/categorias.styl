@@ -1,0 +1,70 @@
+.categorias
+	width 95%
+	margin 0 auto
+	font-size 1rem
+	tr 
+		border-bottom 1px solid gris-clarito !important
+		display block
+		padding 15px 0
+		font-size 0
+		td 
+			width 15%
+			font-size .8rem
+			display inline-block
+			vertical-align top
+			&:first-child
+				width 31%
+			&:last-child
+				width 53%
+			.btn-raised
+				margin 0 !important
+				&:first-child
+					margin-right 10px !important
+					background #23B574
+			h3
+				color rojo-topo
+				font-weight 300
+				text-align left	
+		&:last-child
+			border-bottom 0px solid transparent !important
+	.encabezado-filas
+		border-bottom 2px solid gris-clarito !important
+		display block
+		font-size 0rem
+		margin-bottom 10px
+		text-transform uppercase
+		td 
+			font-size .8rem
+			text-align left
+			width 30% !important
+			&:nth-child(2) 
+				width 70% !important
+@media screen and (min-width:600px)
+	.categorias
+		width 95%
+		margin 0 auto
+		font-size 1rem
+		tr 
+			border-bottom 1px solid gris-clarito !important
+			display block
+			padding 15px 0
+			td 
+				width 33% !important
+				display inline-block
+				vertical-align top
+				.btn-raised
+					margin 0 !important
+					&:first-child
+						margin-right 10px !important
+						background #23B574
+			&:last-child
+				border-bottom 0px solid transparent !important
+		.encabezado-filas
+			text-align left
+			td 
+				&:first-child
+					width 43% !important
+				&:nth-child(2) 
+					width 50% !important
+
+
