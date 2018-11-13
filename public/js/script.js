@@ -29,6 +29,13 @@ $(".texto-ficha-tecnica h1").html(function(){
   var last = text.pop();
   return text.join(" ") + (text.length > 0 ? " <span class='codigo-producto'>" + last + "</span>" : last);
 });
+
+$(".contenedor-productos .producto h2").html(function(){
+  var text= $(this).text().trim().split(" ");
+  var last = text.pop();
+  return text.join(" ") + (text.length > 0 ? " <span class='codigo-producto-dos'>" + last + "</span>" : last);
+});
+
 }
 
 
