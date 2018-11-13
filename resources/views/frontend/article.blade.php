@@ -18,7 +18,7 @@
 				@endforeach
 			</section>
 			<section class="img-ficha-tecnica">
-				<figure class="img-producto-activo img-magnifier-container"><img src="{{ asset($main->one_pic()) }}" alt=""  class="magniflier" id="img-main"></figure>
+				<figure class="img-producto-activo img-magnifier-container"><img src="{{ asset($main->one_pic()) }}" alt=""  class="magnifier" id="img-main"></figure>
 				<figure class="fondo-producto-activo"><img src="{{ asset($main->bg_img) }}" alt=""></figure>
 			</section>
 			<section class="texto-ficha-tecnica">
@@ -112,7 +112,10 @@ $('head').append( '<meta name="description" content="{!! $main->meta_descr !!}">
 $('.img-mini').on('click', function() {
 	var newSource = $(this).attr('src');
 	$("#img-main").attr("src",newSource);
+	$(".img-magnifier-glass").remove();
+	magnify("img-main", 3);
 });
 magnify("img-main", 3);
+
 </script>
 @endsection
