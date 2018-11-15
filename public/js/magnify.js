@@ -13,6 +13,8 @@ function magnify(imgID, zoom) {
   glass.style.backgroundImage = "url('" + img.src + "')";
   glass.style.backgroundRepeat = "no-repeat";
   glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+	glass.style.left = "-100px";
+	glass.style.top = "100px";
   bw = 3;
   w = glass.offsetWidth / 2;
   h = glass.offsetHeight / 2;
@@ -38,8 +40,9 @@ function magnify(imgID, zoom) {
     if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
     if (y < h / zoom) {y = h / zoom;}
     /*set the position of the magnifier glass:*/
-    glass.style.left = (x - w) + "px";
-    glass.style.top = (y - h) + "px";
+    //glass.style.left = (x - w) + "px"; //Estos hacen que la lupa se mantenga en el puntero
+    //glass.style.top = (y - h) + "px"; //Estos hacen que la lupa se mantenga en el puntero
+
     /*display what the magnifier glass "sees":*/
     glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
   }
