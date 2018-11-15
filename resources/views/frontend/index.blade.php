@@ -24,8 +24,8 @@
 		</div> -->
 	</article>
 	<article id="ele1" class="s_element">
-		<figure class="fondo-slide"><img src="img/fondo-slide-1.png" alt=""></figure>
-		<figure class="producto-slide"><img src="img/producto-slide-1.png" alt=""></figure>
+		<figure class="fondo-slide"><img src="img/fondo-slide-4.png" alt=""></figure>
+		<figure class="producto-slide"><img src="img/producto-slide-4.png" alt=""></figure>
 		<div class="texto-slide">
 			<h2>Paliacate</h2>
 			<p>dipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>

@@ -77,7 +77,7 @@ $(document).ready(function(){
 
 var t=setInterval(function(){avanzar();},6000);
 
-	$('#btnAnt').click(function()
+	$('#btnSig').click(function()
 	{
 		var size = $('.slider').find('.s_element').size();
 		$('.slider').find('.s_element').each(
@@ -100,7 +100,7 @@ var t=setInterval(function(){avanzar();},6000);
 				}
 		});
 	});
-	$('#btnSig').click(function()
+	$('#btnAnt').click(function()
 	{
 		var size = $('.slider').find('.s_element').size();
 		$('.slider').find('.s_element').each(
