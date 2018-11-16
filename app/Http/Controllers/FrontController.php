@@ -21,6 +21,30 @@ class FrontController extends Controller
         $categories = Category::all();
         return view('frontend.index', ['slides' => $slides, 'categories' => $categories]);
     }
+    public function contacto()
+    {
+        $slides = Slider::where('enabled', 1)->take(3)->get();
+        $categories = Category::all();
+        return view('frontend.contacto', ['slides' => $slides, 'categories' => $categories]);
+    }
+    public function extra()
+    {
+        $slides = Slider::where('enabled', 1)->take(3)->get();
+        $categories = Category::all();
+        return view('frontend.extra', ['slides' => $slides, 'categories' => $categories]);
+    }
+    public function formulario()
+    {
+        $slides = Slider::where('enabled', 1)->take(3)->get();
+        $categories = Category::all();
+        return view('frontend.formulario', ['slides' => $slides, 'categories' => $categories]);
+    }
+    public function nosotros()
+    {
+        $slides = Slider::where('enabled', 1)->take(3)->get();
+        $categories = Category::all();
+        return view('frontend.nosotros', ['slides' => $slides, 'categories' => $categories]);
+    }
 
     public function category($category)
     {

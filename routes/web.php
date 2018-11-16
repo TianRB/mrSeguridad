@@ -33,6 +33,11 @@ Route::get('/productos/{category}', 'FrontController@category');
 Route::get('/productos/ver/{slug}/{category?}', 'FrontController@articleBySlug');
 Route::get('/sendmessage', 'FrontController@messagesend')->name('send.message');
 
+Route::get('/contacto', 'FrontController@contacto');
+Route::get('/extra', 'FrontController@extra');
+Route::get('/formulario', 'FrontController@formulario');
+Route::get('/nosotros', 'FrontController@nosotros');
+
 
 /*
 |--------------------------------------------------------------------------
