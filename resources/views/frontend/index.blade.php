@@ -5,6 +5,15 @@
 <!-- ****************  COMIENZA SLIDE  **************** -->
 <section class="contenedor-slide slider">
 
+
+	@foreach ($slides as $s)
+		<article id="ele2" class="s_element @if($loop->first) s_visible @endif">
+			<figure class="fondo-slide"><img src="{{ asset($s->bg_img) }}" alt=""></figure>
+			<figure class="producto-slide"><a href="//{{ $s->url }}"><img src="{{ asset($s->image) }}" alt=""></a></figure>
+		</article>
+	@endforeach
+
+{{--
 	<article id="ele2" class="s_element s_visible">
 		<figure class="fondo-slide"><img src="img/fondo-slide-2.png" alt=""></figure>
 		<figure class="producto-slide"><a href="http://18.221.15.19/mrSeguridad/public/productos/ver/tenis-industrial-con-casquillo-sp1042/nuevos-productos"><img src="img/producto-slide-2.png" alt=""></a></figure>
@@ -31,7 +40,7 @@
 			<p>dipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
 			<a href=""><div class="btn-slide">ver más</div><div class="btn-linea"></div></a>
 		</div>
-	</article>
+	</article> --}}
 
 
 	<nav class="nav-slide">

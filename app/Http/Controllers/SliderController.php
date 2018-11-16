@@ -47,22 +47,20 @@ class SliderController extends Controller
       //dd($request->all());
       $input = $request->all();
       $rules = [
-       'title' => 'required|max:64',
-       'description' => 'required|max:512',
+       // 'title' => 'required|max:64',
+       // 'description' => 'required|max:512',
        'image' => 'required|mimes:jpeg,png,jpg|max:800',
-       'bg_img' => 'required|mimes:jpeg,png,jpg|max:800'
+       'img_bg' => 'required|mimes:jpeg,png,jpg|max:800',
+       'url' => 'required'
       ];
       $messages = [
-        'title.required' => 'El campo "título" es obligatorio',
-        'title.max' => 'El campo "título" debe ser de menos de 64 caracteres',
-        'description.required' => 'El campo "descripción" es obligatorio',
-        'description.max' => 'El campo "descripción" debe ser de menos de 512 caracteres',
+        'url.required' => 'El campo "url" es obligatorio',
         'image.required' => 'Debes subir una foto de frente',
         'image.mimes' => 'La foto de frente debe ser jpeg, png o jpg',
         'image.max' => 'La imagen de frente no debe pesar más de 800KB',
-        'bg_img.required' => 'Debes subir una foto de frente',
-        'bg_img.mimes' => 'La foto de frente debe ser jpeg, png o jpg',
-        'bg_img.max' => 'La imagen de frente no debe pesar más de 800KB'
+        'img_bg.required' => 'Debes subir una foto de frente',
+        'img_bg.mimes' => 'La foto de frente debe ser jpeg, png o jpg',
+        'img_bg.max' => 'La imagen de frente no debe pesar más de 800KB'
       ];
 
        $validator = Validator::make($input, $rules, $messages);
@@ -72,23 +70,25 @@ class SliderController extends Controller
            ->withInput();
         } else {
 
+					//dd( $input );
+					//dd( $request->img_bg );
           $s = new Slider;
-          $s->title = $request->input('title');
-          $s->description = $request->input('description');
+          // $s->title = $request->input('title');
+          // $s->description = $request->input('description');
           $s->url = $request->input('url');
 
           //  Crear Imagen
           $file = Input::file('image');
           $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
           $img_path = Slider::$image_path.$file_name;
-          $request->imagen->move(Slider::$image_path, $file_name);
+          $request->image->move(Slider::$image_path, $file_name);
           $s->image = $img_path;
 
           //  Crear Imagen de fondo
-          $bgfile = Input::file('bg_img');
+          $bgfile = Input::file('img_bg');
           $file_name = str_random(16).'.'.$bgfile->getClientOriginalExtension();
           $img_path = Slider::$image_path.'/bg/'.$file_name;
-          $request->imagen->move(Slider::$image_path.'/bg/', $file_name);
+          $request->img_bg->move(Slider::$image_path.'/bg/', $file_name);
           $s->bg_img = $img_path;
 
 
@@ -121,7 +121,7 @@ class SliderController extends Controller
     public function edit($id)
     {
         $slide = Slider::find($id);
-        return view('backend.slider.edit', ['slide' => $slide]);
+        return view('backend.slider.edit', ['slider' => $slide]);
     }
 
     /**
@@ -136,20 +136,17 @@ class SliderController extends Controller
         //dd($request->all());
         $input = $request->all();
         $rules = [
-         'title' => 'required|max:64',
-         'description' => 'required|max:512',
+         // 'title' => 'required|max:64',
+         // 'description' => 'required|max:512',
          'image' => 'mimes:jpeg,png,jpg|max:800',
-         'bg_img' => 'mimes:jpeg,png,jpg|max:800'
+         'img_bg' => 'mimes:jpeg,png,jpg|max:800'
         ];
         $messages = [
-          'title.required' => 'El campo "título" es obligatorio',
-          'title.max' => 'El campo "título" debe ser de menos de 64 caracteres',
-          'description.required' => 'El campo "descripción" es obligatorio',
-          'description.max' => 'El campo "descripción" debe ser de menos de 512 caracteres',
+          'url.required' => 'El campo "url" es obligatorio',
           'image.mimes' => 'La foto de frente debe ser jpeg, png o jpg',
           'image.max' => 'La imagen de frente no debe pesar más de 800KB',
-          'bg_img.mimes' => 'La foto de frente debe ser jpeg, png o jpg',
-          'bg_img.max' => 'La imagen de frente no debe pesar más de 800KB'
+          'img_bg.mimes' => 'La foto de frente debe ser jpeg, png o jpg',
+          'img_bg.max' => 'La imagen de frente no debe pesar más de 800KB'
         ];
 
        $validator = Validator::make($input, $rules, $messages);
@@ -172,16 +169,16 @@ class SliderController extends Controller
               $request->image->move(Slider::$image_path.'/bg/', $file_name);
             }
 
-            // Si hay bg_img
-            if ($request->bg_img) {
+            // Si hay img_bg
+            if ($request->img_bg) {
               // Eliminar vieja Imagen de fondo
-              $oldfile = public_path($s->bg_img);
+              $oldfile = public_path($s->img_bg);
               File::delete($oldfile);
               // Guardar nueva imagen de fondo
-              $file = Input::file('bg_img');
+              $file = Input::file('img_bg');
               $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
-              $s->bg_img = Slider::$image_path.'/bg/'.$file_name;
-              $request->bg_img->move(Slider::$image_path.'/bg/', $file_name);
+              $s->img_bg = Slider::$image_path.'/bg/'.$file_name;
+              $request->img_bg->move(Slider::$image_path.'/bg/', $file_name);
             }
 
             $s->title = $request->input('title');
