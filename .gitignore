@@ -14,4 +14,5 @@ yarn-error.log
 /public/img/article_pictures/
 /public/img/category_pictures/
 /public/img/article_fichas/
+/public/img/slider_pictures/
 .DS_Store
