@@ -48,7 +48,7 @@ function btnMenu(){
 			$(".rayitas").removeClass("rayitas-desactivas")
 			$(".rayitas").addClass("rayitas-activas")
 				$("nav").addClass("nav-activo")
-				$("body").addClass("body-activo")
+				$(".contenedor-total").addClass("contenedor-total-activo")
 				$(".ficha-tecnica .miniaturas-producto").addClass("miniaturas-producto-back")
 			
 		}else{
@@ -61,7 +61,7 @@ function btnMenu(){
 				
 			}, 500);
 			$("nav").removeClass("nav-activo")
-			$("body").removeClass("body-activo")
+			$(".contenedor-total").removeClass("contenedor-total-activo")
 		}
 	})
 }

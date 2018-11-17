@@ -1,11 +1,11 @@
-.body-activo
+.contenedor-total-activo
 	position fixed
 header
 	width 100%
 	height 80px
 	background rgba(60, 60, 60, 1)
 	position relative
-	z-index 100
+	z-index 10000001
 	.logo
 		width 50%
 		height 80px
@@ -100,7 +100,7 @@ nav
 	transition all .5s 
 	opacity 1
 	transform-origin 50%
-	z-index 2
+	z-index 10000000
 	position absolute
 	ul 
 		position relative 
@@ -243,18 +243,22 @@ nav
 		nav 
 			ul 
 				li 
-					width 300px
+					width 200px
 @media screen and (min-width: 1200px)
 	header
 		.logo
 			width 85%
 		.menu-principal
 			width 15% 
+	nav 
+		ul 
+			li 
+				width 300px
 @media screen and (min-width: 1400px)
 	header
 		width 100%
 		height 80px
-		background rgba(30, 30, 30, .75)
+		background rgba(60, 60, 60, 1)
 		position relative
 		z-index 100
 		.logo
@@ -323,6 +327,35 @@ nav
 				margin-top 9px
 			.rayita-dos
 				opacity 0
+	nav 
+		.inicio-sesion
+			padding-top 30px
+			width 40% !important
+			margin-left 5%
+			/*a 
+				
+				border-right 1px solid #fff
+				&:last-child
+					margin-top 30px
+					padding-top 0px
+					padding 3px 10px
+					display inline-block
+					border-right 0px solid #fff
+					border-top 0px solid #fff
+					&:before
+						content ""
+						width 20px 
+						height 20px 
+						margin-right 10px
+						display inline-block
+						background url("../img/icono-upload.svg")
+						background-size cover*/
+		.nosotros-menu
+			width 40%
+			margin-left 5%
+			border-top 1px solid #fff
+			margin-top 20px
+			padding-top 30px
 	
 
 					
