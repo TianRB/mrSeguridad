@@ -43,12 +43,12 @@
 	</article> --}}
 
 
-	<nav class="nav-slide">
+	<div class="nav-slide">
 		<ul>
 			<li id="btnAnt"><span class="icon-arrow-left2"></span></li>
 			<li id="btnSig"><span class="icon-arrow-right2"></span></li>
 		</ul>
-	</nav>
+	</div>
 </section>
 <!-- ****************  TERMINA SLIDE  **************** -->
 
@@ -56,11 +56,11 @@
 
 <!-- ****************  ABRE UNETE AL EQUIPO  **************** -->
 <div class="contenedor-unete">
-	<div class="unete">
+	<div class="unete unete-uno">
 		<article>
 			<h2>INTÉGRATE A NUESTRA RED</h2>
 			<p>Obtén acceso a una marca única en el mercado, que ofrece más beneficios y valor agregado que harán crecer tu negocio.</p>
-			<div class="btn-unete"> <a href="http://18.221.15.19/mrSeguridad/public/img/unete-guia-distribuidor.png" target="_blank">¡Quiero unirme!</a> </div>
+			<div class="btn-unete"> <a href="{{ url('/formulario') }}" target="_blank">¡Quiero unirme!</a> </div>
 		</article>
 		<div class="diagonales">
 			<div class="diagonal-uno"></div>
@@ -74,7 +74,7 @@
 
 	</div>
 
-	<div class="unete">
+	<div class="unete unete-dos">
 		<article>
 			<h2>BENEFICIOS PARA NUESTROS USUARIOS FINALES</h2>
 			<p>Obtén acceso a una marca única en el mercado, que ofrece más beneficios y valor agregado que harán crecer tu negocio.</p>
@@ -116,13 +116,14 @@
 	</article>
 	<section class="categorias-index">
 		<article>
-			<a href="productos/nuevos-productos">
+			<a href="productos/nuevos-productos">		
 				<div class="contenedor-video-categorias">
-					<!--<video src="{{ asset('video/nuevos-productos-min.mp4') }}" loop></video>-->
+					<video src="{{ asset('video/nuevos-productos-min.mp4') }}" loop></video>
 				</div>
 				<div class="texto-categorias">
 					<h2>Nuevos Productos</h2>
 				</div>
+				<div class="new-label"></div>
 			</a>
 		</article>
 		<article>

@@ -34,7 +34,7 @@
 		</ul>
 
 		<div class="inicio-sesion">
-			<a href="">Regístrate</a>
+			<a href="{{ url('/formulario') }}">Regístrate</a>
 			<a href="{{ url('/login') }}">Inicio de Sesión</a>
 			<a href="{{ asset('img/catalogo-mr.pdf') }}" target="_blank" class="descargar-catalogo">Descargar Catálogo</a>
 		</div>
