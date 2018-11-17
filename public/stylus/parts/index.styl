@@ -212,7 +212,6 @@
 		background #4a4a49
 		//transform skewY(-3deg)
 	.contenedor-video
-		background rgba(30, 30, 30, 1)
 		width 100%
 		height 300px
 		overflow hidden
@@ -221,8 +220,15 @@
 		video 
 			width auto	
 			opacity .10
+	&:nth-child(1)
+		.contenedor-video
+			background rgba(3, 47, 198, 1)
+	&:nth-child(2)
+		.contenedor-video
+			background rgba(167, 0, 0, 1)
 .seccion-categorias
 	padding 40px 0
+	background #fff
 	article
 		width 90%
 		margin 0 auto 
@@ -323,21 +329,23 @@
 				.btn-linea
 					left 0%
 					margin-left 5px
+	.contenedor-unete
+		font-size 0px
 	.unete
-		width 100%
+		width 50% !important 
+		display inline-block !important
+		vertical-align top !important
+		font-size 0 !important
 		article
-			width 500px
-			left 50%
-			margin-left -250px
+			width 90% !important
+			left 5% !important
+			margin-left 0px !important
+			top -20px
 			h2 
-				font-size 2.5rem
+				font-size 1.3rem
 			p 
 				font-size 1.2rem
 				line-height 1.8rem
-	.contenedor-video
-		height initial !important
-		video
-			width 100% !important
 	.seccion-categorias
 		padding 60px 0
 		article
@@ -393,12 +401,11 @@
 	.unete
 		width 100%
 		article
-			width 500px
-			left 50%
-			margin-left -250px
-			top 40%
+			width 80% !important
+			left 10% !important
+			top 30%
 			h2 
-				font-size 3rem
+				font-size 1.6rem
 				margin-bottom 20px
 			p 
 				font-size 1.2rem
@@ -406,7 +413,7 @@
 	.contenedor-video
 		height 600px !important
 		video
-			width 100% !important
+			height 100% !important
 	.seccion-categorias
 		padding 60px 0
 		padding-bottom 250px
@@ -428,23 +435,38 @@
 				width 220px
 				height 220px
 				margin 20px
-				border-radius 10px 
+				border-radius 5px 
 				overflow hidden
 				cursor pointer
 				box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
 				transition all 0.3s cubic-bezier(.25,.8,.25,1)
 				&:first-child
 					position absolute
-					top 520px
-					width 320px
-					height 100px
+					top 560px
+					width 332px
+					height 88px
+					overflow inherit
 					left 50%
 					margin-left -160px
+					background url("../img/btn-new-productos.png") no-repeat !important
+					background-size cover !important
+					&:hover 
+						box-shadow inherit
+					.contenedor-video-categorias
+						display none
+					&:after 
+						content ""
+						width 353px
+						height 108px
+						position absolute
+						top -10px
+						left -10px
+						border 2px dashed #d1d0d0
 					video 
 						width 100%
 						height auto
 					.texto-categorias
-						top -40px
+						top -67px
 						h2
 							font-size 1.6rem
 							font-weight 700 !important

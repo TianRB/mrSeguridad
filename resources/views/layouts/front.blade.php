@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -22,20 +22,28 @@
 			<div class="rayita rayita-tres"></div>
 		</div>
 	</div>
-	<div class="inicio-sesion">
-		<a href="">Regístrate</a>
-		<a href="{{ url('/login') }}">Inicio de Sesión</a>
-		<a href="{{ asset('img/catalogo-mr.pdf') }}" target="_blank" class="descargar-catalogo">Descargar Catálogo</a>
-	</div>
-	<nav>
-	<div class="circulo-rojo"></div>
+	
+</header>
+
+<nav>
 		<ul>
+			<p>Categorías de productos</p>
 			@foreach ($categories as $c)
 				<li><a href="{{ url('productos/'.$c->slug) }}">{{ $c->name }}</a></li>
 			@endforeach
 		</ul>
+
+		<div class="inicio-sesion">
+			<a href="">Regístrate</a>
+			<a href="{{ url('/login') }}">Inicio de Sesión</a>
+			<a href="{{ asset('img/catalogo-mr.pdf') }}" target="_blank" class="descargar-catalogo">Descargar Catálogo</a>
+		</div>
+
+		<div class="nosotros-menu">
+			<a href="">Somos</a>
+			<a href="">Políticas</a>
+		</div>
 	</nav>
-</header>
 
 
 @yield('content')
@@ -56,8 +64,24 @@
 				<li><input type="text" placeholder="Nombre y Apellido"></li>
 				<li><input type="text" placeholder="Correo Electrónico"></li>
 				<li><input type="text" placeholder="Teléfono"></li>
+				<li><input type="text" placeholder="Estado desde dónde se comunican"></li>
 				<li><textarea name="" id="" placeholder="¿Cómo podemos ayudarle?"></textarea></li>
 			</ul>
+			<div class="checkbox-container">
+				<p>¿Qué tipo de usuario eres?</p>
+				<div class="check-awesome" class="form-group">
+					<input type="checkbox" name="category[]" class="checkbox" value="">
+					<label for="check-me">Distribuidor</label>
+				</div>
+				<div class="check-awesome" class="form-group">
+					<input type="checkbox" name="category[]" class="checkbox" value="">
+					<label for="check-me">Usuario Final</label>
+				</div>
+				<div class="check-awesome" class="form-group">
+					<input type="checkbox" name="category[]" class="checkbox" value="">
+					<label for="check-me">Otro</label>
+				</div>
+			</div>
 			<div class="btn-enviar">enviar</div>
 		</form>
 </div>
@@ -70,6 +94,16 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+<script type="application/javascript">
+jQuery('input[type=file]').change(function(){
+ var filename = jQuery(this).val().split('\\').pop();
+ var idname = jQuery(this).attr('id');
+ console.log(jQuery(this));
+ console.log(filename);
+ console.log(idname);
+ jQuery('span.'+idname).next().find('span').html(filename);
+});
+</script>
 
 
 </body>

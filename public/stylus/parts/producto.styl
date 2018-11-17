@@ -1,5 +1,6 @@
 .ficha-tecnica
 	width 100%
+	background #fff
 	.miniaturas-producto
 		position absolute
 		right 20px
@@ -24,7 +25,7 @@
 	.texto-ficha-tecnica
 		width 90%
 		margin 0px auto
-		margin-top 20px
+		padding-top 20px
 		padding-bottom 30px
 		
 		h1
@@ -99,7 +100,7 @@
 	.diagonales 
 		margin-top 20px
 		position relative 
-		z-index 2
+		z-index 4
 	.diagonal-uno
 		width 100%
 		height 10px
@@ -180,7 +181,7 @@
 		position relative
 		.miniaturas-producto
 			right 30px
-			top -20px
+			margin-top 50px
 			figure 
 				width 50px 
 				height 50px
@@ -192,11 +193,12 @@
 			.texto-ficha-tecnica
 				width 40%
 				margin-left 0
-				margin-top 50px
+				padding-top 50px
 			.img-ficha-tecnica
 				width 50%
 				position absolute
 				right 80px
+				top 60px
 				.img-producto-activo
 					width 400px
 					margin-left -200px
@@ -256,6 +258,8 @@
 			min-height 400px
 			width 80%
 			.texto-ficha-tecnica
+				position relative 
+				z-index 2
 				h1
 					font-size 3rem
 				p, ul 
@@ -263,6 +267,8 @@
 					line-height 2rem
 			.img-ficha-tecnica
 				right -20px
+				&:hover 
+					z-index 3
 				.fondo-producto-activo
 					height 400%
 					width 40%
@@ -275,20 +281,21 @@
 					&:hover
 						div.img-magnifier-glass 
 							opacity 1
-							z-index 10000
 					div.img-magnifier-glass 
 						opacity 0
+						box-shadow 0px 4px 48px -9px rgba(0,0,0,0.75)
 						position absolute
-						z-index 0
 						background-color #fff
 						//border 3px solid #e52528
-						border-radius 0%
+						border-radius 5px
 						cursor pointer
-						width 300px
-						height 300px			
+						width 350px
+						height 400px			
 	.contenedor-otros-productos
 		padding-bottom 0px
 		margin-top 0px
+		position relative
+		z-index 4
 		.carousel-control-next, .carousel-control-prev
 			width inherit !important
 		strong

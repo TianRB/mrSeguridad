@@ -48,7 +48,7 @@ function btnMenu(){
 			$(".rayitas").removeClass("rayitas-desactivas")
 			$(".rayitas").addClass("rayitas-activas")
 				$("nav").addClass("nav-activo")
-				$(".inicio-sesion").fadeOut()
+				$("body").addClass("body-activo")
 				$(".ficha-tecnica .miniaturas-producto").addClass("miniaturas-producto-back")
 			
 		}else{
@@ -58,10 +58,10 @@ function btnMenu(){
 			setTimeout(function() {
 				$(".rayitas").addClass("rayitas-desactivas")
 				$(".rayitas").removeClass("rayitas-activas")
-				$(".inicio-sesion").fadeIn()
 				
 			}, 500);
 			$("nav").removeClass("nav-activo")
+			$("body").removeClass("body-activo")
 		}
 	})
 }

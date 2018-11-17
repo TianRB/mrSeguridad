@@ -13,8 +13,8 @@ function magnify(imgID, zoom) {
   glass.style.backgroundImage = "url('" + img.src + "')";
   glass.style.backgroundRepeat = "no-repeat";
   glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
-	glass.style.left = "-653px";
-	glass.style.top = "100px";
+	glass.style.left = "-640px";
+	glass.style.top = "0px";
   bw = 3;
   w = glass.offsetWidth / 2;
   h = glass.offsetHeight / 2;

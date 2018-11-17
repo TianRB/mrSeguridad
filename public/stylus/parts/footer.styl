@@ -85,7 +85,56 @@ footer
 		color #fff 
 		font-weight 300
 		margin-bottom 15px
-	
+.checkbox-container
+	width 80%
+	margin 0 auto
+	margin-bottom 20px
+		
+.checkbox {
+  position: relative;
+  top: -.3rem;
+  margin: 0 1rem 0 0;
+  cursor: pointer;
+  border:0px solid transparent;
+}
+
+.checkbox:before {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #f2f2f2;
+  background:#fff;
+}
+
+.checkbox:checked:before {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+ height: .5rem;
+  border-color: #009688;
+  border-top-style: none;
+  border-right-style: none;
+}
+
+.checkbox:after {
+  content: "";
+  position: absolute;
+  top: -0.125rem;
+  left: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  background: #fff;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 1000px)
 	.contacto
 		padding 0px 0
@@ -110,7 +159,12 @@ footer
 						right 0
 						height 180px
 						textarea
-							height 180px
+							height 285px
+			.checkbox-container
+				.check-awesome
+					display inline-block
+					vertical-top top
+					margin-right 40px
 	.mapa 
 		position relative 
 		z-index 2

@@ -1,0 +1,153 @@
+
+.registrate-distribuidor
+	width 100%
+	padding 40px 0
+	background negro-mr
+	background-size cover
+	h1
+		width 90%
+		margin 0 auto
+		margin-bottom 5px
+		font-size 1.5rem 
+		color #fff
+	p 
+		font-size 1rem
+		width 90%
+		margin 0 auto 
+		margin-bottom 20px 
+		color #fff
+	/*.fondo-contacto
+		position fixed
+		width 100%
+		height 1000px*/
+	article
+		padding 20px 0px
+		color #fff 
+		text-align center
+		h2
+			margin-bottom 10px
+			font-size 2rem
+		p 
+			font-size 1rem
+			line-height 1.4rem
+			width 90%
+			margin 0 auto
+	h3
+		text-align center
+		font-size 2rem
+		color #fff
+		font-weight 700
+		margin 0 auto
+		margin-bottom 40px
+		width 300px
+	.formulario-contacto
+		width 90%
+		margin 0 auto
+		padding 30px 0
+		background-color #fff
+		ul 
+			width 80%
+			margin 0 auto
+			p 
+				font-size 1.2rem
+				color gris-mr-oscuro
+			li 
+				list-style none
+				height 66px
+				margin-bottom 15px
+				input,textarea 
+					display block
+					font-size 1rem
+					width 100%
+					border 0
+					padding 10px 5px
+					background white no-repeat
+					background-image linear-gradient(to bottom, #1abc9c, #1abc9c), linear-gradient(to bottom, silver, silver)
+					background-size 0 2px, 100% 1px
+					background-position 50% 100%, 50% 100%
+					transition background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1)
+				input:focus, textarea:focus
+					background-size 100% 2px, 100% 1px
+					outline none
+			div 
+				position relative
+				input[type="file"]
+					width 0
+					height 0
+					opacity 0
+					overflow hidden
+					position absolute
+					z-index -1
+				label
+					font-size 14px
+					font-weight 400
+					color gris-mr-oscuro
+					display inline-block
+					transition all .5s
+					cursor pointer
+					padding 15px 40px !important
+					text-align left
+					&:before
+						content ""
+						width 20px 
+						display block
+						position absolute
+						height 20px 
+						left 0px
+						background url("../img/icono-upload.svg") no-repeat
+						background-size cover
+					&:hover
+						&:before
+							background url("../img/icono-upload-rojo.svg") no-repeat
+							background-size cover
+						
+		.btn-enviar
+			width 100px
+			height 30px 
+			line-height 30px
+			border 1px solid rojo-mr
+			border-radius 15px
+			font-size 1rem
+			font-weight 100
+			text-transform uppercase
+			margin-left 10%
+			text-align center
+
+
+@media screen and (min-width: 700px)
+	.registrate-distribuidor
+		.formulario-contacto
+			max-width 1300px
+			ul 
+				position relative
+				li 
+					width 45%
+					display inline-block
+					vertica-aligne top
+					&:nth-child(even)
+						margin-left 5%
+@media screen and (min-width: 1000px)
+	.registrate-distribuidor
+		h1 
+			font-size 2rem
+			margin-top 40px
+		p 
+			font-size 1.2rem
+			margin-bottom 40px
+		.formulario-contacto
+			ul 
+				position relative
+				p 
+					margin-left 0
+				div
+					width 45%
+					display inline-block
+					vertica-aligne top
+					&:nth-child(even)
+						margin-left 5%
+
+
+
+
+
+
