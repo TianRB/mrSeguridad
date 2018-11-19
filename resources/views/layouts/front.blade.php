@@ -40,8 +40,8 @@
 		</div>
 
 		<div class="nosotros-menu">
-			<a href="">Somos</a>
-			<a href="">Políticas</a>
+			<a href="{{ url('/extra') }}">Somos</a>
+			<a href="{{ url('/contacto') }}">Políticas</a>
 		</div>
 	</nav>
 

@@ -1,0 +1,124 @@
+.contenedor-general-politicas
+	background #fff
+	padding 30px 0
+.contenedor-pdf-politicas
+	width 90%
+	margin 40px auto 
+	.documentos-solicitados
+		width 80%
+		margin 0 auto
+		h1
+			font-size 2rem
+			color rojo-mr
+			margin-left 50px
+			margin-bottom 20px
+			&:before
+				content ""
+				width 40px
+				height 40px
+				margin-left -50px
+				display block
+				position absolute
+				background url("../img/pdf-icon.svg")
+				background-size cover 
+		a 
+			font-size 1rem
+			display block
+			width 200px
+			margin-left 30px
+			&:before
+				content ""
+				width 20px
+				height 20px
+				margin-left -30px
+				display block
+				position absolute
+				background url("../img/icono-download-gris.svg")
+				background-size cover 
+.contenedor-politicas
+	width 90%
+	margin 40px auto 
+	max-width 500px
+	background #fff
+	padding 40px 0
+	h3, p
+		width 100%
+		margin 0 auto
+	.btn-registrate
+		height 40px
+		line-height 40px 
+		width 130px
+		border-radius 20px
+		border 1px solid gris-mr-oscuro
+		text-align center
+		margin-top 10px
+		cursor pointer
+	section
+		width 90% 
+		margin 0 auto
+		margin-top 30px
+		&:first-child
+			margin-top 0
+			margin-bottom 40px
+		&:nth-child(2)
+			.btn-registrate
+				border 1px solid rojo-mr
+		h3 
+			font-size 1.5rem
+	.formulario-contacto
+		width 100%
+		margin 0 auto
+		padding 30px 0
+		background-color #fff
+		ul 
+			width 100%
+			margin 0 auto
+			li 
+				list-style none
+				height 66px
+				margin-bottom 15px
+				input,textarea 
+					display block
+					font-size 1rem
+					width 100%
+					border 0
+					padding 10px 5px
+					background white no-repeat
+					background-image linear-gradient(to bottom, #1abc9c, #1abc9c), linear-gradient(to bottom, silver, silver)
+					background-size 0 2px, 100% 1px
+					background-position 50% 100%, 50% 100%
+					transition background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1)
+				input:focus, textarea:focus
+					background-size 100% 2px, 100% 1px
+					outline none
+		.btn-enviar
+			width 100px
+			height 30px 
+			line-height 30px
+			border 1px solid rojo-mr
+			border-radius 15px
+			font-size 1rem
+			font-weight 100
+			text-transform uppercase
+			margin-left 10%
+			text-align center
+			
+@media screen and (min-width: 700px)
+	.contenedor-general-politicas
+		width 80%
+		max-width 800px
+		margin 0 auto 
+	.contenedor-pdf-politicas
+		width 45%
+		height 40px
+		display inline-block
+		vertical-align top
+	.contenedor-politicas
+		width 45%
+		display inline-block
+		vertical-align top
+	
+
+
+
+
