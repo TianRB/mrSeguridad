@@ -45,6 +45,10 @@ class FrontController extends Controller
         $categories = Category::all();
         return view('frontend.nosotros', ['slides' => $slides, 'categories' => $categories]);
     }
+    public function search(Request $request)
+    {
+			dd($request->search);
+    }
 
     public function category($category)
     {

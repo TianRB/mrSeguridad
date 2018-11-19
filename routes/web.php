@@ -38,6 +38,7 @@ Route::get('/extra', 'FrontController@extra');
 Route::get('/formulario', 'FrontController@formulario');
 Route::get('/nosotros', 'FrontController@nosotros');
 
+Route::post('products/search', ['uses' => 'FrontController@search', 'as' => 'front.search']);
 
 /*
 |--------------------------------------------------------------------------
