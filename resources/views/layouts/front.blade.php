@@ -14,8 +14,7 @@
 		<a href="{{ url('/') }}">
 		<img src="{{ asset('img/logo.png') }}" alt="mr Seguridad">
 		</a>
-		<button onclick="window.history.back();">Atrás</a>
-		<button onclick="window.history.forward();">Adelante</a>
+
 	</figure>
 	<div class="menu-principal">
 		<div class="rayitas rayitas-desactivas">
@@ -46,7 +45,8 @@
 			<a href="{{ url('/contacto') }}">Políticas</a>
 		</div>
 	</nav>
-
+	<button onclick="window.history.back();">Atrás</a>
+	<button onclick="window.history.forward();">Adelante</a>
 
 @yield('content')
 
