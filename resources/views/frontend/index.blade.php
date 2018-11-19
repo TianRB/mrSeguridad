@@ -60,7 +60,7 @@
 		<article>
 			<h2>INTÉGRATE A NUESTRA RED</h2>
 			<p>Obtén acceso a una marca única en el mercado, que ofrece más beneficios y valor agregado que harán crecer tu negocio.</p>
-			<div class="btn-unete"> <a href="{{ url('/formulario') }}" target="_blank">¡Quiero unirme!</a> </div>
+			<div class="btn-unete"> <a href="{{ url('/formulario') }}" >¡Quiero unirme!</a> </div>
 		</article>
 		<div class="diagonales">
 			<div class="diagonal-uno"></div>
@@ -78,7 +78,7 @@
 		<article>
 			<h2>BENEFICIOS PARA NUESTROS USUARIOS FINALES</h2>
 			<p>Obtén acceso a una marca única en el mercado, que ofrece más beneficios y valor agregado que harán crecer tu negocio.</p>
-			<div class="btn-unete"> <a href="http://18.221.15.19/mrSeguridad/public/img/unete-guia-distribuidor.png" target="_blank">¡Quiero saber más!</a> </div>
+			<div class="btn-unete"> <a href="http://18.221.15.19/mrSeguridad/public/img/unete-guia-distribuidor.png" >¡Quiero saber más!</a> </div>
 		</article>
 		<div class="diagonales">
 			<div class="diagonal-uno"></div>
@@ -116,7 +116,7 @@
 	</article>
 	<section class="categorias-index">
 		<article>
-			<a href="productos/nuevos-productos">		
+			<a href="productos/nuevos-productos">
 				<div class="contenedor-video-categorias">
 					<video src="{{ asset('video/nuevos-productos-min.mp4') }}" loop></video>
 				</div>
