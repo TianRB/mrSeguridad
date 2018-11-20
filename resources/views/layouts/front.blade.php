@@ -9,6 +9,7 @@
 	<title>MR Seguridad</title>
 </head>
 <body>
+	<div class="cuadro-negro"></div>
 	<header>
 		<figure class="logo">
 			<a href="{{ url('/') }}">
@@ -51,8 +52,10 @@
 				<a href="{{ url('/contacto') }}">Políticas</a>
 			</div>
 		</nav>
-		<button onclick="window.history.back();">Atrás</button>
-		<button onclick="window.history.forward();">Adelante</button>
+		<div class="flechas-antes-despues">
+		<button class="btn-antes-despues" onclick="window.history.back();"><div class="back"></div></button>
+		<button class="btn-antes-despues" onclick="window.history.forward();"><div class="front"></div></button>
+		</div>
 
 				@yield('content')
 
@@ -79,17 +82,17 @@
 							<li><textarea name="" id="" placeholder="¿Cómo podemos ayudarle?"></textarea></li>
 						</ul>
 						<div class="checkbox-container">
-							<p>¿Qué tipo de usuario eres?</p>
+							<p>¿Quién eres?</p>
 							<div class="check-awesome" class="form-group">
-								<input type="checkbox" name="category[]" class="checkbox" value="">
+								<input type="radio" name="category[]" class="checkbox" value="">
 								<label for="check-me">Distribuidor</label>
 							</div>
 							<div class="check-awesome" class="form-group">
-								<input type="checkbox" name="category[]" class="checkbox" value="">
+								<input type="radio" name="category[]" class="checkbox" value="">
 								<label for="check-me">Usuario Final</label>
 							</div>
 							<div class="check-awesome" class="form-group">
-								<input type="checkbox" name="category[]" class="checkbox" value="">
+								<input type="radio" name="category[]" class="checkbox" value="">
 								<label for="check-me">Otro</label>
 							</div>
 						</div>

@@ -48,10 +48,12 @@ function btnMenu(){
 			$(".rayitas").removeClass("rayitas-desactivas")
 			$(".rayitas").addClass("rayitas-activas")
 				$("nav").addClass("nav-activo")
+				$(".cuadro-negro").fadeIn(500)
 				$(".contenedor-total").addClass("contenedor-total-activo")
 				$(".ficha-tecnica .miniaturas-producto").addClass("miniaturas-producto-back")
 			
 		}else{
+			$(".cuadro-negro").fadeOut(500)
 			setTimeout(function() {
 				$(".ficha-tecnica .miniaturas-producto").removeClass("miniaturas-producto-back")
 			}, 800);

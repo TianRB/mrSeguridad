@@ -3,6 +3,12 @@
 @section('content')
 
 <div class="registrate-distribuidor">
+	<div class="documentos-solicitados">
+		<p>Para comenzar el proceso de registro necesitas descargar la siguiente documentación para posteriormente subirla firmada.</p>
+		<a href="{{ asset('img/politicas-devoluciones-distribuidores.pdf') }}" target="_blank">Política de devoluciones para distribuidores</a>
+		<a href="{{ asset('img/politica-ventas.pdf') }}" target="_blank">Términos y Política de ventas para distribuidores</a>
+	</div>
+
 	<h1>¡Unete a nuestra red de distribuidores!</h1>
 	<p>Sólo tienes que completar la siguiente solicitud para comenzar el proceso de registro</p>
 	<form action="" class="formulario-contacto">
@@ -18,7 +24,7 @@
 				<li><textarea name="" id="" placeholder="¿Cómo podemos ayudarle?"></textarea></li>
 				<p>Es indispensable que suba la siguiente documentación para completar el registro:</p>
 				<div>
-					<span class="file"><input type="file" name="file" id="file" class="inputfile" /></span>
+					<span class="file"><input type="file" name="file" id="file" class="inputfile"/></span>
 					<label for="file"><span>Solicitud de distribuidor firmada</span></label>
 				</div>
 				<div>
