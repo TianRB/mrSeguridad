@@ -11,7 +11,7 @@
 		</article> --}}
 
 		<article>
-			<h2>Resultados de búsqueda</h2>
+			<h2>Fíchas Técnicas</h2>
 		</article>
 
 		<div class="contenedor-video">
@@ -29,19 +29,25 @@
 
 	<!-- ****************  ABRE PRODUCTOS  **************** -->
 	<section class="contenedor-productos">
-		@if ($articles->isEmpty())
+		@if (!$articles)
 			<article class="producto">
-				<h2>No se encuentran resultados</h2>
+				<h2>No se encuontraron fichas técnicas</h2>
 			</article>
 		@else
-			@foreach ($articles as $a)
-				<a href="{{ action('FrontController@articleBySlug', ['id' => $a->slug]) }}">
-					<article class="producto">
-						<figure class="img-producto"><img src="{{ asset($a->one_pic()) }}" alt=""></figure>
-						<figure class="fondo-producto"><img src="{{ asset($a->bg_img) }}" alt=""></figure>
-						<h2>{{ $a->title }}</h2>
-					</article>
-				</a>
+			@foreach ($articles as $catname => $cat)
+				<section>
+					<h1>{{ $catname }}</h1>
+				@foreach ($cat as $a)
+					<a href="{{ asset($a->pdf) }}">
+						<article class="producto">
+							<figure class="img-producto"><img src="{{ asset($a->one_pic()) }}" alt=""></figure>
+							<figure class="fondo-producto"><img src="{{ asset($a->bg_img) }}" alt=""></figure>
+							<h2>Ver ficha Técnica</h2>
+							<h2>{{ $a->title }}</h2>
+						</article>
+					</a>
+				@endforeach
+			</section>
 			@endforeach
 		@endif
 	</section>

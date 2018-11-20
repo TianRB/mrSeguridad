@@ -54,21 +54,25 @@ class FrontController extends Controller
 		//$category = $request->category;
 		$categories = Category::all();
 		$articles = Article::Title($search)->get();
-
-		// if ($category != '') {
-		// 	$art = $articles->reject(function ($a, $key) use ($category) {
-		// 		foreach ($a->categories as $c) {
-		// 			if ($c->slug == $category) {
-		// 				return false;
-		// 			}
-		// 		}
-		// 		return true;
-		// 	});
-		// }
-		//dd($articles);
-		//$cat = Category::where('slug', 'nuevos-productos')->get()->pop();
 		$cat = NULL;
 	return view('frontend.search', ['articles' => $articles,'categories' => $categories]);
+
+	}
+	public function fichas(Request $request)
+	{
+		//dd($request->all());
+		//$category = $request->category;
+		$categories = Category::all();
+
+		$articles = [];
+
+	foreach ($categories as $catname => $cat) {
+			$art = $cat->articles()->get();
+			$articles[$cat->name] = $art;
+		}
+		//dd( $articles );
+
+	return view('frontend.fichas', ['articles' => $articles,'categories' => $categories]);
 
 	}
 
