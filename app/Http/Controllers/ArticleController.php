@@ -215,50 +215,6 @@ public function updateImagesForm(Request $request, $id)
   return view('backend.article.add_images', ['id' => $id]);
 }
 
-// Sube imágenes
-// public function updateImages(Request $request, $id)
-// {
-//   $input = $request->all();
-//
-//
-//   $rules = [
-//     'imagen' => 'required',
-//     'imagen.*' => 'mimes:jpeg,png,jpg|max:400',
-//     'bg_img' => 'required|mimes:jpeg,png,jpg|max:400',
-//   ];
-//   $messages = [
-//     'imagen.required' => 'Debes subir una foto',
-//     'imagen.mimes' => 'El archivo debe ser una imagen en jpeg, png o jpg',
-//     'imagen.max' => 'La imagen no debe pesar más de 400KB',
-//     'bg_img.required' => 'Debes subir una foto de fondo',
-//     'bg_img.mimes' => 'La foto de fondo debe ser una imagen en jpeg, png o jpg',
-//     'bg_img.max' => 'La imagen no debe pesar más de 400KB',
-//   ];
-//
-//   $validator = Validator::make($input, $rules, $messages);
-//   if ($validator->fails()) {
-//     return redirect('articles/create')
-//     ->withErrors($validator)
-//     ->withInput();
-//   } else {
-//
-//     // Guardar imagen de fondo
-//     $file = Input::file('bg_img');
-//     $file_name = str_random(16).'.'.$file->getClientOriginalExtension();
-//     $a->bg_img = Article::$image_path.'/bg/'.$file_name;
-//     $request->bg_img->move(Article::$image_path.'/bg/', $file_name);
-//
-//     //  Guardar una o varias imagenes de frente
-//     foreach ($request->imagen as $image) {
-//       $file_name = str_random(16).'.'.$image->getClientOriginalExtension();
-//       $pic = new Pic;
-//       $pic->path = Article::$image_path.$file_name;
-//       $image->move(Article::$image_path, $file_name);
-//       $a->pics()->save($pic);
-//     }
-//     return redirect('articles/');
-//   }
-// }
 /**
 * Display the specified resource.
 *
