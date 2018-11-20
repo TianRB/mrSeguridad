@@ -29,7 +29,7 @@
 	<nav>
 		<form class="" method="POST" id="searchFilter" action="{{ route('front.search') }}">
 			{{ csrf_field() }}
-			<input type="text" value=""  name="search" placeholder="Buscar producto" autocomplete="off">
+			<input class="buscador" type="text" value=""  name="search" placeholder="Buscar producto" autocomplete="off">
 			<button class="hidden" type="submit"></button>
 		</form>
 
@@ -52,7 +52,7 @@
 			</div>
 		</nav>
 		<button onclick="window.history.back();">Atrás</a>
-			<button onclick="window.history.forward();">Adelante</a>
+		<button onclick="window.history.forward();">Adelante</a>
 
 				@yield('content')
 
