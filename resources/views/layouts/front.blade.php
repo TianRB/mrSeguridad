@@ -27,13 +27,13 @@
 	</header>
 
 	<nav>
-		<form class="" method="POST" id="searchFilter" action="{{ route('front.search') }}">
+
+			<ul>
+				<form class="" method="POST" id="searchFilter" action="{{ route('front.search') }}">
 			{{ csrf_field() }}
 			<input class="buscador" type="text" value=""  name="search" placeholder="Buscar producto" autocomplete="off">
 			<button class="hidden" type="submit"></button>
 		</form>
-
-			<ul>
 				<p>Categorías de productos</p>
 				@foreach ($categories as $c)
 					<li><a href="{{ url('productos/'.$c->slug) }}">{{ $c->name }}</a></li>
@@ -51,8 +51,8 @@
 				<a href="{{ url('/contacto') }}">Políticas</a>
 			</div>
 		</nav>
-		<button onclick="window.history.back();">Atrás</a>
-		<button onclick="window.history.forward();">Adelante</a>
+		<button onclick="window.history.back();">Atrás</button>
+		<button onclick="window.history.forward();">Adelante</button>
 
 				@yield('content')
 
