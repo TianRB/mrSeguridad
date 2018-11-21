@@ -1,0 +1,68 @@
+.contenedor-fichas-tecnicas
+	width 90%
+	margin 0 auto
+	padding 50px 5% 
+	background #fff
+	font-size 0
+	section
+		margin-bottom 30px
+	h2
+		font-size 1.2rem
+		margin-bottom 20px
+	article
+		.imagenes-ficha
+			position relative
+			width 30%
+			display inline-block
+			vertical-align middle 
+		figure
+			img
+				width 100%
+				height auto 
+		.fondo-producto
+			position relative
+			z-index 0
+		.img-producto
+			position absolute
+			z-index 1
+			img 
+				width 100%
+				margin-bottom -70px
+				height auto 
+		.texto-ficha-tecnica
+			display inline-block
+			vertical-align middle 
+			width 70%
+			padding-left 10px
+		p 
+			font-size 1rem
+			line-height 1.3rem
+			color gris-mr
+			margin-bottom 5px
+@media screen and (min-width: 700px)
+	.contenedor-fichas-tecnicas
+		font-size 0
+		.producto
+			width 47.5%
+			display inline-block
+			vertical-align top 
+			&:nth-child(odd)
+				margin-left 5%
+@media screen and (min-width: 1000px)
+	.cabecera-fichas-tecnicas
+		.contenedor-video
+			height 300px !important
+	.contenedor-fichas-tecnicas
+		font-size 0
+		.producto
+			width 25%
+			margin-bottom 20px
+			display inline-block
+			vertical-align top 
+			&:nth-child(odd)
+				margin-left inherit
+			.imagenes-ficha
+				width 100px
+			.texto-ficha-tecnica
+				width 150px
+			
