@@ -4,9 +4,12 @@
 
 <div class="registrate-distribuidor">
 	<div class="documentos-solicitados">
-		<p>Para comenzar el proceso de registro necesitas descargar la siguiente documentación para posteriormente subirla firmada.</p>
-		<a href="{{ asset('img/politicas-devoluciones-distribuidores.pdf') }}" target="_blank">Política de devoluciones para distribuidores</a>
-		<a href="{{ asset('img/politica-ventas.pdf') }}" target="_blank">Términos y Política de ventas para distribuidores</a>
+		<p>Para comenzar el proceso de registro necesitas descargar la siguiente documentación para posteriormente subirla firmada. Si deseas conocer nuestro proceso de alta de distribuidores da <a href="{{ asset('img/unete-guia-distribuidor.png') }}" target="_blank">click aquí</a></p>
+		<div class="enlaces-descarga">	
+			<a href="{{ asset('img/politicas-devoluciones-distribuidores.pdf') }}" target="_blank">Política de devoluciones 
+			para distribuidores</a>
+			<a href="{{ asset('img/politica-ventas.pdf') }}" target="_blank">Términos y Política de ventas para distribuidores</a>
+		</div>
 	</div>
 
 	<h1>¡Unete a nuestra red de distribuidores!</h1>

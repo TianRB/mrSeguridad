@@ -77,7 +77,7 @@
 
 		<p>La marca MR SEGURIDAD es sinónimo de garantía. Somos la marca mejor reconocida en el mercado como de alta calidad. Aunque no tenemos todavía la presencia en el mercado que nos gustaría, hoy nos reconocen como una marca de alta calidad, protección y durabilidad.</p>
 	</div>
-	<div class="btn-fichas-tecnicas">Conoce nuestras fichas técnicnas</div>
+	<a href="{{ url('/products/fichas') }}"><div class="btn-fichas-tecnicas">Conoce nuestras fichas técnicnas</div></a>
 </div>
 
 

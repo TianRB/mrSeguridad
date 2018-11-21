@@ -51,6 +51,9 @@ function btnMenu(){
 				$(".cuadro-negro").fadeIn(500)
 				$(".contenedor-total").addClass("contenedor-total-activo")
 				$(".ficha-tecnica .miniaturas-producto").addClass("miniaturas-producto-back")
+				setTimeout(function() {
+					$(".redes").addClass("redes-activo")
+				}, 800);
 			
 		}else{
 			$(".cuadro-negro").fadeOut(500)
@@ -63,6 +66,7 @@ function btnMenu(){
 				
 			}, 500);
 			$("nav").removeClass("nav-activo")
+			$(".redes").removeClass("redes-activo")
 			$(".contenedor-total").removeClass("contenedor-total-activo")
 		}
 	})

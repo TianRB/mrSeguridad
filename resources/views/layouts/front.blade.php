@@ -51,6 +51,12 @@
 				<a href="{{ url('/extra') }}">Somos</a>
 				<a href="{{ url('/contacto') }}">Políticas</a>
 			</div>
+			<div class="redes">
+				<p>Siguenos en nuestras redes sociales</p>
+				<span class="icon-facebook2"></span>
+				<span class="icon-instagram"></span>
+				<span class="icon-youtube"></span>
+			</div>
 		</nav>
 		<div class="flechas-antes-despues">
 		<button class="btn-antes-despues" onclick="window.history.back();"><div class="back"></div></button>
