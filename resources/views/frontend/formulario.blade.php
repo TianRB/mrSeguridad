@@ -5,10 +5,13 @@
 <div class="registrate-distribuidor">
 	<div class="documentos-solicitados">
 		<p>Para comenzar el proceso de registro necesitas descargar la siguiente documentación para posteriormente subirla firmada. Si deseas conocer nuestro proceso de alta de distribuidores da <a href="{{ asset('img/unete-guia-distribuidor.png') }}" target="_blank">click aquí</a></p>
+
+		<p>1. Descarga Solicitud de distribuidor y Políticas (ventas y devolución).</p>
+		<p>2. Llena la solicitud y junto con las políticas, enviarlas firmadas (los tres documentos).</p>
+		<p>3. Envíanos por correo o desde esta sección (upload) los tres documentos anteriores más: <br> RFC, Acta, Alta SAT, IFE.</p>
 		<div class="enlaces-descarga">	
-			<a href="{{ asset('img/politicas-devoluciones-distribuidores.pdf') }}" target="_blank">Política de devoluciones 
-			para distribuidores</a>
-			<a href="{{ asset('img/politica-ventas.pdf') }}" target="_blank">Términos y Política de ventas para distribuidores</a>
+			<a href="{{ asset('img/politicas-devoluciones-distribuidores.pdf') }}" target="_blank">Política de devolución</a>
+			<a href="{{ asset('img/politica-ventas.pdf') }}" target="_blank">Política de Ventas</a>
 		</div>
 	</div>
 
@@ -28,36 +31,33 @@
 				<p>Es indispensable que suba la siguiente documentación para completar el registro:</p>
 				<div>
 					<span class="file"><input type="file" name="file" id="file" class="inputfile"/></span>
-					<label for="file"><span>Solicitud de distribuidor firmada</span></label>
+					<label for="file"><span>Política de ventas</span></label>
 				</div>
 				<div>
-					<span class="file"><input type="file" name="file" id="file" class="inputfile" /></span>
-					<label for="file"><span>Acta constitutiva (personas Morales)</span></label>
+					<span class="file"><input type="file" name="file" id="file" class="inputfile"/></span>
+					<label for="file"><span>Política de devolución</span></label>
 				</div>
 				<div>
-					<input type="file" name="file" id="file" class="inputfile" />
-					<label for="file">Política de ventas y de devolución firmada</label>
+					<span class="file"><input type="file" name="file" id="file" class="inputfile"/></span>
+					<label for="file"><span>Política de crédito</span></label>
 				</div>
 				<div>
-					<input type="file" name="file" id="file" class="inputfile" />
-					<label for="file">Copia de alta en Hacienda</label>
+					<span class="file"><input type="file" name="file" id="file" class="inputfile"/></span>
+					<label for="file"><span>Ordén de compra</span></label>
 				</div>
 				<div>
-					<input type="file" name="file" id="file" class="inputfile" />
-					<label for="file">Copia de R.F.C.</label>
+					<span class="file"><input type="file" name="file" id="file" class="inputfile"/></span>
+					<label for="file"><span>Servicio de fletes</span></label>
 				</div>
 				<div>
-					<input type="file" name="file" id="file" class="inputfile" />
-					<label for="file">Identificación Oficial Vigente (IFE o Pasaporte vigente)</label>
+					<span class="file"><input type="file" name="file" id="file" class="inputfile"/></span>
+					<label for="file"><span>Solicitud distribuidor</span></label>
 				</div>
 				<div>
-					<input type="file" name="file" id="file" class="inputfile" />
-					<label for="file">Copia de comprobante de domicilio a nombre de la empresa y que coincida  con el domicilio fiscal. Puede ser recibo de luz, agua, teléfono, etc.</label>
+					<span class="file"><input type="file" name="file" id="file" class="inputfile"/></span>
+					<label for="file"><span>Solicitud de crédito</span></label>
 				</div>
-				<div>
-					<input type="file" name="file" id="file" class="inputfile" />
-					<label for="file">Si cuenta con seguro de transporte, favor de incluir una carta donde indica el número de póliza y nombre de la compañia de seguros.</label>
-				</div>
+				
 			</ul>
 			
 			<div class="btn-enviar">enviar</div>

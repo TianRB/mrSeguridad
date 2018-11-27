@@ -15,13 +15,13 @@
 				</div>
 	</div>
 	<div class="contenedor-politicas">
-			<section>
+			<!--<section>
 					<h3>¿Quieres ser distribuidor?</h3>
 					<p>Hacemos el proceso rápido, sin mucho esfuerzo y te ahorramos mucho dinero!</p>
 					<a href="{{ url('/formulario') }}"><div class="btn-registrate">¡Quiero unirme!</div></a>
 				
 
-			</section>
+			</section>-->
 			
 			<section>
 				<h3>¿Ya tienes cuenta?</h3>
