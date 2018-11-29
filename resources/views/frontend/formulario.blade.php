@@ -3,6 +3,9 @@
 @section('content')
 
 <div class="registrate-distribuidor">
+	<div class="encabezado-distribuidor">
+		<p>Proceso de alta de distribuidor</p>
+	</div>
 	<div class="documentos-solicitados">
 		<p>Para comenzar el proceso de registro necesitas descargar la siguiente documentación para posteriormente subirla firmada. Si deseas conocer nuestro proceso de alta de distribuidores da <a href="{{ asset('img/unete-guia-distribuidor.png') }}" target="_blank">click aquí</a></p>
 

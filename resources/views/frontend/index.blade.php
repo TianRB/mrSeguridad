@@ -69,7 +69,7 @@
 		</div>
 
 		<div class="contenedor-video">
-			<video src="video/fondo-unete-dos.mp4" autoplay loop></video>
+			<video src="video/video-distribuidor.mp4" autoplay loop></video>
 		</div>
 
 	</div>
