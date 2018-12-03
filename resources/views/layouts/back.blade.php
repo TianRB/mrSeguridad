@@ -51,6 +51,7 @@
 						</li>
 					</ul>
 				</section>
+				@role('admin')
 				<section class="seccion">
 					<h4><span class="icon-categorias"></span> Vendedores <span class="icon-flecha-abajo"></span></h4>
 					<ul class="bloque">
@@ -62,6 +63,8 @@
 						</li>
 					</ul>
 				</section>
+				@endrole
+				@role('admin')
 				<section class="seccion">
 					<h4><span class="icon-categorias"></span> Distribuidores <span class="icon-flecha-abajo"></span></h4>
 					<ul class="bloque">
@@ -74,22 +77,28 @@
 
 					</ul>
 				</section>
-
+				@endrole
+				@role(['designer','admin'])
 				<section class="seccion">
 					<h4><span class="icon-articulos"></span> Productos <span class="icon-flecha-abajo"></span></h4>
 					<ul class="bloque">
+						@role('admin')
 						<li>
 							<a href="{{ url('users/productos/') }}">Productos (distribuidores)</a>
 						</li>
 						<li>
 							<a href="{{ url('users/vendedores/') }}">Productos (vendedores)</a>
 						</li>
+						@endrole
+						@role('designer')
 						<li>
 							<a href="{{ url('articles/create') }}">Crear Producto</a>
 						</li>
 						<li>
 							<a href="{{ url('articles/') }}">Todos los productos</a>
 						</li>
+						@endrole
+						@role('admin')
 						<li>
 							<a href="">Productos existentes</a>
 						</li>
@@ -99,9 +108,11 @@
 						<li>
 							<a href="">Productos agotados</a>
 						</li>
+						@endrole
 					</ul>
 				</section>
-
+				@endrole
+				@role('admin')
 				<section class="seccion">
 					<h4><span class="icon-articulos"></span> Pedidos <span class="icon-flecha-abajo"></span></h4>
 					<ul class="bloque">
@@ -119,6 +130,8 @@
 						</li>
 					</ul>
 				</section>
+				@endrole
+				@role('admin')
 				<section class="seccion">
 					<h4><span class="icon-categorias"></span> Categorías <span class="icon-flecha-abajo"></span></h4>
 					<ul class="bloque">
@@ -130,6 +143,8 @@
 						</li>
 					</ul>
 				</section>
+				@endrole
+				@role(['designer','admin'])
 				<section class="seccion">
 					<h4><span class="icon-categorias"></span> Slides <span class="icon-flecha-abajo"></span></h4>
 					<ul class="bloque">
@@ -144,6 +159,7 @@
 						</li>
 					</ul>
 				</section>
+				@endrole
 
 			</nav>
 		</div> <!-- Este div cierra el menú izquierdo-->
