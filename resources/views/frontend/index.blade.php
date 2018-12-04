@@ -77,7 +77,7 @@
 	<div class="unete unete-dos">
 		<article>
 			<h2>BENEFICIOS PARA NUESTROS USUARIOS FINALES</h2>
-			<p>Obtén acceso a una marca única en el mercado, que ofrece más beneficios y valor agregado que harán crecer tu negocio.</p>
+			<p>Utilizando nuestros equipos podrás concentrarte plenamente en tu actividad diaria sin preocuparte de más.</p>
 			<div class="btn-unete"> <a href="{{ url('/nosotros') }}" >¡Quiero saber más!</a> </div>
 		</article>
 		<div class="diagonales">
@@ -87,7 +87,7 @@
 		</div>
 
 		<div class="contenedor-video">
-			<video src="video/fondo-unete-dos.mp4" autoplay loop></video>
+			<video src="video/video-usuario-final.mp4" autoplay loop></video>
 		</div>
 
 	</div>
