@@ -137,12 +137,52 @@
 			</a>
 		</article>
 		<article>
+			<a href="productos/senalizacion">
+				<div class="contenedor-video-categorias">
+					<video src="{{ asset('video/senalizacion-min.mp4') }}" loop></video>
+				</div>
+				<div class="texto-categorias">
+					<h2>Señalización</h2>
+				</div>
+			</a>
+		</article>
+		<article>
+			<a href="productos/ropa-vial">
+				<div class="contenedor-video-categorias">
+					<video src="{{ asset('video/ropa-vial-min.mp4') }}" loop></video>
+				</div>
+				<div class="texto-categorias">
+					<h2>Ropa Vial</h2>
+				</div>
+			</a>
+		</article>
+		<article>
 			<a href="productos/proteccion-general">
 				<div class="contenedor-video-categorias">
 					<video src="{{ asset('video/proteccion-general-min.mp4') }}" loop></video>
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección General</h2>
+				</div>
+			</a>
+		</article>
+		<article>
+			<a href="productos/proteccion-anticaidas">
+				<div class="contenedor-video-categorias">
+					<video src="{{ asset('video/proteccion-anticaidas-min.mp4') }}" loop></video>
+				</div>
+				<div class="texto-categorias">
+					<h2>Protección Anticaidas</h2>
+				</div>
+			</a>
+		</article>
+		<article>
+			<a href="productos/calzado-industrial">
+				<div class="contenedor-video-categorias">
+					<video src="{{ asset('video/calzado-industrial-min.mp4') }}" loop></video>
+				</div>
+				<div class="texto-categorias">
+					<h2>Calzado Industrial</h2>
 				</div>
 			</a>
 		</article>
@@ -193,6 +233,16 @@
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección Respiratoria</h2>
+				</div>
+			</a>
+		</article>
+		<article>
+			<a href="productos/linea-de-kevlar">
+				<div class="contenedor-video-categorias">
+					<video src="{{ asset('video/linea-de-kevlar-min.mp4') }}" loop></video>
+				</div>
+				<div class="texto-categorias">
+					<h2>Línea de Kevlar</h2>
 				</div>
 			</a>
 		</article>
