@@ -89,33 +89,54 @@
 
 	</section>
 
-<!-- ****************  CIERRA PRODUCTOS RELACIONADOS **************** -->
+	<!-- ****************  CIERRA PRODUCTOS RELACIONADOS **************** -->
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="{{ asset('js/magnify.js') }}"></script>
-<style media="screen">
-.carousel-item {
-	display: none;
-	transition-duration: 0.1s !important;
-}
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="{{ asset('js/magnify.js') }}"></script>
+	<style media="screen">
+	.carousel-item {
+		display: none;
+		transition-duration: 0.1s !important;
+	}
 
-.carousel-item.active {
-	display: inline-flex;
-}
+	.carousel-item.active {
+		display: inline-flex;
+	}
 
 </style>
-<script type="text/javascript">
-document.title = '{!! $main->page_title !!}';
-$('head').append( '<meta name="description" content="{!! $main->meta_descr !!}">' );
-$('.img-mini').on('click', function() {
-	var newSource = $(this).attr('src');
-	$("#img-main").attr("src",newSource);
-	$(".img-magnifier-glass").remove();
-	magnify("img-main", 3);
-});
-magnify("img-main", 3);
 
-</script>
+@endsection
+
+@section('page_scripts')
+	<script type="text/javascript">
+	document.title = '{!! $main->page_title !!}';
+	$('head').append( '<meta name="description" content="{!! $main->meta_descr !!}">' );
+	$('.img-mini').on('click', function() {
+		var newSource = $(this).attr('src');
+		$("#img-main").attr("src",newSource);
+		$(".img-magnifier-glass").remove();
+		magnify("img-main", 3);
+	});
+	magnify("img-main", 3); // Initialize hoover zoom
+
+	// // Articulo visitado
+	// var current = {{-- $main --}};
+	// console.log(current);
+	// var recent = [];
+	// //Si hay cookie
+	// if (Cookies.get('recent') != null){
+	// 	recent = Cookies.get('recent');
+	// 	console.log('recent defined');
+	// } else {
+	// 	console.log('recent undefined');
+	// }
+	// recent.push(current);
+	// console.log(recent);
+	// Cookies.set('recent',recent);
+
+
+	</script>
+
 @endsection

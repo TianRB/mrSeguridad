@@ -11,5 +11,5 @@ Comunícate con {{$message->name}}: <br>
 **Teléfono:** {{$message->phone}}
 
 **Atentamente**,<br>
-{{ config('app.name') }}
+Mr Seguridad
 @endcomponent

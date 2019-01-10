@@ -127,7 +127,6 @@ class ArticleController extends Controller
       $request->bg_img->move(Article::$image_path.'/bg/', $file_name);
       */
 
-
       // Ficha técnica PDF
       $file = Input::file('pdf');
       $file_name = $a->slug.'.'.$file->getClientOriginalExtension();

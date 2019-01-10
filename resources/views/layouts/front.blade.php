@@ -126,11 +126,8 @@
 		jQuery('span.'+idname).next().find('span').html(filename);
 	});
 
-	Cookies.set('name','{!! $categories->toJson() !!}');
-	console.log(Cookies.get('name'));
-
 	</script>
 
-
+@yield('page_scripts')
 </body>
 </html>
