@@ -80,7 +80,8 @@
 
 		</div>
 		<h3>Queremos escucharte</h3>
-		<form action="" class="formulario-contacto">
+		<form action="{{route('send.message')}}" metohd="POST" class="formulario-contacto">
+			{{ csrf_field() }}
 			<ul>
 				<li><input type="text" placeholder="Nombre y Apellido"></li>
 				<li><input type="text" placeholder="Correo Electrónico"></li>
@@ -103,7 +104,7 @@
 					<label for="check-me">Otro</label>
 				</div>
 			</div>
-			<div class="btn-enviar">enviar</div>
+			<input class="btn-enviar" type="button" value="Enviar">
 		</form>
 	</div>
 
@@ -113,7 +114,7 @@
 	<!-- ****************  CIERRA FOOTER  **************** -->
 
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 	<script type="application/javascript">
@@ -126,8 +127,11 @@
 		jQuery('span.'+idname).next().find('span').html(filename);
 	});
 
+	Cookies.set('name','{!! $categories->toJson() !!}');
+	console.log(Cookies.get('name'));
+
 	</script>
 
-@yield('page_scripts')
+
 </body>
 </html>

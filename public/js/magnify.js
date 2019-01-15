@@ -1,4 +1,5 @@
-function magnify(imgID, zoom) {
+if($("html").width()>1000){
+  function magnify(imgID, zoom) {
   var img, glass, w, h, bw;
   img = document.getElementById(imgID);
 
@@ -13,8 +14,8 @@ function magnify(imgID, zoom) {
   glass.style.backgroundImage = "url('" + img.src + "')";
   glass.style.backgroundRepeat = "no-repeat";
   glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
-	glass.style.left = "-640px";
-	glass.style.top = "0px";
+  glass.style.left = "-640px";
+  glass.style.top = "0px";
   bw = 3;
   w = glass.offsetWidth / 2;
   h = glass.offsetHeight / 2;
@@ -60,4 +61,6 @@ function magnify(imgID, zoom) {
     y = y - window.pageYOffset;
     return {x : x, y : y};
   }
+}
+
 }

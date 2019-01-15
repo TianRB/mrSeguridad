@@ -4,9 +4,26 @@ $(document).ready(videoHover);
 $(document).ready(hoverito);
 
 
+if($("html").width()>1000){
+$(document).on("scroll",function(){
+    if($(document).scrollTop()>750){
+        $(".contenedor-primario-dos").css("position","fixed");
+         $(".contenedor-primario-dos").css("top","0");
+    } else{
+        $(".contenedor-primario-dos").css("position","absolute");
+        $(".contenedor-primario-dos").css("top","750px");
+    }
 
+    if($(document).scrollTop()>1400){
+        $(".contenedor-primario-tres").css("position","fixed");
+         $(".contenedor-primario-tres").css("top","0");
+    } else{
+        $(".contenedor-primario-tres").css("position","absolute");
+        $(".contenedor-primario-tres").css("top","1400px");
+    }
+});
 
-
+}
 
 /*$(document).on("scroll",function(){
     if($(document).scrollTop()>100){
@@ -77,16 +94,18 @@ function btnMenu(){
 			$(".rayitas").removeClass("rayitas-desactivas")
 			$(".rayitas").addClass("rayitas-activas")
 				$("nav").addClass("nav-activo")
-				$(".cuadro-negro").fadeIn(500)
+				$(".cuadro-negro").addClass("cuadro-negro-activo")
 				$(".redes").fadeIn()
 				$(".contenedor-total").addClass("contenedor-total-activo")
 				$(".ficha-tecnica .miniaturas-producto").addClass("miniaturas-producto-back")
+				$("body").css("position","fixed")
 				setTimeout(function() {
 					$(".redes").addClass("redes-activo")
 				}, 800);
 			
 		}else{
-			$(".cuadro-negro").fadeOut(500)
+			$("body").css("position","relative")
+			$(".cuadro-negro").removeClass("cuadro-negro-activo")
 			$(".redes").fadeOut()
 			setTimeout(function() {
 				$(".ficha-tecnica .miniaturas-producto").removeClass("miniaturas-producto-back")
