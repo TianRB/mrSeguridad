@@ -128,9 +128,10 @@
 	});
 
 	Cookies.set('name','{!! $categories->toJson() !!}');
-	console.log(Cookies.get('name'));
+	//console.log(Cookies.get('name'));
 
 	</script>
+	@yield('page_scripts')
 
 
 </body>
