@@ -90,7 +90,7 @@
 							<a href="{{ url('users/vendedores/') }}">Productos (vendedores)</a>
 						</li>
 						@endrole
-						@role('designer')
+						@role(['designer','admin'])
 						<li>
 							<a href="{{ url('articles/create') }}">Crear Producto</a>
 						</li>
