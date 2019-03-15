@@ -20,7 +20,7 @@
 
 	<h1>¡Unete a nuestra red de distribuidores!</h1>
 	<p>Sólo tienes que completar la siguiente solicitud para comenzar el proceso de registro</p>
-	<form action="{{ route('send.register') }}" class="" style="background-color:#ccc">
+	<form action="{{ route('send.register') }}" class="formulario-contacto">
 			<ul>
 				<li><input type="text" name="nombre" placeholder="Nombre y Apellido"></li>
 				<li><input type="text" name="cargo" placeholder="Cargo"></li>

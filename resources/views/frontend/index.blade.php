@@ -45,8 +45,8 @@
 
 	<div class="nav-slide">
 		<ul>
-			<li id="btnAnt"><span class="icon-arrow-left2"></span></li>
-			<li id="btnSig"><span class="icon-arrow-right2"></span></li>
+			<li id="btnSig"><span class="icon-arrow-left2"></span></li>
+			<li id="btnAnt"><span class="icon-arrow-right2"></span></li>
 		</ul>
 	</div>
 </section>
@@ -56,41 +56,44 @@
 
 <!-- ****************  ABRE UNETE AL EQUIPO  **************** -->
 <div class="contenedor-unete">
-	<div class="unete unete-uno">
-		<article>
-			<h2>INTÉGRATE A NUESTRA RED DE DISTRIBUIDORES</h2>
-			<p>Obtén acceso a una marca única en el mercado, que ofrece más beneficios y valor agregado que harán crecer tu negocio.</p>
-			<div class="btn-unete"> <a href="{{ url('/formulario') }}" >¡Quiero unirme!</a> </div>
-		</article>
-		<div class="diagonales">
-			<div class="diagonal-uno"></div>
-			<div class="diagonal-dos"></div>
-			<div class="diagonal-tres"></div>
+	<a href="{{ url('/formulario') }}" >
+		<div class="unete unete-uno">
+			<article>
+				<h2>INTÉGRATE A NUESTRA RED DE DISTRIBUIDORES</h2>
+				<p>Obtén acceso a una marca única en el mercado, que ofrece más beneficios y valor agregado que harán crecer tu negocio.</p>
+				<div class="btn-unete"> ¡Quiero unirme!</div>
+			</article>
+			<div class="diagonales">
+				<div class="diagonal-uno"></div>
+				<div class="diagonal-dos"></div>
+				<div class="diagonal-tres"></div>
+			</div>
+
+			<div class="contenedor-video">
+				<video src="video/video-distribuidor.mp4" autoplay loop></video>
+			</div>
+
 		</div>
+	</a> 
+	<a href="{{ url('/nosotros') }}" >
+		<div class="unete unete-dos">
+			<article>
+				<h2>BENEFICIOS PARA NUESTROS USUARIOS FINALES</h2>
+				<p>Utilizando nuestros equipos podrás concentrarte plenamente en tu actividad diaria sin preocuparte de más.</p>
+				<div class="btn-unete"> ¡Quiero saber más!</div>
+			</article>
+			<div class="diagonales">
+				<div class="diagonal-uno"></div>
+				<div class="diagonal-dos"></div>
+				<div class="diagonal-tres"></div>
+			</div>
 
-		<div class="contenedor-video">
-			<video src="video/video-distribuidor.mp4" autoplay loop></video>
+			<div class="contenedor-video">
+				<video src="video/video-usuario-final.mp4" autoplay loop></video>
+			</div>
+
 		</div>
-
-	</div>
-
-	<div class="unete unete-dos">
-		<article>
-			<h2>BENEFICIOS PARA NUESTROS USUARIOS FINALES</h2>
-			<p>Utilizando nuestros equipos podrás concentrarte plenamente en tu actividad diaria sin preocuparte de más.</p>
-			<div class="btn-unete"> <a href="{{ url('/nosotros') }}" >¡Quiero saber más!</a> </div>
-		</article>
-		<div class="diagonales">
-			<div class="diagonal-uno"></div>
-			<div class="diagonal-dos"></div>
-			<div class="diagonal-tres"></div>
-		</div>
-
-		<div class="contenedor-video">
-			<video src="video/video-usuario-final.mp4" autoplay loop></video>
-		</div>
-
-	</div>
+	</a> 
 </div>
 <!-- ****************  CIERRA UNETE AL EQUIPO  **************** -->
 
@@ -118,7 +121,7 @@
 		<article>
 			<a href="productos/nuevos-productos">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/nuevos-productos-min.mp4') }}" loop></video>
+					<img class="static" src="{{ asset('img/nuevos-productos.png') }}"><img class="active" src="{{ asset('img/nuevos-productos.gif') }}">
 				</div>
 				<div class="texto-categorias">
 					<h2>Nuevos Productos</h2>
@@ -127,19 +130,9 @@
 			</a>
 		</article>
 		<article>
-			<a href="productos/seguridad-vial">
-				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/seguridad-vial-min.mp4') }}" loop></video>
-				</div>
-				<div class="texto-categorias">
-					<h2>Seguridad Vial</h2>
-				</div>
-			</a>
-		</article>
-		<article>
 			<a href="productos/senalizacion">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/senalizacion-min.mp4') }}" loop></video>
+					<img class="static" src="{{ asset('img/senalizacion.png') }}"><img class="active" src="{{ asset('img/senalizacion.gif') }}">
 				</div>
 				<div class="texto-categorias">
 					<h2>Señalización</h2>
@@ -149,7 +142,7 @@
 		<article>
 			<a href="productos/ropa-vial">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/ropa-vial-min.mp4') }}" loop></video>
+					<img class="static" src="{{ asset('img/ropa-vial.png') }}"><img class="active" src="{{ asset('img/ropa-vial.gif') }}">
 				</div>
 				<div class="texto-categorias">
 					<h2>Ropa Vial</h2>
@@ -159,7 +152,7 @@
 		<article>
 			<a href="productos/proteccion-general">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-general-min.mp4') }}" loop></video>
+					<img class="static" src="{{ asset('img/proteccion-general.png') }}"><img class="active" src="{{ asset('img/proteccion-general.gif') }}">
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección General</h2>
@@ -169,7 +162,7 @@
 		<article>
 			<a href="productos/proteccion-anticaidas">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-anticaidas-min.mp4') }}" loop></video>
+					<img class="static" src="{{ asset('img/anticaidas.png') }}"><img class="active" src="{{ asset('img/anticaidas.gif') }}">
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección Anticaidas</h2>
@@ -179,7 +172,7 @@
 		<article>
 			<a href="productos/calzado-industrial">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/calzado-industrial-min.mp4') }}" loop></video>
+					<img class="static" src="{{ asset('img/calzado.png') }}"><img class="active" src="{{ asset('img/calzado.gif') }}">
 				</div>
 				<div class="texto-categorias">
 					<h2>Calzado Industrial</h2>
@@ -189,7 +182,7 @@
 		<article>
 			<a href="productos/proteccion-visual">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-visual-min.mp4') }}" loop></video>
+					<img class="static" src="{{ asset('img/visual.png') }}"><img class="active" src="{{ asset('img/visual.gif') }}">
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección Visual</h2>
@@ -199,7 +192,7 @@
 		<article>
 			<a href="productos/proteccion-para-manos">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-para-manos-min.mp4') }}" loop></video>
+					<img class="static" src="{{ asset('img/manos.png') }}"><img class="active" src="{{ asset('img/manos.gif') }}">
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección para Manos</h2>
@@ -209,7 +202,7 @@
 		<article>
 			<a href="productos/proteccion-auditiva">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-auditiva-min.mp4') }}" loop></video>
+					<img class="static" src="{{ asset('img/auditiva.png') }}"><img class="active" src="{{ asset('img/auditiva.gif') }}">
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección Auditiva</h2>
@@ -219,7 +212,7 @@
 		<article>
 			<a href="productos/proteccion-para-la-lluvia">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-para-la-lluvia-min.mp4') }}" loop></video>
+					<img class="static" src="{{ asset('img/lluvia.png') }}"><img class="active" src="{{ asset('img/lluvia.gif') }}">
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección Para la Lluvia</h2>
@@ -229,23 +222,14 @@
 		<article>
 			<a href="productos/proteccion-respiratoria">
 				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/proteccion-respiratoria-min.mp4') }}" loop></video>
+					<img class="static" src="{{ asset('img/respiratoria.png') }}"><img class="active" src="{{ asset('img/respiratoria.gif') }}">
 				</div>
 				<div class="texto-categorias">
 					<h2>Protección Respiratoria</h2>
 				</div>
 			</a>
 		</article>
-		<article>
-			<a href="productos/linea-de-kevlar">
-				<div class="contenedor-video-categorias">
-					<video src="{{ asset('video/linea-de-kevlar-min.mp4') }}" loop></video>
-				</div>
-				<div class="texto-categorias">
-					<h2>Línea de Kevlar</h2>
-				</div>
-			</a>
-		</article>
+		
 	</section>
 
 </div>

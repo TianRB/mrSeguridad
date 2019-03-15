@@ -224,13 +224,17 @@
 			width auto	
 			opacity .10
 .unete-uno
+	.contenedor-video
+		background rgba(28, 38, 161, 1) !important
 	&:hover
 		.contenedor-video
-			background rgba(3, 47, 198, 1) !important
+			background rgba(45, 63, 244, 1) !important
 .unete-dos
+	.contenedor-video
+		background rgba(93, 17, 0, 1) !important
 	&:hover
 		.contenedor-video
-			background rgba(167, 0, 0, 1) !important
+			background rgba(228, 27, 0, 1) !important
 .seccion-categorias
 	padding 40px 0
 	background #fff
@@ -243,10 +247,12 @@
 		h2 
 			color rojo-mr 
 			font-size 1.5rem
+			display none
 		p 
 			color gris-mr
 			font-size 1rem
 			line-height 1.6rem
+			display none
 	.categorias-index
 		text-align center
 		article
@@ -298,6 +304,14 @@
 					width auto 
 					height 100%
 					opacity 1
+				img
+					width 100%
+					height auto
+			.static 
+				position absolute
+				background white
+			.static:hover 
+				opacity 0	
 			.texto-categorias
 				width 80%
 				left 10%
