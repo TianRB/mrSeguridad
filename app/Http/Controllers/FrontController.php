@@ -16,7 +16,7 @@ class FrontController extends Controller
 {
 	public function index()
 	{
-		$slides = Slider::where('enabled', 1)->take(3)->get();
+		$slides = Slider::where('enabled', 1)->get();
 		$categories = Category::all();
 		return view('frontend.index', ['slides' => $slides, 'categories' => $categories]);
 	}

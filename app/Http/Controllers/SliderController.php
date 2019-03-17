@@ -185,7 +185,7 @@ class SliderController extends Controller
             $s->description = $request->input('description');
             $s->url = $request->input('url');
 
-            if ($request->input('activado')) {
+            if ($request->input('enabled')) {
                 $s->enabled = true;
             } else {
                 $s->enabled = false;
