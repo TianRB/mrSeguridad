@@ -32,6 +32,7 @@ Route::get('/related/{category}', 'FrontController@showRelatedArticles');
 Route::get('/productos/{category}', 'FrontController@category');
 Route::get('/productos/ver/{slug}/{category?}', 'FrontController@articleBySlug');
 
+// Mails
 Route::get('/sendmessage', 'FrontController@messagesend')->name('send.message');
 Route::get('/sendregister', 'FrontController@registersend')->name('send.register');
 
@@ -48,7 +49,6 @@ Route::get('products/fichas', ['uses' => 'FrontController@fichas', 'as' => 'fron
 | Backend
 |--------------------------------------------------------------------------
 */
-Route::get('/sendmessage', 'FrontController@messagesend')->name('send.message');
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
 Route::resource('articles', 'ArticleController');

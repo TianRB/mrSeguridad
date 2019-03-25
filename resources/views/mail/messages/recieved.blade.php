@@ -1,9 +1,8 @@
-@component('mail::message')
-# Hola {{$message->name}}
+# Hola {{$data['message']}}
 
 Recibimos satisfactoriamente tu mensaje:
 <br>
-"*{{$message->message}}*"
+"*{{$data['message']}}*"
 <br>
 
 En breve un operador se pondrá en contacto y resolverá todas tus dudas.
@@ -11,4 +10,3 @@ En breve un operador se pondrá en contacto y resolverá todas tus dudas.
 
 Atentamente,<br>
 Mr Seguridad
-@endcomponent

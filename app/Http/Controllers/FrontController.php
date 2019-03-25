@@ -9,6 +9,8 @@ use App\Category;
 use App\Message;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
+use App\Mail\ContactoMail;
+use App\Mail\RecievedMail;
 use Validator;
 use Illuminate\Support\Str;
 
@@ -144,16 +146,8 @@ class FrontController extends Controller
 				->withErrors( $validator )
 				->withInput();
 			} else {
-				$message = Message::create([
-					'name' => $input['name'],
-					'phone' => $input['phone'],
-					'email' => $input['email'],
-					'message' => $input['message']
-				]);
-				//$mall = Message::all();
-				//dd($mall,$message);
-				Mail::to('tianrb@gmail.com')->send(new NewMessage($message));
-				Mail::to($message->email)->send(new RecievedMessage($message));
+				Mail::to($input['email'])->send(new RecievedMail($request));
+				Mail::to('ventas@mrseguridad.com')->send(new ContactoMail($request));
 				return redirect()->route('front.index');
 			}
 		}
@@ -203,8 +197,8 @@ class FrontController extends Controller
 				];
 				//$mall = Message::all();
 				//dd($message);
-				Mail::to('tianrb@gmail.com')->send(new RegisterMail($message));
-				// Mail::to($message->email)->send(new RecievedMessage($message));
+				Mail::to('ventas@mrseguridad.com')->send(new RegisterMail($message));
+				Mail::to($input['mail'])->send(new RecievedMessage($message));
 				return redirect()->route('front.index');
 			}
 		}

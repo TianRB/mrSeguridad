@@ -83,28 +83,28 @@
 		<form action="{{route('send.message')}}" metohd="POST" class="formulario-contacto">
 			{{ csrf_field() }}
 			<ul>
-				<li><input type="text" placeholder="Nombre y Apellido"></li>
-				<li><input type="text" placeholder="Correo Electrónico"></li>
-				<li><input type="text" placeholder="Teléfono"></li>
-				<li><input type="text" placeholder="Estado desde dónde se comunican"></li>
-				<li><textarea name="" id="" placeholder="¿Cómo podemos ayudarle?"></textarea></li>
+				<li><input name="name" type="text" placeholder="Nombre y Apellido"></li>
+				<li><input name="email" type="text" placeholder="Correo Electrónico"></li>
+				<li><input name="phone" type="text" placeholder="Teléfono"></li>
+				<li><input name="state" type="text" placeholder="Estado desde dónde se comunican"></li>
+				<li><textarea name="message" id="" placeholder="¿Cómo podemos ayudarle?"></textarea></li>
 			</ul>
 			<div class="checkbox-container">
 				<p>¿Quién eres?</p>
 				<div class="check-awesome" class="form-group">
-					<input type="radio" name="category[]" class="checkbox" value="">
+					<input type="radio" name="type" class="checkbox" value="distribuidor">
 					<label for="check-me">Distribuidor</label>
 				</div>
 				<div class="check-awesome" class="form-group">
-					<input type="radio" name="category[]" class="checkbox" value="">
+					<input type="radio" name="type" class="checkbox" value="usuario">
 					<label for="check-me">Usuario Final</label>
 				</div>
 				<div class="check-awesome" class="form-group">
-					<input type="radio" name="category[]" class="checkbox" value="">
+					<input type="radio" name="type" class="checkbox" value="otro">
 					<label for="check-me">Otro</label>
 				</div>
 			</div>
-			<input class="btn-enviar" type="button" value="Enviar">
+			<input class="btn-enviar" type="submit" value="Enviar">
 		</form>
 	</div>
 
