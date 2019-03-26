@@ -55,7 +55,7 @@
 		<div class="redes">
 			<p>Siguenos en nuestras redes sociales</p>
 			<a href="https://www.facebook.com/MRSeguridad/" target="_blank"><span class="icon-facebook2"></span></a>
-			<a href="https://www.instagram.com/explore/locations/156784164367692/mexico/veracruz-llave-veracruz-llave-mexico/mr-seguridad/?hl=es-la" target="_blank"><span class="icon-instagram"></span></a>
+			<a href="https://instagram.com/contenidoseguro?utm_source=ig_profile_share&igshid=16g8r1dtbq1bf" target="_blank"><span class="icon-instagram"></span></a>
 			<a href="https://www.youtube.com/user/MRSeguridadVer" target="_blank"><span class="icon-youtube"></span></a>
 		</div>
 	</nav>
