@@ -34,7 +34,7 @@ Route::get('/productos/ver/{slug}/{category?}', 'FrontController@articleBySlug')
 
 // Mails
 Route::get('/sendmessage', 'FrontController@messagesend')->name('send.message');
-Route::get('/sendregister', 'FrontController@registersend')->name('send.register');
+Route::post('/sendregister', 'FrontController@registersend')->name('send.register');
 
 Route::get('/contacto', 'FrontController@contacto');
 Route::get('/extra', 'FrontController@extra');

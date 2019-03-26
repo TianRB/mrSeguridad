@@ -10,15 +10,15 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class RegisterMail extends Mailable
 {
 	use Queueable, SerializesModels;
-	public $message;
+	public $data;
 	/**
-	* Create a new message instance.
+	* Create a new data instance.
 	*
 	* @return void
 	*/
-	public function __construct($message)
+	public function __construct($data)
 	{
-		$this->message = $message;
+		$this->data = $data;
 	}
 
 	/**
@@ -28,7 +28,49 @@ class RegisterMail extends Mailable
 	*/
 	public function build()
 	{
-		return $this->from('example@example.com')
-		->view('mail.messages.registroDistr')->with('data', $this->message);;
+
+      $file = $this->data['politicaventas'];
+      $name = str_random(16).'.'.$file->getClientOriginalExtension();
+      $file->move('mails/files/', $name);
+			$pathToFile1 = public_path().'/mails/files/'.$name;
+
+      $file = $this->data['politicadevolucion'];
+      $name = str_random(16).'.'.$file->getClientOriginalExtension();
+      $file->move('mails/files/', $name);
+			$pathToFile2 = public_path().'/mails/files/'.$name;
+
+      $file = $this->data['politicacredito'];
+      $name = str_random(16).'.'.$file->getClientOriginalExtension();
+      $file->move('mails/files/', $name);
+			$pathToFile3 = public_path().'/mails/files/'.$name;
+
+      $file = $this->data['ordencompra'];
+      $name = str_random(16).'.'.$file->getClientOriginalExtension();
+      $file->move('mails/files/', $name);
+			$pathToFile4 = public_path().'/mails/files/'.$name;
+
+      $file = $this->data['serviciofletes'];
+      $name = str_random(16).'.'.$file->getClientOriginalExtension();
+      $file->move('mails/files/', $name);
+			$pathToFile5 = public_path().'/mails/files/'.$name;
+
+      $file = $this->data['solicituddistribuidor'];
+      $name = str_random(16).'.'.$file->getClientOriginalExtension();
+      $file->move('mails/files/', $name);
+			$pathToFile6 = public_path().'/mails/files/'.$name;
+
+      $file = $this->data['solicitudcredito'];
+      $name = str_random(16).'.'.$file->getClientOriginalExtension();
+      $file->move('mails/files/', $name);
+			$pathToFile7 = public_path().'/mails/files/'.$name;
+
+		return $this->view('mail.messages.registro')
+		->attach($pathToFile1)
+		->attach($pathToFile2)
+		->attach($pathToFile3)
+		->attach($pathToFile4)
+		->attach($pathToFile5)
+		->attach($pathToFile6)
+		->attach($pathToFile7);
 	}
 }

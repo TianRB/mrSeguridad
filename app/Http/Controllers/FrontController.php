@@ -165,7 +165,13 @@ class FrontController extends Controller
 				'ciudad' => 'required',
 				'mail' => 'required|email',
 				'telefono' => 'required|numeric',
-				'motivo' => 'required'
+				'motivo' => 'required',
+				'politicaventas' => 'required',
+				'politicadevolucion' => 'required',
+				'ordencompra' => 'required',
+				'serviciofletes' => 'required',
+				'solicituddistribuidor' => 'required',
+				'solicitudcredito' => 'required',
 			];
 			$messages = [
 				'nombre.required' => 'El campo nombre es requerido',
@@ -180,25 +186,13 @@ class FrontController extends Controller
 			];
 			$validator = Validator::make($input, $rules, $messages);
 			if ( $validator->fails() ) {
-				return redirect('/#contacto')
+				return redirect('/formulario')
 				->withErrors( $validator )
 				->withInput();
 			} else {
-				$message = [
-					'nombre' => $input['nombre'],
-					'cargo' => $input['cargo'],
-					'razonsocial' => $input['razonsocial'],
-					'rfc' => $input['rfc'],
-					'ciudad' => $input['ciudad'],
-					'mail' => $input['mail'],
-					'telefono' => $input['telefono'],
-					'motivo' => $input['motivo'],
-					'mensaje' => $input['mensaje']
-				];
-				//$mall = Message::all();
-				//dd($message);
-				Mail::to('ventas@mrseguridad.com')->send(new RegisterMail($message));
-				Mail::to($input['mail'])->send(new RecievedMessage($message));
+				//dd($request);
+				Mail::to('ventas@mrseguridad.com')->send(new RegisterMail($request));
+				Mail::to($input['mail'])->send(new RecievedMail($request));
 				return redirect()->route('front.index');
 			}
 		}
