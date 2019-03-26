@@ -9,6 +9,8 @@ use App\Category;
 use App\Message;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
+use App\Mail\ContactoMail;
+use App\Mail\RecievedMail;
 use Validator;
 use Illuminate\Support\Str;
 
@@ -144,16 +146,8 @@ class FrontController extends Controller
 				->withErrors( $validator )
 				->withInput();
 			} else {
-				$message = Message::create([
-					'name' => $input['name'],
-					'phone' => $input['phone'],
-					'email' => $input['email'],
-					'message' => $input['message']
-				]);
-				//$mall = Message::all();
-				//dd($mall,$message);
-				Mail::to('tianrb@gmail.com')->send(new NewMessage($message));
-				Mail::to($message->email)->send(new RecievedMessage($message));
+				Mail::to($input['email'])->send(new RecievedMail($request));
+				Mail::to('ventas@mrseguridad.com')->send(new ContactoMail($request));
 				return redirect()->route('front.index');
 			}
 		}
@@ -171,7 +165,13 @@ class FrontController extends Controller
 				'ciudad' => 'required',
 				'mail' => 'required|email',
 				'telefono' => 'required|numeric',
-				'motivo' => 'required'
+				'motivo' => 'required',
+				'politicaventas' => 'required',
+				'politicadevolucion' => 'required',
+				'ordencompra' => 'required',
+				'serviciofletes' => 'required',
+				'solicituddistribuidor' => 'required',
+				'solicitudcredito' => 'required',
 			];
 			$messages = [
 				'nombre.required' => 'El campo nombre es requerido',
@@ -186,25 +186,13 @@ class FrontController extends Controller
 			];
 			$validator = Validator::make($input, $rules, $messages);
 			if ( $validator->fails() ) {
-				return redirect('/#contacto')
+				return redirect('/formulario')
 				->withErrors( $validator )
 				->withInput();
 			} else {
-				$message = [
-					'nombre' => $input['nombre'],
-					'cargo' => $input['cargo'],
-					'razonsocial' => $input['razonsocial'],
-					'rfc' => $input['rfc'],
-					'ciudad' => $input['ciudad'],
-					'mail' => $input['mail'],
-					'telefono' => $input['telefono'],
-					'motivo' => $input['motivo'],
-					'mensaje' => $input['mensaje']
-				];
-				//$mall = Message::all();
-				//dd($message);
-				Mail::to('tianrb@gmail.com')->send(new RegisterMail($message));
-				// Mail::to($message->email)->send(new RecievedMessage($message));
+				//dd($request);
+				Mail::to('ventas@mrseguridad.com')->send(new RegisterMail($request));
+				Mail::to($input['mail'])->send(new RecievedMail($request));
 				return redirect()->route('front.index');
 			}
 		}

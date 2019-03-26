@@ -15,4 +15,6 @@ yarn-error.log
 /public/img/category_pictures/
 /public/img/article_fichas/
 /public/img/slider_pictures/
+/public/mails
 .DS_Store
+mrSeguridad.zip

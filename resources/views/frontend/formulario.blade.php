@@ -20,7 +20,8 @@
 
 	<h1>¡Unete a nuestra red de distribuidores!</h1>
 	<p>Sólo tienes que completar la siguiente solicitud para comenzar el proceso de registro</p>
-	<form action="{{ route('send.register') }}" class="formulario-contacto">
+	<form action="{{ route('send.register') }}" method="POST" class="formulario-contacto" enctype="multipart/form-data">
+		{{ csrf_field() }}
 			<ul>
 				<li><input type="text" name="nombre" placeholder="Nombre y Apellido"></li>
 				<li><input type="text" name="cargo" placeholder="Cargo"></li>
@@ -66,6 +67,7 @@
 			<input class="btn-enviar" type="submit" value="Enviar">
 		</form>
 </div>
-
-
+<script>
+	@if ($errors->any()) @foreach ($errors->all() as $error) console.log('{!! $error !!}'); @endforeach @endif
+</script>
 @endsection

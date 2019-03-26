@@ -1,6 +1,4 @@
-@component('mail::message')
 # ¡Se han comunicado con nosotros! <br><br>
-{{-- dd( $data ) --}}
 {{$data['nombre']}} nos ha escrito: <br>
 {{$data['mensaje']}} <br><br>
 
@@ -14,6 +12,3 @@ Motivo: {{$data['motivo']}}<br><br>
 
 Enviado desde:<br>
 Mr Seguridad
-{{ dd('end of mail') }}
-
-@endcomponent
