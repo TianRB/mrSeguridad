@@ -74,9 +74,9 @@
 			<h2>Aquí puedes encontrar a tu distribuidor más cercano.</h2>
 		</article>
 		<div class="mapa">
-			{{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15007976.465466967!2d-111.65082483132548!3d23.313699520377405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2zTcOpeGljbw!5e0!3m2!1ses-419!2smx!4v1533860657728" frameborder="0" style="border:0" allowfullscreen></iframe> --}}
+			<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d1884.3314058016165!2d-96.2257139!3d19.1662316!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1553790857041" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-			<iframe src="https://www.google.com/maps/d/embed?mid=1yPFOAraRgZI_xOJCpoGbNUqU57x1UYgu" frameborder="0" style="border:0" allowfullscreen></iframe>
+			{{-- <iframe src="https://www.google.com/maps/d/embed?mid=1yPFOAraRgZI_xOJCpoGbNUqU57x1UYgu" frameborder="0" style="border:0" allowfullscreen></iframe>--}}
 
 		</div>
 		<h3>Queremos escucharte</h3>
