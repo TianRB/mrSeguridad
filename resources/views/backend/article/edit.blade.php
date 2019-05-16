@@ -90,11 +90,11 @@
 							<label for="pdf">Ficha Técnica (PDF)</label>
 
 							<div>
-								<button style="display:block;width:120px; height:30px;" onclick="event.preventDefault();document.getElementById('getFile').click();">Da click aqui para cambiar la ficha técnica</button>
+								<button class="btn-subir-pdf" style="display:block;width:120px;" onclick="event.preventDefault();document.getElementById('getFile').click();">Da click aqui para cambiar la ficha técnica</button>
 								<input type='file' name="pdf" id="getFile" style="display:none">
 							</div>
 						</div>
-						<div class="modulo-aside sombra-1" style="padding-top:5px;">
+						<div class="modulo-aside sombra-1" style="padding-top:5px; padding-bottom:20px;">
 						</form>
 
 							<!-- ******************************** SUBIR FOTO ******************************** -->

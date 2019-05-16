@@ -51,6 +51,15 @@
 		vertical-align top
 		&:nth-child(even)
 			margin-left 5%
+.modulo-aside
+	.btn-subir-pdf
+		margin-left 20px 
+		background rojo-mr
+		color #fff
+		height 50px
+		cursor pointer
+		border 0 
+		border-radius 5px 
 .modulo-aside .contenedor-crear-foto-dos
 	.subir-foto-articulo .cif-file-row
 		border 1px solid gris-mr !important
@@ -73,8 +82,12 @@
 		position relative
 		padding 10px 0
 		border 2px dashed rgba(0,0,0,.2)
-		form, .cif-file-container, .cif-parent, .cif-img
+		.dz-preview, .dz-complete, .dz-image-preview
+			display none !important
+		.cif-file-container, .cif-parent, .cif-img
 			height 100% !important
+		form 
+			height 200px
 		.cif-file-row
 			width 120px
 			height 120px

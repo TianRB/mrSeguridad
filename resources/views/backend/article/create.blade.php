@@ -106,7 +106,7 @@ Nota Escrita
 					<label for="pdf">Ficha Técnica (PDF)</label>
 
 					<div>
-						<button style="display:block;width:120px; height:30px;" onclick="event.preventDefault();document.getElementById('getFile').click();">Selecciona una ficha técnica</button>
+						<button class="btn-subir-pdf" style="display:block;width:120px; " onclick="event.preventDefault();document.getElementById('getFile').click();">Selecciona una ficha técnica</button>
 						<input type='file' name="pdf" id="getFile" style="display:none">
 					</div>
 				</div>
