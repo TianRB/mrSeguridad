@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use App\Events\UsuarioExcelCreadoEvent;
 
 class UsersImport implements ToCollection, WithHeadingRow
 {
@@ -18,12 +19,14 @@ class UsersImport implements ToCollection, WithHeadingRow
     {
         //dd($rows);
         foreach ($rows as $row) {
-             User::create([
+            User::create([
                 'name'     => $row['nombre'],
                 'email'    => $row['email'], 
-                'password' => bcrypt($row['password']),
+                'password' => bcrypt(str_random(8)),
                 'recent'   => 'undefined'
             ]);
+            $user = User::where('name', $row['nombre'])->first();
+            event(new UsuarioExcelCreadoEvent($user));
         }
     }
 }
