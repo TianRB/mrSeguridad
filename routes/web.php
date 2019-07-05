@@ -14,6 +14,7 @@ if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/apitest', 'APIController@getJson')->name('test.api');
 Route::get('/test', function(){ return view('test');})->name('test.get');
 Route::post('/test', 'ExcelController@importUsers')->name('test.post');
 
