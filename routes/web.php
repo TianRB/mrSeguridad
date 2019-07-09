@@ -14,6 +14,9 @@ if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/apitest', 'APIController@getJson')->name('test.api');
+Route::get('/importExcel', function(){ return view('test');})->name('importExcel.get');
+Route::post('/importExcel', 'ExcelController@importUsers')->name('importExcel.post');
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +76,9 @@ Route::get('/users/index', 'DistribuidorController@indexUsuarios');
 Route::get('/users/productos', 'DistribuidorController@ventasListaProductos');
 Route::get('/users/vendedores', 'DistribuidorController@ventasListaVendedores');
 Route::get('/users/perfil/vendedores', 'DistribuidorController@ventasVendedorPerfil');
+Route::get('/distribuidor/perfil', ['uses' => 'DistribuidorController@distribuidorPerfil', 'as' => 'distributors.perfil']);
+Route::get('/distribuidor/facturas', ['uses' => 'DistribuidorController@distribuidorFacturas', 'as' => 'distributors.facturas']);
+Route::get('/distribuidor/pedidos', ['uses' => 'DistribuidorController@distribuidorPedidos', 'as' => 'distributors.pedidos']);
 
 // Rutas auxiliares
 Route::get('/addSlugs', 'CategoryController@addSlugToAll');
