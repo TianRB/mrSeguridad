@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
       'email' => 'salesman@admin.com',
       'password' => bcrypt('secret'),
       'recent' => 'none'
-      ]);
+    ]);
 
     DB::table('roles')->insert([
       'name' => 'admin',
