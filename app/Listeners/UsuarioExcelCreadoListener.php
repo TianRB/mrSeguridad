@@ -7,6 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UsuarioExcelMail;
+use App\Role;
 
 class UsuarioExcelCreadoListener
 {
@@ -29,6 +30,7 @@ class UsuarioExcelCreadoListener
     public function handle(UsuarioExcelCreadoEvent $event)
     {
         $user = $event->user;
+        $user->attachRole(Role::where('name', 'distributor')->first());
         //dd($user);
         Mail::to($user->email)->send(new UsuarioExcelMail($user));
     }

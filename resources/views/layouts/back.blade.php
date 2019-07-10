@@ -78,6 +78,16 @@
 					</ul>
 				</section>
 				@endrole
+				@role('admin')
+				<section class="seccion">
+					<h4><span class="icon-categorias"></span> Subir Excel de Usuarios <span class="icon-flecha-abajo"></span></h4>
+					<ul class="bloque">
+						<li>
+							<a href="{{ route('importExcel.get')}}">Entrar</a>
+						</li>
+					</ul>
+				</section>
+				@endrole
 				@role(['designer','admin'])
 				<section class="seccion">
 					<h4><span class="icon-articulos"></span> Productos <span class="icon-flecha-abajo"></span></h4>
@@ -156,6 +166,36 @@
 						</li>
 						<li>
 							<a href="{{ url('sliders/') }}">Ver slides existentes</a>
+						</li>
+					</ul>
+				</section>
+				@endrole
+				@role(['distributor','admin'])
+				<section class="seccion">
+					<h4><span class="icon-categorias"></span> Perfil <span class="icon-flecha-abajo"></span></h4>
+					<ul class="bloque">
+						<li>
+							<a href="{{ route('distributors.perfil') }}">Mi Perfil</a>
+						</li>
+					</ul>
+				</section>
+				@endrole
+				@role(['distributor','admin'])
+				<section class="seccion">
+					<h4><span class="icon-categorias"></span> Facturas <span class="icon-flecha-abajo"></span></h4>
+					<ul class="bloque">
+						<li>
+							<a href="{{ route('distributors.facturas') }}">Facturas</a>
+						</li>
+					</ul>
+				</section>
+				@endrole
+				@role(['distributor','admin'])
+				<section class="seccion">
+					<h4><span class="icon-categorias"></span> Pedidos <span class="icon-flecha-abajo"></span></h4>
+					<ul class="bloque">
+						<li>
+							<a href="{{ route('distributors.pedidos') }}">Mis Pedidos</a>
 						</li>
 					</ul>
 				</section>
