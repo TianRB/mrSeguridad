@@ -33,7 +33,6 @@
 						<p><strong>P. Legal:</strong> Persona física</p>
 						<p><strong>RFC:</strong> PLJ800213MJ9</p>
 						<p><strong>Zona:</strong> Norte</p>
-						<p><strong>Estatus:</strong> Cumplido</p>
 					</section>
 				</section>
 
@@ -105,19 +104,19 @@
 			</div>
 			<div class="contenido-lista-pedidos contenido-lista-pedidos-perfil-vendedor">
 				<p>20/10/2018</p>
-				<p><a href="">XASDDDFSFDS</a></p>
 				<p><a href="">Descargar</a></p>
-				<p>$50,000.00</p>
-				<p><a href="">Fedex</a></p>
+				<p>Fedex</p>
 				<p>3131233534</p>
+				<p>Monterrey</p>
+				<p>4</p>
 			</div>
 			<div class="contenido-lista-pedidos contenido-lista-pedidos-perfil-vendedor">
 				<p>20/10/2018</p>
-				<p>En proceso</p>
-				<p>Sin facturar</p>
-				<p>$50,000.00</p>
-				<p><a href="">DHL</a></p>
-				<p>24234234324324</p>
+				<p><a href="">Descargar</a></p>
+				<p>Fedex</p>
+				<p>1233424353</p>
+				<p>Monterrey</p>
+				<p>2</p>
 			</div>
 
 		</section>
@@ -134,7 +133,7 @@
 @endsection
 
 @section('page_scripts')
-	<script src="js/custominputfile.js"></script>
+	<script src="{{ asset('js/Chart.js') }}"></script>
 	<!-- ******************************** ESTE ES EL CÓDIGO QUE CREA LA GRÁFICA ******************************** -->
 	<script>
 		var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
