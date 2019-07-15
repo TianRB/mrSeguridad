@@ -24,16 +24,16 @@
 					<h3>Distribuidor</h3>
 				</div>
 				<section class="datos-usuario">
-					<figure class="foto-usuario">
+					<!--<figure class="foto-usuario">
 						<img src="img/matusa.png" alt="">
-					</figure>
+					</figure>-->
 					<section>
-						<h1>Matusa</h1>
-						<p><strong>Personalidad Legal:</strong>Persona Moral</p>
-						<p><strong>Zona:</strong> norte</p>
-						<p><strong>Estado:</strong> Nuevo León</p>
-						<p><strong>Ciudad:</strong> Monterrey</p>
-						<p><strong>Estatus:</strong>Cumplido</p>
+						<h1>Juan Perez Lopez</h1>
+						<p><strong>No. de cliente:</strong> 1233424</p>
+						<p><strong>P. Legal:</strong> Persona física</p>
+						<p><strong>RFC:</strong> PLJ800213MJ9</p>
+						<p><strong>Zona:</strong> Norte</p>
+						<p><strong>Estatus:</strong> Cumplido</p>
 					</section>
 				</section>
 
@@ -96,28 +96,28 @@
 				<h3>Pedidos</h3>
 			</div>
 			<div class="culumnas-lista-pedidos">
-				<p>Clave</p>
-				<p>Estado</p>
-				<p>Monto</p>
-				<p>Vendedor</p>
 				<p>Fecha</p>
-				<p>Código de embarque</p>
+				<p>Factura</p>
+				<p>Paquetería</p>
+				<p>No. de guía</p>
+				<p>Sucursal</p>
+				<p>No. de paquetes</p>
 			</div>
 			<div class="contenido-lista-pedidos contenido-lista-pedidos-perfil-vendedor">
-				<p><a href="">XASDDDFSFDS</a></p>
-				<p>Facturado</p>
-				<p>$50,000.00</p>
-				<p>Juan Felipe Ramirez Tapia</p>
 				<p>20/10/2018</p>
-				<p>saxf34ffs</p>
+				<p><a href="">XASDDDFSFDS</a></p>
+				<p><a href="">Descargar</a></p>
+				<p>$50,000.00</p>
+				<p><a href="">Fedex</a></p>
+				<p>3131233534</p>
 			</div>
 			<div class="contenido-lista-pedidos contenido-lista-pedidos-perfil-vendedor">
-				<p><a href="">XASDDDFSFDS</a></p>
+				<p>20/10/2018</p>
+				<p>En proceso</p>
 				<p>Sin facturar</p>
 				<p>$50,000.00</p>
-				<p>Juan Felipe Ramirez Tapia</p>
-				<p>20/10/2018</p>
-				<p>saxf34ffs</p>
+				<p><a href="">DHL</a></p>
+				<p>24234234324324</p>
 			</div>
 
 		</section>
