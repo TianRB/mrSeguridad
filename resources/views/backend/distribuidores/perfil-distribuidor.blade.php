@@ -62,10 +62,6 @@
 							<h4 style="color:#6FD64B;">$1,000,000.00</h4>
 							<p>Meta<br>anual</p>
 						</div>
-						<div>
-							<h4 style="color:#BB3CBF;">$0</h4>
-							<p>Monto<br>adeudado</p>
-						</div>
 					</div>
 
 				</div>

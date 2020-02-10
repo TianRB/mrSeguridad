@@ -170,7 +170,7 @@
 					</ul>
 				</section>
 				@endrole
-				@role(['distributor','admin'])
+				<!--@role(['distributor','admin'])
 				<section class="seccion">
 					<h4><span class="icon-categorias"></span> Perfil <span class="icon-flecha-abajo"></span></h4>
 					<ul class="bloque">
@@ -198,8 +198,8 @@
 							<a href="{{ route('distributors.pedidos') }}">Mis Pedidos</a>
 						</li>
 					</ul>
-				</section>
-				@endrole
+				</section> 
+				@endrole-->
 
 			</nav>
 		</div> <!-- Este div cierra el menú izquierdo-->
