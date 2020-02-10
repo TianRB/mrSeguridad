@@ -80,7 +80,7 @@ Nota Escrita
 				<!-- ******************************** CHECKBOX ******************************** -->
 
 				<div class="checkbox-container">
-					@foreach($categories as $c)
+					@foreach($categorias as $c)
 						@if ($loop->first)
 							<div class="check-awesome" class="form-group">
 								<input type="checkbox" name="category[]" class="checkbox" value="{{ $c->id }}" checked>
